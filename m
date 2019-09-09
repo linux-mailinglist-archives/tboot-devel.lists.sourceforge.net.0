@@ -2,91 +2,95 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E23BA763E
-	for <lists+tboot-devel@lfdr.de>; Tue,  3 Sep 2019 23:31:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3C83ADA27
+	for <lists+tboot-devel@lfdr.de>; Mon,  9 Sep 2019 15:41:15 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1i5GOT-00029N-Qg; Tue, 03 Sep 2019 21:31:17 +0000
+	id 1i7Juj-00082Z-9R; Mon, 09 Sep 2019 13:41:05 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <robert.haskins@lmco.com>) id 1i5GOR-000298-SC
- for tboot-devel@lists.sourceforge.net; Tue, 03 Sep 2019 21:31:15 +0000
+ (envelope-from <robert.haskins@lmco.com>) id 1i7Juh-00082S-NT
+ for tboot-devel@lists.sourceforge.net; Mon, 09 Sep 2019 13:41:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=MIME-Version:Content-Type:Message-ID:Date:Subject:
- To:From:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=MIME-Version:Content-Type:In-Reply-To:References:
+ Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=gZz/5ueiV6Py0x0Jk33BqZe701FOl9GeJsC4I2Y78iI=; b=asv0fgf2lPnBaL12wE49MEEfuL
- ZIgRCyllk6WFl0wCzysDO3DkkkjpPwOQ/VqJjDYg+Bv852YzXHoAia0dsOFwMgMI5pr+HEHaPCYWr
- X5NH8vx6mQoqWCT/puBGandG14Iu1DrCabVxlIrNjH5l6W/lHpPr4eY1uMbzg+wReDJk=;
+ bh=1uDnxphFpo8kEJxZr8L1ZcsHPQUVdl7IrDsKVxEQJCs=; b=EwQRLU0o7rTaL6jy58DE22eQ4I
+ zp+c7lYt0Fi0XcFVe0+4YnSXVGOezENrJliy0fdGCXo13UQWaehqt3ylonZCh/kwIdaHYfPIPJcwb
+ w9jQbzz7Ag4uMFv7gcBtKqjInCVj2mgE/0TIXIMAYfRnGQF6JXQSTgH0fbIB/+Cs+9EI=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=MIME-Version:Content-Type:Message-ID:Date:Subject:To:From:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=gZz/5ueiV6Py0x0Jk33BqZe701FOl9GeJsC4I2Y78iI=; b=l
- h0Un+gdJzY6XVsrGpYAXY5dX9PCOC2Jq/DK4H1b0pi4QqBTbXlr4HOc7fZBe5fDjLUf8cNcsOk8x4
- 4HtPTGmoTzm9T446eU3F6yb2Oy6NpC7wJ+kyNSpevLhJVPwhjU0uGuammvfJ/NolALVyMBs+tClPw
- CG/+P5tVhdm8btyQ=;
+ h=MIME-Version:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:
+ CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=1uDnxphFpo8kEJxZr8L1ZcsHPQUVdl7IrDsKVxEQJCs=; b=aFlD1/ieVHOWoeOR6B5a17Y8eI
+ +3BY4MyLTNnuRL4K55tut8jpQPEQFXIW/hfR8FaEmSWIjgR2ih7eFDsM350rfJuwZteHHwwxk87jP
+ XzHc5FnXUnhuPht6wsGVtGQsmwHpVxFqMNtTpcg5C4isy4/AR/G47XPAfJoMvb4RUOAQ=;
 Received: from mailfo02.lmco.com ([192.35.35.12])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- id 1i5GOM-00F6Fj-Q0
- for tboot-devel@lists.sourceforge.net; Tue, 03 Sep 2019 21:31:15 +0000
+ id 1i7Jud-00FbOx-M1
+ for tboot-devel@lists.sourceforge.net; Mon, 09 Sep 2019 13:41:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmco.com;
- h=from : to : subject :
- date : message-id : content-type : mime-version; s=corpgw190711;
- bh=gZz/5ueiV6Py0x0Jk33BqZe701FOl9GeJsC4I2Y78iI=;
- b=aYazgAa9puiYIIPUlr9dSq/Y5tOjkhe9gBsLVYNS+xgMClqTDIO9LHTSfDroe95MFc93
- p686BTlL8Ro0KZNoc9FC0Cne1p4luhRxiVnQrKkVSoyCS0ihY5SxDy/a9v1HuJof5zO4
- Ddh1oHeysTV5jisJ9QHDIndXtkyP3d478/XHir3GjvJSfeXsZHe8UtKccmotzP7342r6
- RpRKCOv35LaiQlmSlIo9v+DwBW6XpoQ0y2yqj0aoemkMGf7dOmmf1cicrJlLtFD/dHbh
- AsCIHnAwsn84sw0adyR2HwYDS5X6qOcLd6i1qRhpZR05kAspLIKJLqSr4wKLVfIr2b+J QA== 
-Received: from lmxpvfgd08w04.us.lmco.com (lmxpvfg08w04.ems.lmco.com
- [172.23.84.51])
- by mailfo02.lmco.com (8.16.0.22/8.16.0.22) with ESMTP id x83KagB9031231
- for <tboot-devel@lists.sourceforge.net>; Tue, 3 Sep 2019 20:36:42 GMT
+ h=from : to : cc :
+ subject : date : message-id : references : in-reply-to : content-type :
+ mime-version; s=corpgw190711;
+ bh=1uDnxphFpo8kEJxZr8L1ZcsHPQUVdl7IrDsKVxEQJCs=;
+ b=KVgNHlBrnkbFkNYTouBQGiC3WUI4qe2Og3z4IgJ21p/wDXWS5V9/ZaooJyOowB9xt7d+
+ u3hskbtl0jjnyZhkvnZP2Yna3wQiQJVCzpo+WOYKV83NTo8uUdXPnDptjHzI6Qj/39Zu
+ Q27WMvqGs4AkjfQpO+DXS8XyLgP5nie1FB6XGXXfFxbKsq9ER3KPdMb3tLK/K45jE7dp
+ 3cL6MPp/bb8GA12iooUGkDNKag35RTX8CnbEidPu0dNUYhSQD2Uqy/XyhW3FkL1Zv8b1
+ HyWuc6MORI6UO2j2XUauCppcmkUneC/X8E0bT3jh2a/KwU+bVItaPxVsIg9LAeYeRyeu yA== 
+Received: from lmxpvfgd08w01.us.lmco.com (lmxpvfg08w01.ems.lmco.com
+ [172.23.84.48])
+ by mailfo02.lmco.com (8.16.0.22/8.16.0.22) with ESMTP id x89DePQO001449;
+ Mon, 9 Sep 2019 13:40:35 GMT
 Received: from lmxpvfgd08w05.us.lmco.com (172.23.84.52) by
- lmxpvfgd08w04.us.lmco.com (172.23.84.51) with Microsoft SMTP Server
+ lmxpvfgd08w01.us.lmco.com (172.23.84.48) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
- 15.1.1466.3; Tue, 3 Sep 2019 16:37:06 -0400
+ 15.1.1466.3; Mon, 9 Sep 2019 09:40:13 -0400
 Received: from lmxpvfgd08w05.us.lmco.com ([172.23.84.52]) by
- lmxpvfgd08w05.us.lmco.com ([172.23.84.52]) with mapi id 15.01.1466.003; Tue,
- 3 Sep 2019 16:37:06 -0400
+ lmxpvfgd08w05.us.lmco.com ([172.23.84.52]) with mapi id 15.01.1466.003; Mon,
+ 9 Sep 2019 09:40:13 -0400
 From: "Haskins, Robert" <robert.haskins@lmco.com>
-To: "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
-Thread-Topic: GETSEC[SENTER]....and then reset
-Thread-Index: AdVijl5TUWltJHjOR6SN943Yoh6R4A==
-Date: Tue, 3 Sep 2019 20:37:06 +0000
-Message-ID: <fc9d52706f3d43549996876d4a0b7030@lmco.com>
+To: "greg@idfusion.net" <greg@idfusion.net>
+Thread-Topic: EXTERNAL: Re: [tboot-devel] GETSEC[SENTER]....and then reset
+Thread-Index: AdVijl5TUWltJHjOR6SN943Yoh6R4ADVv9OAAEtsstA=
+Date: Mon, 9 Sep 2019 13:40:13 +0000
+Message-ID: <20714fedc99d4e0d8b8c8d54434b3e1a@lmco.com>
+References: <fc9d52706f3d43549996876d4a0b7030@lmco.com>
+ <20190907213307.GA12122@wind.enjellic.com>
+In-Reply-To: <20190907213307.GA12122@wind.enjellic.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: yes
 X-MS-TNEF-Correlator: 
 x-originating-ip: [172.23.84.15]
 MIME-Version: 1.0
-X-LM-Outbound: External 172.23.84.51 cntry=**
- g=tZK5ExjNIh3Pg1OixnqQmQzdjmezSJtr q=x83KagB9031231 m=1
+X-LM-Outbound: External 172.23.84.48 cntry=**
+ g=1S_cOWij1VVFunklrhIgjToKjYIvWQlH q=x89DePQO001449 m=6
 X-LM-OSENDER: robert.haskins@lmco.com
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-09-03_04:, , signatures=0
-X-Spam-Score: 0.9 (/)
+ definitions=2019-09-09_06:, , signatures=0
+X-Spam-Score: 0.4 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 1.0 HTML_MESSAGE           BODY: HTML included in message
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1i5GOM-00F6Fj-Q0
-Subject: [tboot-devel] GETSEC[SENTER]....and then reset
+ 0.5 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1i7Jud-00FbOx-M1
+Subject: Re: [tboot-devel] EXTERNAL: Re:  GETSEC[SENTER]....and then reset
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,123 +102,89 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6325003416344739995=="
+Cc: "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
+Content-Type: multipart/mixed; boundary="===============7909836660540703964=="
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
---===============6325003416344739995==
+--===============7909836660540703964==
 Content-Language: en-US
 Content-Type: multipart/signed; protocol="application/x-pkcs7-signature";
-	micalg=SHA1; boundary="----=_NextPart_000_0123_01D56275.D21784B0"
+	micalg=SHA1; boundary="----=_NextPart_000_025C_01D566F2.934948F0"
 
-------=_NextPart_000_0123_01D56275.D21784B0
-Content-Type: multipart/alternative;
-	boundary="----=_NextPart_001_0124_01D56275.D21784B0"
-
-
-------=_NextPart_001_0124_01D56275.D21784B0
+------=_NextPart_000_025C_01D566F2.934948F0
 Content-Type: text/plain;
 	charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 
-I have a Getac S410 G2 that I am trying to get TBOOT working on under a
-vanilla RHEL 7.6 O/S with TBOOT 1.9.10. The TBOOT startup looks fine:
+Thanks for your response! My responses are here:
 
- 
+1) We do have serial logging setup and working. I will work to get the logs
+off the machine.
+2) The platform is TPM2.
+3) I am not sure what you mean by this question. Are you referring to index
+0x1c10103? (see https://sourceforge.net/p/tboot/mailman/message/35551544/)
+4) We are not implementing any launch control policy.
 
-TXT.ERRCODE: 0x0
+Thank you for your help!
 
-SINIT match on "the 6th_7th_gen_i5_i7-SINIT_79.bin" file
+-----Original Message-----
+From: Dr. Greg <greg@idfusion.net> 
+Sent: Saturday, September 7, 2019 5:33 PM
+To: Haskins, Robert (US N-INCADENCE STRATEGIC SOLUTIONS CORPORATION)
+<robert.haskins@lmco.com>
+Cc: tboot-devel@lists.sourceforge.net
+Subject: EXTERNAL: Re: [tboot-devel] GETSEC[SENTER]....and then reset
 
-"last boot has no error"
+On Tue, Sep 03, 2019 at 08:37:06PM +0000, Haskins, Robert wrote:
 
- 
+Good afternoon Robert, I hope your weekend is going well.
 
-Once it gets to GETSEC[SENTER], it just resets back to grub/startup screen.
+> I have a Getac S410 G2 that I am trying to get TBOOT working on under 
+> a vanilla RHEL 7.6 O/S with TBOOT 1.9.10. The TBOOT startup looks fine:
+> 
+> TXT.ERRCODE: 0x0
+> 
+> SINIT match on "the 6th_7th_gen_i5_i7-SINIT_79.bin" file
+> 
+> "last boot has no error"
+> 
+> Once it gets to GETSEC[SENTER], it just resets back to grub/startup
+screen.
+> 
+> What am I doing wrong?
 
- 
+It could be a plethora of things.
 
-What am I doing wrong?
+It would be helpful to have logs from the first phase execution of tboot.
+Since tboot is generating a hard platform reset you will need serial logging
+or something else to capture the logs unless you are able to get memory
+based logging to work.
 
- 
+Is the platform TPM1 or TPM2?  Given it is i6/i7 I'm assuming the latter.
 
- 
+Are the required TPM NVRAM locations configured?
 
- 
+Are you attempting to implement any type of launch control policy?
 
- 
+Logs and answers to the above questions should help get a conversation
+started.
 
+Have a good evening.
 
-------=_NextPart_001_0124_01D56275.D21784B0
-Content-Type: text/html;
-	charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Dr. Greg
 
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" =
-xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
-xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =
-xmlns=3D"http://www.w3.org/TR/REC-html40"><head><META =
-HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
-charset=3Dus-ascii"><meta name=3DGenerator content=3D"Microsoft Word 15 =
-(filtered medium)"><style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0in;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:#0563C1;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{mso-style-priority:99;
-	color:#954F72;
-	text-decoration:underline;}
-span.EmailStyle17
-	{mso-style-type:personal-compose;
-	font-family:"Calibri",sans-serif;
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-family:"Calibri",sans-serif;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]--></head><body lang=3DEN-US =
-link=3D"#0563C1" vlink=3D"#954F72"><div class=3DWordSection1><p =
-class=3DMsoNormal>I have a Getac S410 G2 that I am trying to get TBOOT =
-working on under a vanilla RHEL 7.6 O/S with TBOOT 1.9.10. The TBOOT =
-startup looks fine:<o:p></o:p></p><p =
-class=3DMsoNormal><o:p>&nbsp;</o:p></p><p class=3DMsoNormal>TXT.ERRCODE: =
-0x0<o:p></o:p></p><p class=3DMsoNormal>SINIT match on &#8220;the =
-6th_7th_gen_i5_i7-SINIT_79.bin&#8221; file<o:p></o:p></p><p =
-class=3DMsoNormal>&#8220;last boot has no error&#8221;<o:p></o:p></p><p =
-class=3DMsoNormal><o:p>&nbsp;</o:p></p><p class=3DMsoNormal>Once it gets =
-to GETSEC[SENTER], it just resets back to grub/startup =
-screen.<o:p></o:p></p><p class=3DMsoNormal><o:p>&nbsp;</o:p></p><p =
-class=3DMsoNormal>What am I doing wrong?<o:p></o:p></p><p =
-class=3DMsoNormal><o:p>&nbsp;</o:p></p><p =
-class=3DMsoNormal><o:p>&nbsp;</o:p></p><p =
-class=3DMsoNormal><o:p>&nbsp;</o:p></p><p =
-class=3DMsoNormal><o:p>&nbsp;</o:p></p></div></body></html>
-------=_NextPart_001_0124_01D56275.D21784B0--
+As always,
+Dr. Greg Wettstein, Ph.D, Worker
+IDfusion, LLC               SGX secured infrastructure and
+4206 N. 19th Ave.           autonomously self-defensive platforms.
+Fargo, ND  58102
+PH: 701-281-1686            EMAIL: greg@idfusion.net
+----------------------------------------------------------------------------
+--
+"Sweeny's Law: The length of a progress report is inversely proportional  to
+the amount of progress."
 
-------=_NextPart_000_0123_01D56275.D21784B0
+------=_NextPart_000_025C_01D566F2.934948F0
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -333,8 +303,8 @@ Z6wLd6bH7TBD5od6CyRciiCgLBj28ovN7OxehUGmnSwoTEhmMYIEOzCCBDcCAQEwgaYwgY4xCzAJ
 BgNVBAYTAlVTMSQwIgYDVQQKExtMb2NraGVlZCBNYXJ0aW4gQ29ycG9yYXRpb24xIjAgBgNVBAsT
 GUNlcnRpZmljYXRpb24gQXV0aG9yaXRpZXMxNTAzBgNVBAMTLExvY2toZWVkIE1hcnRpbiBDZXJ0
 aWZpY2F0aW9uIEF1dGhvcml0eSA3IEcyAhMTAAVoB3M+k44vsmd1AAAABWgHMAkGBSsOAwIaBQCg
-ggJpMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE5MDkwMzIwMzcw
-NVowIwYJKoZIhvcNAQkEMRYEFHo8Je3nzr0N3sEns1LeJNmoTMMsMIGTBgkqhkiG9w0BCQ8xgYUw
+ggJpMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE5MDkwOTEzNDAx
+MVowIwYJKoZIhvcNAQkEMRYEFMYKyRz8MsTONRefVU5UVDTPZV2mMIGTBgkqhkiG9w0BCQ8xgYUw
 gYIwCwYJYIZIAWUDBAEqMAsGCWCGSAFlAwQBFjAKBggqhkiG9w0DBzALBglghkgBZQMEAQIwDgYI
 KoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcGBSsOAwIaMAsGCWCGSAFlAwQCAzALBglghkgB
 ZQMEAgIwCwYJYIZIAWUDBAIBMIG3BgkrBgEEAYI3EAQxgakwgaYwgY4xCzAJBgNVBAYTAlVTMSQw
@@ -344,23 +314,23 @@ dGhvcml0eSA3IEcyAhMTAAVn3SQ+Al3H/XaCAAAABWfdMIG5BgsqhkiG9w0BCRACCzGBqaCBpjCB
 jjELMAkGA1UEBhMCVVMxJDAiBgNVBAoTG0xvY2toZWVkIE1hcnRpbiBDb3Jwb3JhdGlvbjEiMCAG
 A1UECxMZQ2VydGlmaWNhdGlvbiBBdXRob3JpdGllczE1MDMGA1UEAxMsTG9ja2hlZWQgTWFydGlu
 IENlcnRpZmljYXRpb24gQXV0aG9yaXR5IDcgRzICExMABWfdJD4CXcf9doIAAAAFZ90wDQYJKoZI
-hvcNAQEBBQAEggEAtkoqjBrLA9ePcdoZGsF75w9lzWDCRb1fAIZlndFp6xGQxAQKgpGSUZ1lJ0az
-V++uOW0BwsJU6f9BlZatiZADOVkc0AtxbrYVSei2aFAgZhGRT2/LdSti/WblIUI6gxYY9WBPC5bH
-sWculKSxkhqkUTtETT41hnHGUs8iiYV7poMaX5sE4W/0mXvJjaa74DzkHWmsLgRuxL8Yc4DkmUKK
-hh4YxloeCv4o4ntgFJxa00swEdhrD9foPlPA5k/l2GIxrrT9A+nvqiiNTlWdq7SMHDp1eOXEig6o
-9CGFn/0u8zUUntQSO36/BT6NjppkJuDsuNO5V41ltu4OOsszoHkcVAAAAAAAAA==
+hvcNAQEBBQAEggEAQ1fN5OVJ9o/lkg77Zd1XLTrhuzh9J0zabMvkpfceaf8rXq8aI/QXJQSgzVMd
+zoA3zc4T0IS0fS/Q+V09ss6M4iD8IW8/U7a140YWKU+fHNPc5lkGFF62XdPQOuDaCll49q6W9q2+
+rQ8H0UzstdDBGht5ygj8nC3FuL+mJCSYPn9UsHIkd/as4XgCYTFA4vaoUgIB+lVhFmESf6m0caoK
+FdU8UWpcwSF3b+qo3Zd7N/lUowadO2UYfvedh2117YPTLDoRy+8mnBcg2eVOPizqYbU5jLIIafaE
+J2viQKUCxWOUslGuW6LVH/1pG72JpdDlILJNeDXslDj+tMXNv/GOugAAAAAAAA==
 
-------=_NextPart_000_0123_01D56275.D21784B0--
+------=_NextPart_000_025C_01D566F2.934948F0--
 
 
---===============6325003416344739995==
+--===============7909836660540703964==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============6325003416344739995==
+--===============7909836660540703964==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -371,5 +341,5 @@ tboot-devel mailing list
 tboot-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/tboot-devel
 
---===============6325003416344739995==--
+--===============7909836660540703964==--
 
