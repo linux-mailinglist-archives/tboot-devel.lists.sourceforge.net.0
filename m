@@ -2,71 +2,170 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86DF2B007C
-	for <lists+tboot-devel@lfdr.de>; Wed, 11 Sep 2019 17:47:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15449B7E5D
+	for <lists+tboot-devel@lfdr.de>; Thu, 19 Sep 2019 17:40:05 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:
+	Reply-To:From:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Subject:MIME-Version:Content-ID:Message-ID:Date:To:
+	Sender:Cc:Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To
+	:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7de/n3lyqFUO4P7c0uQhuYgQvmPCyR53FwzEljgwanw=; b=FsNs6OpY57Xgk/1ry2N7zI91ld
+	IIPzb/oNxn0iHz9oFPadnI0vc9M/yuol/FkJfOW2h5MN1EsQcsT1Dlrp3psK7jDQjJg2H0OooXl9S
+	xdxGqfX/S8VWTFVlTlzA2OmRWgwp8in0L5sa73o97/XK8ux8Jb6hK2vfTVLeiZ+iaaLg=;
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1i84pg-0005Si-1T; Wed, 11 Sep 2019 15:47:00 +0000
+	id 1iAyXD-0001oP-S8; Thu, 19 Sep 2019 15:39:55 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <greg@wind.enjellic.com>) id 1i84pe-0005Sa-34
- for tboot-devel@lists.sourceforge.net; Wed, 11 Sep 2019 15:46:58 +0000
+ (envelope-from <pmoore2@cisco.com>) id 1iAyXD-0001oH-Bj
+ for tboot-devel@lists.sourceforge.net; Thu, 19 Sep 2019 15:39:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:Mime-Version:References:
- Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=MIME-Version:Content-Transfer-Encoding:Content-ID:
+ Content-Type:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=ut+NNrZUy9Di6MRvTQyK/9qZCfnrx+YEXgsXy9j8rV4=; b=ECREt4fYlRSdY7eMO5l5CP/OZR
- bXesGRfjmxuFG9XnLPRdSzx6TFrPgpud/Jfc2J8OwFXSTfBDmwBwfO6ldSXBcXuNbdFceNV3LNGVC
- bwmq1NVTcK4Qk/fsLC0j1ABbGyFr598ntgGe5CHfxsyYkS07mtA2QOGLc8KIdGkyNTuQ=;
+ bh=bDNu+b+ikcEuBCFDkRkscnojTZwJfuYsbT+zzXw9OCc=; b=YdQi8ac8B3qEgg/Y6Dxj2GYTuH
+ K+CRBSi0uZRWw/ZP+bwaQwUSh6yhLu8jS1Qr4qP39tshRGUB+t+WQzqJIKwkNY69hqZGmtqlSR6yt
+ nIRmDBcgwitbXwFko4D6Bd4PNAAeTGAWbRN90bXAj6jq7+2gkzBsa7iGRIdCUHBsBbv8=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:Mime-Version:References:Reply-To:Message-ID:
- Subject:Cc:To:From:Date:Sender:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=ut+NNrZUy9Di6MRvTQyK/9qZCfnrx+YEXgsXy9j8rV4=; b=R88PpQLrJDYU+U/Vpd47+xh1JH
- OwHHQPBAB1Kjn/aBu9Y2yGatx650lQeffYtgjtsrzD5hfu9725mXJSxuvL+iYconjKGQpzpQb5bbs
- b6jp0gDvWqZ0X9ycsfSGg+KizuYSW8Z1iWd6+s2F7SUOKPX/rO3rwqMRu5yrdkTVLabM=;
-Received: from wind.enjellic.com ([76.10.64.91])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.90_1)
- id 1i84pb-000S9j-Tk
- for tboot-devel@lists.sourceforge.net; Wed, 11 Sep 2019 15:46:58 +0000
-Received: from wind.enjellic.com (localhost [127.0.0.1])
- by wind.enjellic.com (8.15.2/8.15.2) with ESMTP id x8BFkX2L027238;
- Wed, 11 Sep 2019 10:46:33 -0500
-Received: (from greg@localhost)
- by wind.enjellic.com (8.15.2/8.15.2/Submit) id x8BFkXQU027237;
- Wed, 11 Sep 2019 10:46:33 -0500
-Date: Wed, 11 Sep 2019 10:46:33 -0500
-From: "Dr. Greg" <greg@enjellic.com>
-To: "Haskins, Robert" <robert.haskins@lmco.com>
-Message-ID: <20190911154632.GA25934@wind.enjellic.com>
-References: <fc9d52706f3d43549996876d4a0b7030@lmco.com>
- <20190907213307.GA12122@wind.enjellic.com>
- <20714fedc99d4e0d8b8c8d54434b3e1a@lmco.com>
- <33f30dd7b8674454be7d9a8b5d280eab@lmco.com>
-Mime-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <33f30dd7b8674454be7d9a8b5d280eab@lmco.com>
-User-Agent: Mutt/1.4i
-X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.2.3
- (wind.enjellic.com [127.0.0.1]); Wed, 11 Sep 2019 10:46:34 -0500 (CDT)
-X-Spam-Score: -0.0 (/)
+ h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:Message-ID
+ :Date:Subject:To:From:Sender:Reply-To:Cc:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=bDNu+b+ikcEuBCFDkRkscnojTZwJfuYsbT+zzXw9OCc=; b=a
+ fotCgRS0sXqf2GzyRYUOkemE4FeH0oiElUzEyf5Lsg88+fbDjWRNM2/1NBL62+xghruptOrJ5ujHe
+ a+dWGmGNKOUT2DYQW7sdSR3TLDHGaI4eZ/1CvKtcPtEYtBeFV3F4ScjXQ2ZddUTVLq6NgyrhxLEcI
+ OqQdUhKFiWftexQo=;
+Received: from alln-iport-3.cisco.com ([173.37.142.90])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps (TLSv1.2:DHE-RSA-SEED-SHA:128)
+ (Exim 4.90_1) id 1iAyX9-00470V-L6
+ for tboot-devel@lists.sourceforge.net; Thu, 19 Sep 2019 15:39:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=cisco.com; i=@cisco.com; l=2886; q=dns/txt; s=iport;
+ t=1568907591; x=1570117191;
+ h=from:to:subject:date:message-id:content-id:
+ content-transfer-encoding:mime-version;
+ bh=bDNu+b+ikcEuBCFDkRkscnojTZwJfuYsbT+zzXw9OCc=;
+ b=S1bdjpH84Ugdjf0fOdS+L2/fUFz+Kuran51hH4CcNchh6qLEejlSKOhj
+ a21Jf00DsHDL1gtICW6Ujr9GMMXT4/oS0GB5PGuiQcdDiC+ucnpvN3r5/
+ q32efNgVpBl7fc94xAOY/4qnObms3kO1FjpPIzuba8hWQP4LugSIc58oE 0=;
+IronPort-PHdr: =?us-ascii?q?9a23=3A5d6cIBWEFiuB44+ddR/UncYbqfrV8LGuZFwc94?=
+ =?us-ascii?q?YnhrRSc6+q45XlOgnF6O5wiEPSA92J8OpK3uzRta2oGXcN55qMqjgjSNRNTF?=
+ =?us-ascii?q?dE7KdehAk8GIiAAEz/IuTtankiGcNFTlI/13q6KkNSXs35Yg6arw=3D=3D?=
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A0CfFQANoINd/4wNJK1lHgEGDYFcC4F?=
+ =?us-ascii?q?FJCwDbVYgBAsqCoQYg0cDinxNmgKBLoEkA1QJAQEBDAEBJQgCAQGEWIJsIzY?=
+ =?us-ascii?q?HDgIDAQMCAwEBBAEBAQIBBQRthS0BC4VPFBERDAEBMgYRASICJgIEMBUSBCc?=
+ =?us-ascii?q?OgwGBagMdAQIMoiICgTiIYXOBMoJ9AQEFgTcGCkFAgjsYghcDBoEMKIURhni?=
+ =?us-ascii?q?CF4RhgmECAQEYgTODH4JYgTMBi0qCWo5Tjl8GBIIihiFkjgMbmSIBin+CWT6?=
+ =?us-ascii?q?IEY08BINAAgQCBAUCDgEBBYFZCieBWHBQgR6BTlAQFIFOg3KKU3MBC4EdjHq?=
+ =?us-ascii?q?BMAGBIgEB?=
+X-IronPort-AV: E=Sophos;i="5.64,524,1559520000"; d="scan'208";a="340985149"
+Received: from alln-core-7.cisco.com ([173.36.13.140])
+ by alln-iport-3.cisco.com with ESMTP/TLS/DHE-RSA-SEED-SHA;
+ 19 Sep 2019 15:39:45 +0000
+Received: from XCH-ALN-002.cisco.com (xch-aln-002.cisco.com [173.36.7.12])
+ by alln-core-7.cisco.com (8.15.2/8.15.2) with ESMTPS id x8JFdjRD025255
+ (version=TLSv1.2 cipher=AES256-SHA bits=256 verify=FAIL)
+ for <tboot-devel@lists.sourceforge.net>; Thu, 19 Sep 2019 15:39:45 GMT
+Received: from xhs-rtp-003.cisco.com (64.101.210.230) by XCH-ALN-002.cisco.com
+ (173.36.7.12) with Microsoft SMTP Server (TLS) id 15.0.1473.3;
+ Thu, 19 Sep 2019 10:39:44 -0500
+Received: from xhs-aln-003.cisco.com (173.37.135.120) by xhs-rtp-003.cisco.com
+ (64.101.210.230) with Microsoft SMTP Server (TLS) id 15.0.1473.3;
+ Thu, 19 Sep 2019 11:39:44 -0400
+Received: from NAM05-DM3-obe.outbound.protection.outlook.com (173.37.151.57)
+ by xhs-aln-003.cisco.com (173.37.135.120) with Microsoft SMTP Server (TLS) id
+ 15.0.1473.3 via Frontend Transport; Thu, 19 Sep 2019 10:39:44 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Bw0Id6ACSxS/W4Oky0NbP3Lh0NjSavFz1pleV3mkSfLDwrmihNYiavtuQogOw1PKjfG63s2UKJmtUFgAffYQ7Nsb9JEIMaKvZhia1sJAZcz8yqPaiJP4qszA5n017jwMRWb2f/03PXp2wqrLU9SF+TD36iAdLy1MS39gRbnPkoCcG7WKFAUry8V+MhaudMMxVas5tXXl4lWpDxnAJoMHou8k0geEH9+usjM/TKEPD353L+YkO2hkv9mV0pGxIu2V/xJQU5c/X6SBpynu6QXdsEqJXK2pG5E4rXTR2zFY7vClHlXDpfJkTbol6xgjKBIscFgUS27IfyPxzZk16e9ZBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bDNu+b+ikcEuBCFDkRkscnojTZwJfuYsbT+zzXw9OCc=;
+ b=F4GavlxYWYLu3/NAeJetY3PjvnAHZtKdsBfBD00TjgyZLS2Z8T4+7TupLE8eL5/g6YR+gnh8kod9EGCdPNg53J5TBX7ZffBB6C84KwjfA1wYpaqF+Be22oF0dmD7Wm4BNHke1b7YPUVZ7WiyDf6wCYi/9nxO4XivgL3AC+aTrHxjBO15SuRDrVtSDI7vz+trOggPLDlkKtW0NjVhMXvA3p7/kv6deQuOZKRtu3pql74aC27POP1kYq0N3xDkgZfiI1Jw8ZXJ/JHAsEgr0dVCrI0ASmqRczBKV3ENyP8B/7BVt9fThUw94mMACi+m8K93eFV9a6WUAccJVp/SC0C0iQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cisco.com; dmarc=pass action=none header.from=cisco.com;
+ dkim=pass header.d=cisco.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cisco.onmicrosoft.com; 
+ s=selector2-cisco-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bDNu+b+ikcEuBCFDkRkscnojTZwJfuYsbT+zzXw9OCc=;
+ b=X5V/c8gLIuh8d0wCta705sCpwLFhVBoqSjlq+8cv2i5KKKKKKHitD3uSBoG5Y1y4uym+gfcHXtQyU8HMrAANaW8Dev3PudGuCgCh+SZLURxcisKEn8jC5bayEnh7D5HuB5PnzB0Grph5sE5ypYuAilEzatYjYi6JLHUWFSbYIl0=
+Received: from MN2PR11MB4096.namprd11.prod.outlook.com (20.179.150.82) by
+ MN2PR11MB3678.namprd11.prod.outlook.com (20.178.252.94) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2284.18; Thu, 19 Sep 2019 15:39:42 +0000
+Received: from MN2PR11MB4096.namprd11.prod.outlook.com
+ ([fe80::6931:def1:9b9f:731e]) by MN2PR11MB4096.namprd11.prod.outlook.com
+ ([fe80::6931:def1:9b9f:731e%3]) with mapi id 15.20.2284.009; Thu, 19 Sep 2019
+ 15:39:42 +0000
+To: "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
+Thread-Topic: [RFC] tboot: kernel signature verification
+Thread-Index: AQHVbwB0th12F6sDfUCgP40i/qpaHw==
+Date: Thu, 19 Sep 2019 15:39:42 +0000
+Message-ID: <bbaf0eeb3ddb8791533fc9dfba23ed57d3a2c9bd.camel@cisco.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=pmoore2@cisco.com; 
+x-originating-ip: [173.38.117.77]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 27735925-7d7d-4c20-3614-08d73d179753
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600167)(711020)(4605104)(1401327)(2017052603328)(7193020);
+ SRVR:MN2PR11MB3678; 
+x-ms-traffictypediagnostic: MN2PR11MB3678:
+x-ms-exchange-purlcount: 3
+x-microsoft-antispam-prvs: <MN2PR11MB3678E4123D2C0180A7D12B8DF8890@MN2PR11MB3678.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-forefront-prvs: 016572D96D
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(4636009)(39860400002)(366004)(346002)(136003)(376002)(396003)(189003)(199004)(6436002)(6506007)(305945005)(6116002)(6486002)(5640700003)(316002)(6916009)(8936002)(81156014)(966005)(8676002)(5660300002)(14454004)(81166006)(99286004)(478600001)(6512007)(6306002)(118296001)(102836004)(25786009)(76116006)(3846002)(71200400001)(36756003)(15650500001)(66066001)(186003)(7736002)(2906002)(66556008)(66946007)(66446008)(66476007)(64756008)(86362001)(26005)(476003)(2351001)(71190400001)(14444005)(486006)(2501003)(256004)(2616005);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB3678;
+ H:MN2PR11MB4096.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: cisco.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: KHeN5PFrfCnRyRU8Cg2FjhKaaFF9wp5NuOSC42VbwW/Eg0ParKRw+RSGW6gXIwF85Ezf18DyQa9aCwKxzdqYaZ6hNGG9mESMTpNmZ7S3+J9oaez8+9ZQOj0euq7IAPAf2rFqSav9TPkgdYkGOhVMSlG5YZrOMqbcy9sZCCJbAWsATVkX85Pf3o7ZICJrp5qK/Gr+00hVt/yJJObjvTyTATzA83D0j5xkWBc/BBac/h0+V8FT72u5Sgal771M5yL6LFVHe+Jx7sW53knvIFGU1YlNtpaKpBv0NpY58SYEFn3ffLuXeH6r5s4mRRGstUlcNbigH2gyByXO24+lYzUIVnNOiNuGmPjivHfXMklKe08RFfGldD1G3nZOozZIeYvhGZIkUsG/BqOC0fi+G0UxbVIB+byZjWfAnbZ9d3dqRF4=
+x-ms-exchange-transport-forked: True
+Content-ID: <E2BDD3C0844BE24BA0D877971788D8DC@namprd11.prod.outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 27735925-7d7d-4c20-3614-08d73d179753
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2019 15:39:42.7959 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 5ae1af62-9505-4097-a69a-c1553ef7840e
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: cHEno1+8TbOZMCtv6ZQgwEWbl0Row/hB7jWJD8dJCcdM2TdGsVBf3Iwwtizc5CMHzrrR6RUBib190tpn6jk+9w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3678
+X-OriginatorOrg: cisco.com
+X-Outbound-SMTP-Client: 173.36.7.12, xch-aln-002.cisco.com
+X-Outbound-Node: alln-core-7.cisco.com
+X-Spam-Score: -7.6 (-------)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: idfusion.net]
+ for more information. [URIs: paul-moore.com]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
-X-Headers-End: 1i84pb-000S9j-Tk
-Subject: Re: [tboot-devel] EXTERNAL: Re:  GETSEC[SENTER]....and then reset
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM white-list
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+X-Headers-End: 1iAyX9-00470V-L6
+Subject: [tboot-devel] [RFC] tboot: kernel signature verification
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,265 +177,57 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: "Dr. Greg" <greg@enjellic.com>
-Cc: "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
+From: "Paul Moore \(pmoore2\) via tboot-devel"
+ <tboot-devel@lists.sourceforge.net>
+Reply-To: "Paul Moore \(pmoore2\)" <pmoore2@cisco.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Tue, Sep 10, 2019 at 01:41:53AM +0000, Haskins, Robert wrote:
+Hello,
 
-Hi Robert, I hope your day is going well.
+I've been working on adding PECOFF/kernel signature verification to
+tboot and now that I have a rough working prototype I wanted to bring
+it to the list to see if this is something the tboot community would
+be interested in eventually merging (once the work is more complete
+and polished).
 
-My apologies for the delay in responding.  Lots of fires to put out
-and I needed to go back and look at some notes.
+The patchset is quite large, mostly due to the inclusion of
+libtomcrypt and libtomfastmath to the tboot repository, so I'm going
+to refrain from spamming the list with the full patchset at this early
+stage.  The current patchset can be found on GitHub at the URL below
+(look in the "working-txtsig" branch):
 
-> OK, here is my latest TBOOT log. It looks like we did get an error
-> code (TXT.ERRORCODE: 0xc0007051) this time around:
+* https://github.com/pcmoore/misc-tboot/tree/working-txtsig
 
-The parse_err utility that comes with the tboot package is your
-friend.  If you run that numeric error code through it you get the
-following:
+The prototype doesn't actually enforce any policy or change the PCR
+measurements based on the kernel signatures (both are planned work
+items), but it does demonstrate the ability to parse and verify a
+signed PECOFF image.  The individual patch descriptions provide some
+additional information on some of the planned work to take this from
+a prototype to a proper implementation.
 
-AC module error : acm_type=0x1, progress=0x05, error=0x1c
+My motivation for this work is to create a mechanism that is capable
+of generating a stable set of PCR values across multiple kernels that
+can be used to seal TPM NVRAM secrets on both legacy BIOS and UEFI
+systems.  Imagine being able to store a storage encryption key in the
+TPM, and restricting access to that key to only authorized kernels in
+such a way that didn't require changing the tboot policy when booting
+different kernels.  I imagine I'm not along in thinking this would
+be a nice capability to have, especially on systems that don't support
+UEFI Secure Boot.
 
-tboot is decoding the error as well, ie:
+For those who are interested, I gave a presentation on this work at
+the Linux Security Summit last month, the video and sldies are
+available at the links below:
 
-> TBOOT: TXT.ERRORCODE: 0xc0007051
-> TBOOT: AC module error : acm_type=0x1, progress=0x05, error=0x1c
+* https://www.youtube.com/watch?v=Qbjz_5jUE9o
+* 
+https://www.paul-moore.com/docs/lss-securing_tpm_with_txt-pmoore-201909-r2.pdf
 
-If you downloaded the .zip file containing the ACM module it should
-have a spreadsheet that details the various internal errors.  It
-doesn't match well with the 'progress' or 'error' fields but the 0x1c
-code gives some idea on where to start looking.
-
-The most likely candidate error is the following:
-
----------------------------------------------------------------------------
-ERR_INVALID_INPUT_PARA
-
-Internal error. TPM driver detected invalid function input
-parameter.
----------------------------------------------------------------------------
-
-Which, given the following output in your logfile:
-
-> TBOOT: reading Verified Launch Policy from TPM NV...
-> TBOOT: TPM: fail to get public data of 0x01200001 in TPM NV
-> TBOOT: 	:reading failed
-> TBOOT: reading Launch Control Policy from TPM NV...
-> TBOOT: TPM: fail to get public data of 0x01400001 in TPM NV
-> TBOOT: 	:reading failed
-> TBOOT: failed to read policy from TPM NV, using default
-
-Probably suggests that the ACM is unhappy about the fact that, at a
-minimum, the Platform Owner (PO) NVRAM index has not been configured.
-
-The Intel TXT Software Development Manual (SDM) indicates that the
-Platform Supplier (PS), PO and Auxiliary (AUX) NVRAM index locations
-are required to be configured.  If you grab a copy of the SDM this
-information should be on page 155 or thereabouts
-
-Hopefully, whoever is vending your platform, has TXT 'provisioned' the
-platform which involves, at a minimum, configuring the PS NVRAM index.
-It has been our experience that you need the Intel supplied TXT/TPM
-provisioning tools in order to do this and those are, at our last
-experience, only available under NDA.
-
-All of the Intel vended platforms that we have dealt with have been
-TXT provisioned.  We had a tough go round with Gigabyte boards which
-appeared to have been either not provisioned or provisioned
-incorrectly and were thus unusable for TXT.  So caveat emptor for
-anyone who stumbles across this message on the INTERNET.
-
-The relevant TPM2 NVRAM indexes are as follows:
-
-PS:  0x1800001 or 0x1c10103
-PO:  0x1400001 or 0x1c10106
-AUX: 0x1800003 or 0x1c10102
-SGX: 0x1800004 or 0x1c10104
-
-The NVRAM index range that is to be used is dependent on the ACM
-module.  The tboot package has the acminfo command, if you run that on
-your module you will see the following in the output:
-
-TPM capability:
-	ext_policy: 0x3
-	tpm_family : 0x3
-	tpm_nv_index_set : 0x0
-
-The tpm_nv_index_set variable indicates the NVRAM index range that the
-ACM is intending to use.  You can also see this in the following
-section of your log:
-
-> TBOOT: 	 TPM info list:
-> TBOOT: 		 TPM capability:
-> TBOOT: 		      ext_policy: 0x3
-> TBOOT: 		      tpm_family : 0x3
-> TBOOT: 		      tpm_nv_index_set : 0x0
-
-tpm_nv_index_set 0 means the ACM is using the 0x18xxxxx and 0x14xxxxx
-locations.
-
-In your previous mail you referred to the following:
-
-> 3) I am not sure what you mean by this question. Are you referring to index
-> 0x1c10103? (see https://sourceforge.net/p/tboot/mailman/message/35551544/)
-
-The message you are referring to with the URL is a bit of a red
-herring in all of this, since Travis Gilbert works/worked for Dell and
-was working on a platform that had the ACM module included with the
-platform BIOS/firwmare.  I suspect they were doing early ground work
-in preparation for delivering systems which support the Windows
-'System Guard' feature, which is an implementation of Dynamic Root of
-Trust for Measurement (DRTM) for the Windows platform.
-
-The downloable 7th/8th gen ACM modules are using index set 1 locations
-but that is the first downloadable ACM to move to the higher order
-NVRAM indexes.  I suspect that is the first generation of hardware
-that is actively supporting System Guard.
-
-So you will need to make sure that the PS, PO and AUX indexes are
-created and with the proper attributes.
-
-Table J-2 in Appendix J of the TXT/SDM has details on how to properly
-configure the NVRAM index locations.  Here is a summary table that may
-be useful for your efforts:
-
----------------------------------------------------------------------------
-PS index:
-	PS1 attributes (non-permanent): 0x42040408
-		TPMA_NV_POLICYWRITE
-		TPMA_NV_POLICY_DELETE
-		TPMA_NV_AUTHREAD
-		TPMA_NV_NO_DA
-		TPMA_NV_PLATFORMCREATE
-	Size:	38 + HASHALGID_DIGEST_SIZE
-		SHA256: 70
-
-AUX index:
-	Attributes: 0x42044408
-		TPMA_NV_POLICYWRITE
-		TPMA_NV_POLICY_DELETE
-		TPMA_NV_WRITE_STCLEAR
-		TPMA_NV_AUTHREAD
-		TPMA_NV_NO_DA
-		TPMA_NV_PLATFORMCREATE
-	Size: 40 + 2 * HASHALGID_DIGEST_SIZE
-		SHA256: 104
-
-SGX index:
-	Attributes: 0x42040404
-		TPMA_NV_AUTHWRITE
-		TPMA_NV_POLICY_DELETE
-		TPMA_NV_AUTHREAD
-		TPMA_NV_NO_DA
-		TPMA_NV_PLATFORMCREATE
-	Size:
-		all: 8
-
-PO index:
-	Attributes Broadwell: 0x4000A
-		TPMA_NV_OWNERWRITE
-		TPMA_NV_POLICYWRITE
-		TPMA_NV_AUTHREAD
-	Attributes post-Skylake: 0x204000A
-		TPMA_NV_OWNERWRITE
-		TPMA_NV_POLICYWRITE
-		TPMA_NV_AUTHREAD
-		TPMA_NV_NO_DA
-	Size:	38 + HASHALGID_DIGEST_SIZE
-		SHA256: 70
----------------------------------------------------------------------------
-
-I see from your logs that you are allowing tboot to default to using
-SHA1 for its measurement algorithm.  Since you are getting started
-with all of this I would recommand you use the following command line
-arguement for tboot:
-
-extpol=sha256
-
-That will configure tboot to use SHA256 for its measurement and
-hashing.  The size attributes for the NVRAM index locations in the
-above NVRAM summary are based on SHA256.
-
-So your next step will be to find a set of TPM2 command-line utilities
-that you are comfortable with and work on getting the PO and AUX NVRAM
-index locations created with the proper size and attributes and to
-verify that the PS index has been configured.
-
-I'm assuming that Lockheed Martin has enough juice with Intel to get
-the necessary tooling if your platform has not been TXT provisioned.
-Either that or enough juice with your hardware OEM in order to get
-them to vend properly provisioned platforms in order make this
-technology useful in support of your security initiatives.
-
-We built a TPM2 toolbox on top of Ken Goldman's TSS2 library, the
-latter of which is simply excellent.  Ken is at IBM TJ Watson, and I
-believe, sits on the TCG/TPM2 steering committee for IBM and probably
-knows as much about TPM's as anyone on the planet.
-
-The 0x1200001 NVRAM location is for a Verified Launch Policy (VLP)
-measurement, that is an invention of tboot's.  It is not strictly
-necessary from the perspective of getting the ACM to a point where it
-will not simply reset the platform.
-
-I see from your logs that you have an SGX capable platform:
-
-> TBOOT: SGX:verify_IA32_se_svn_status is called
-> TBOOT: SGX is enabled, cpuid.ebx:0x29c6fbf
-> TBOOT: Comparing se_svn with ACM Header se_svn
-> TBOOT: se_svn is equal to ACM se_svn
-
-You may want to keep in the back of your mind that the ACM may also be
-unhappy if it doesn't have the SGX NVRAM index provisioned as well.
-
-So if you move forward with these configurations it should advance you
-to the point where the platform will act a bit more hospitably.
-
-The target for your efforts should be to get a successful system boot
-with a LCP_ANY policy written into the 0x1400001 index location using
-SHA256 as the measurement algorithm.  Once you are at that point you
-will at least have verified there are no 'gotchas' in the hardware and
-you can begin advancing to more sophisticated launch control policies.
-
-Hopefully all of this is useful information in pursuit of advancing
-the Lockheed/Martin security efforts.... :-)
-
-Speaking of which I was doing a presentation on the application of SGX
-security technology to the implementation of autonomously
-self-defensive computing platforms at the National Defense Industry
-Association (NDIA) cyber-security conference in Austin, TX in March.
-A Lockheed engineer that was attending ended up engaging me a couple
-of times regarding our work.
-
-We develop something that we call the Secure Runtime Development
-Environment (SRDE) that integrates all of these technologies in order
-to allow the rapid creation of purpose built platforms that are
-capable of independently defending themselves.
-
-BTW: Yes, we have done a lot of work on TXT and SGX.  Unfortunately,
-at a time when it is absolutely critical that we advance our
-industrial cyber-security posture, the barriers to effectively using
-hardware platform security are nothing short of horrendous... :-)(
-
-Let us know how things go with your efforts.
-
-Good luck with your project.
-
-Dr. Greg
-
-As always,
-Dr. Greg Wettstein, Ph.D, Worker
-IDfusion, LLC               SGX secured infrastructure and
-4206 N. 19th Ave.           autonomously self-defensive platforms.
-Fargo, ND  58102
-PH: 701-281-1686            EMAIL: greg@idfusion.net
-------------------------------------------------------------------------------
-"Politics is the business of getting power and privilege without possessing
- merit."
-                                -- P.J. O'Rourke
-
+Thoughts?  Is this capability something the TXT/tboot community would
+be interested in merging into the main tboot repository once it is
+more complete?
 
 _______________________________________________
 tboot-devel mailing list
