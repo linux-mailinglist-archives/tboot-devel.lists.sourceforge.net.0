@@ -2,172 +2,120 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1083CF0BA9
-	for <lists+tboot-devel@lfdr.de>; Wed,  6 Nov 2019 02:29:04 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
-	Reply-To:From:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Subject:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:To:Sender:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=i93oCgK4qzpp6fkQ4rgzyIqF0LFIK8Z5CGVRIh0B3Is=; b=hiwRQFUDpZhs7ohQFCH939MBG
-	qxWUgKbVdVfETGDwQtjP1t2YkHmjLk3HjHQN6lqjqWTNmQVuJbKlwqOI7Mv7bnx0PEQa8TgLadH2t
-	oMAfYoczgpLcFDBiEvRZXyg8DvjkgW6C+y0byvmnLKGmDcFULs3Rk+/n+iLhj+balRUuQ=;
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 85F38F1F8E
+	for <lists+tboot-devel@lfdr.de>; Wed,  6 Nov 2019 21:12:36 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1iSA82-0001zi-UL; Wed, 06 Nov 2019 01:28:58 +0000
+	id 1iSRfJ-0004yh-GM; Wed, 06 Nov 2019 20:12:29 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <pmoore2@cisco.com>) id 1iSA81-0001zP-Ph
- for tboot-devel@lists.sourceforge.net; Wed, 06 Nov 2019 01:28:57 +0000
+ (envelope-from <Travis.Gilbert@dell.com>) id 1iSRfH-0004yJ-Hn
+ for tboot-devel@lists.sourceforge.net; Wed, 06 Nov 2019 20:12:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=MIME-Version:Content-Transfer-Encoding:Content-ID:
- Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:Sender
- :Reply-To:Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To
- :Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=MIME-Version:Content-Transfer-Encoding:Content-Type
+ :In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=9YN3nX3+aYYzcgBdDnbUyLMJZ5IHG7NzNmo/MNYIZpw=; b=gOR4/a4OI3k8eGIIS0wJ6rYhdl
- Eb5SYjL0j0KYotKA2Hk7PC9+LvMvwsEds0RyuvIlQiSNLDOVFbupLTrDLA5nfgNgk/ZmS2MhYey8v
- znCapJoPtHhmzIny+DoUXWoVCh0oaFzWrUPOGyEw/0SZYQFgUJx91OJx3MezkTob5bFo=;
+ bh=uC3gU6cPEyj9XLbSdNgJJmJthOcoT/qN6uuk3FngWnY=; b=eTKrSTefZ9VbP50TFz3J9ywXFE
+ QgQXQqaDaAqufXFWaBiq2mR4Ho8XIs2+BxHEUc3SC3dcriEY5r4weQmNz2/w1nZiukhjXnBJ0DFrP
+ ocU3GZyfRmn8G+ztqMl215sz06gfcK6uw5dZgZI4CA3nzY8XFW7GZHygQLOdLfetWuaY=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:
- In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ h=MIME-Version:Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ References:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=9YN3nX3+aYYzcgBdDnbUyLMJZ5IHG7NzNmo/MNYIZpw=; b=O8CKgNgfHVf12eb6M9OK0Bstby
- O6p143CfYAE3sYHtpHR5NdKCn9MgjuGgUUS+f1eIaJOZJqvdbz7a5ihdWpM3+RKg0TKPDSM1nfWMx
- 3HqXgAO56fOI1RG1bxzqxeoMvf+ezbFthRc5ibYsWUz2yny7kDVlHWsK6YVYuEnv3jBU=;
-Received: from alln-iport-2.cisco.com ([173.37.142.89])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps (TLSv1.2:DHE-RSA-SEED-SHA:128)
- (Exim 4.92.2) id 1iSA7u-001YCb-3W
- for tboot-devel@lists.sourceforge.net; Wed, 06 Nov 2019 01:28:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=cisco.com; i=@cisco.com; l=2480; q=dns/txt; s=iport;
- t=1573003730; x=1574213330;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=9YN3nX3+aYYzcgBdDnbUyLMJZ5IHG7NzNmo/MNYIZpw=;
- b=aF7nEhG8eeZPCE9sB74RhOyj59mw2wVBPCGYnXlkZ4eSFvDVUdqIlOzm
- CJQ+4rbD+6WHAb/jvCcYaDcypEVKxM8PAx3g0fa9S6ALI0JKcKBTYiIb+
- c4L/FP0u4jlLTYjIZJdXGqkHPDK6Icv0ohq19wtyaBqvTLAVEoqqNpae4 s=;
-IronPort-PHdr: =?us-ascii?q?9a23=3AjC1HKxNg8DONgmEed9Ul6mtXPHoupqn0MwgJ65?=
- =?us-ascii?q?Eul7NJdOG58o//OFDEu60/l0fHCIPc7f8My/HbtaztQyQh2d6AqzhDFf4ETB?=
- =?us-ascii?q?oZkYMTlg0kDtSCDBjjKfntdSFgNM9DT1RiuXq8NBsdFQ=3D=3D?=
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A0AZAACNIcJd/5FdJa1mGwEBAQEBAQE?=
- =?us-ascii?q?FAQEBEQEBAwMBAQGBagYBAQELAYFKUAVsWCAECyoKhB+DRgOEWoYigl6XfoE?=
- =?us-ascii?q?ugSQDVAkBAQEMAQEYCwoCAQGDe0UCF4N3JDQJDgIDCwEBBAEBAQIBBQRthTc?=
- =?us-ascii?q?BC4VRAQEBAQMBERERDAEBLAsBCwQCAQgRBAEBAQICJgICAiYKFQgIAgQOBSK?=
- =?us-ascii?q?DAYJGAy4BAgyldQKBOIhgdYEygn4BAQWBNAGBFII8GIIXAwaBDigBjBOCF4Q?=
- =?us-ascii?q?jPoJiAYFigxCCXoE/AY5AjnWPBQYEgiSHFYg5PIUyG5lpjkOILpEuAgQCBAU?=
- =?us-ascii?q?CDgEBBYFSOTeBIXBQgR6BGgEBATFQERSDBoNzhFmFenQBgSePUgGBDQEB?=
-X-IronPort-AV: E=Sophos;i="5.68,272,1569283200"; d="scan'208";a="366548431"
-Received: from rcdn-core-9.cisco.com ([173.37.93.145])
- by alln-iport-2.cisco.com with ESMTP/TLS/DHE-RSA-SEED-SHA;
- 06 Nov 2019 01:28:23 +0000
-Received: from XCH-ALN-008.cisco.com (xch-aln-008.cisco.com [173.36.7.18])
- by rcdn-core-9.cisco.com (8.15.2/8.15.2) with ESMTPS id xA61SNXB028090
- (version=TLSv1.2 cipher=AES256-SHA bits=256 verify=FAIL);
- Wed, 6 Nov 2019 01:28:23 GMT
-Received: from xhs-rtp-002.cisco.com (64.101.210.229) by XCH-ALN-008.cisco.com
- (173.36.7.18) with Microsoft SMTP Server (TLS) id 15.0.1473.3;
- Tue, 5 Nov 2019 19:28:22 -0600
-Received: from xhs-rcd-002.cisco.com (173.37.227.247) by xhs-rtp-002.cisco.com
- (64.101.210.229) with Microsoft SMTP Server (TLS) id 15.0.1473.3;
- Tue, 5 Nov 2019 20:28:21 -0500
-Received: from NAM05-DM3-obe.outbound.protection.outlook.com (72.163.14.9) by
- xhs-rcd-002.cisco.com (173.37.227.247) with Microsoft SMTP Server
- (TLS) id
- 15.0.1473.3 via Frontend Transport; Tue, 5 Nov 2019 19:28:21 -0600
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=J/74WWEr7f11Vrka+t+faUA91O9I9AMDslRAPpPnNymYBX7ikhz231A/pmW74/2ixi3muGnFLyp2uK9uM0Sk0A74w1b895Y1t5iYgPmmzgI3yqWEZqw9PJWdmgo5xVahZbOToq/nHwFGATct5GS8Rfl6e5WocxxhiVBPn1rma6MKN2F5g8QI+wn5ZOMzESqgEaftyDvDOS7sKEnMXlmlbC2RsuKez+2jpEC7YHrPXn8JDF2D/mfbm6KDLZ6jF/ybXV3nfFahJIvtt0u4VBHlU8OaKT09EqPzNhnoJDS3fHHHag6iQ9iYeUyrEIy79q7IDkwOZNokdOJaMSOFfYDATw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9YN3nX3+aYYzcgBdDnbUyLMJZ5IHG7NzNmo/MNYIZpw=;
- b=AEE3r82vplFDQpXHIAiwimK6NnGVcxv9gP2BZTevBu+7oYEnLWb+5gnHFte8o/hJMoh0SOmAKzZxERLKE7fZ7X00GLHBprHe7HI+R0q9xCw8C/yiwtjhm2UFM2r6gd1Peg4vQMmcVU3Vjttfqorv9Lw8ndCmTONLm+vHbUzoM59O2b/urmTyic9ILBUZv1x1BZPPuXeHpFaZxcZs6prQ1FPyJq4TLHmsQKj8p5xhY65rNYeND4icbACmmuvqXfLCq0B0XRWwKa35Mo+t0U1YGpRO7eA+vDNF9VCz+tnOtvBzdlzQA6G/GYoLe0UilwfzbiTroW8vuhihGC1xPs+aBA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cisco.com; dmarc=pass action=none header.from=cisco.com;
- dkim=pass header.d=cisco.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cisco.onmicrosoft.com; 
- s=selector2-cisco-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9YN3nX3+aYYzcgBdDnbUyLMJZ5IHG7NzNmo/MNYIZpw=;
- b=qOkYMlnr6h7E7ihauN1FdiWxHJqyPtqVOkFhc4UArpKSU8b99xhntF8ZWhH9z9dZVL9lSlYcCWJIEAqpGhw7YJLHTR6giiUAgXqItKhcRH9JhnIrE5WxaSAPE/6QP+KzHjh+YWqc6ITNnbLXkzxOQD1Qme+kbtcRyacwHvrV0bQ=
-Received: from DM6PR11MB2873.namprd11.prod.outlook.com (20.176.94.141) by
- DM6PR11MB3513.namprd11.prod.outlook.com (20.177.220.138) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2408.24; Wed, 6 Nov 2019 01:28:20 +0000
-Received: from DM6PR11MB2873.namprd11.prod.outlook.com
- ([fe80::a0ef:aa0f:fa28:c754]) by DM6PR11MB2873.namprd11.prod.outlook.com
- ([fe80::a0ef:aa0f:fa28:c754%2]) with mapi id 15.20.2408.024; Wed, 6 Nov 2019
- 01:28:20 +0000
-To: "Travis.Gilbert@dell.com" <Travis.Gilbert@dell.com>
+ bh=uC3gU6cPEyj9XLbSdNgJJmJthOcoT/qN6uuk3FngWnY=; b=cV597oA9oemePsh9NzNb4bWbzF
+ vUc4DjB1xK5NfTJtu/Yo98Rb18c6tnRYZ2A9ZIPkVQaGhH3E10+y8st54gXd47IP4Dq23X9LiSIvC
+ DnIjGmHAQtHMD1wG4/xxE6Pl6hyyBx4mZbSC41xTyVbsDe6Apg62F8wCKoDitiCrBAco=;
+Received: from mx0b-00154904.pphosted.com ([148.163.137.20])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1iSRfF-003c9f-92
+ for tboot-devel@lists.sourceforge.net; Wed, 06 Nov 2019 20:12:27 +0000
+Received: from pps.filterd (m0170396.ppops.net [127.0.0.1])
+ by mx0b-00154904.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ xA6KAjwo022323
+ for <tboot-devel@lists.sourceforge.net>; Wed, 6 Nov 2019 15:12:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
+ h=from : to : cc :
+ subject : date : message-id : references : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=smtpout1;
+ bh=uC3gU6cPEyj9XLbSdNgJJmJthOcoT/qN6uuk3FngWnY=;
+ b=sS6UImsmbBB5TV6SX8Lfq/gP+6ZSrpqKwvnAxzQ6+oz2h2j/Pv/hvOPvKPpfwceUAQ6h
+ uA2rCQUDUhyD+p8G8Z8bY0WXQAntot+YoBYhX62CaynTbrHSTapFNxe1BvupGxQOchiG
+ YozDBsA2voYJcyGJw0crAPPr8KkVVXwlV0d2eeEmfE+m/swyZMWmZCwlJeo+HTHdN3uO
+ ISUl1qiURoVRW52+3PQNusyKG1tu1PZJnRxfU66WTWMBISMuvEerPH/lHkZLUSwfS1Ve
+ evoqxQr4AytmdzrKQqblnHzt8DWy77qbhFqdZo8jeF35HkIKXeKbgD4tmcMUCDNuGB73 iA== 
+Received: from mx0b-00154901.pphosted.com (mx0b-00154901.pphosted.com
+ [67.231.157.37])
+ by mx0b-00154904.pphosted.com with ESMTP id 2w41uwgyt0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <tboot-devel@lists.sourceforge.net>; Wed, 06 Nov 2019 15:12:18 -0500
+Received: from pps.filterd (m0144102.ppops.net [127.0.0.1])
+ by mx0b-00154901.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ xA6K9MrA063260
+ for <tboot-devel@lists.sourceforge.net>; Wed, 6 Nov 2019 15:12:18 -0500
+Received: from ausc60ps301.us.dell.com (ausc60ps301.us.dell.com
+ [143.166.148.206])
+ by mx0b-00154901.pphosted.com with ESMTP id 2w41wmb4se-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
+ for <tboot-devel@lists.sourceforge.net>; Wed, 06 Nov 2019 15:12:18 -0500
+X-LoopCount0: from 10.166.132.127
+X-PREM-Routing: D-Outbound
+X-IronPort-AV: E=Sophos;i="5.60,349,1549951200"; d="scan'208";a="1374084745"
+From: <Travis.Gilbert@dell.com>
+To: <pmoore2@cisco.com>
 Thread-Topic: Creating a TXT/tboot policy suitable for a modern system with
  TXT+TPM2
-Thread-Index: AQHVlCtYW12WBIFGSk+TwpFcVCWnTad9MGGQgAAqOIA=
-Date: Wed, 6 Nov 2019 01:28:20 +0000
-Message-ID: <52ba4fc58ef941c81458ea95eeaed31b0aa669e1.camel@cisco.com>
+Thread-Index: AQHVlCtYW12WBIFGSk+TwpFcVCWnTad9MGGQgAAqOICAATPX0A==
+Date: Wed, 6 Nov 2019 20:12:15 +0000
+Message-ID: <b4e1bf1374114acdaa3b99d91b43bd64@AUSX13MPC102.AMER.DELL.COM>
 References: <681a21560a8a9f41a4be8cdc399cf5008f7adecc.camel@cisco.com>
  <1926e09cfdf84af28414b36c2652f421@AUSX13MPC102.AMER.DELL.COM>
-In-Reply-To: <1926e09cfdf84af28414b36c2652f421@AUSX13MPC102.AMER.DELL.COM>
+ <52ba4fc58ef941c81458ea95eeaed31b0aa669e1.camel@cisco.com>
+In-Reply-To: <52ba4fc58ef941c81458ea95eeaed31b0aa669e1.camel@cisco.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=pmoore2@cisco.com; 
-x-originating-ip: [128.107.241.171]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 9c70b4c3-21bc-4230-1c4a-08d762589b98
-x-ms-traffictypediagnostic: DM6PR11MB3513:
-x-ms-exchange-purlcount: 1
-x-microsoft-antispam-prvs: <DM6PR11MB3513847092490A08FDF46D0FF8790@DM6PR11MB3513.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 02135EB356
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(396003)(39860400002)(366004)(136003)(376002)(346002)(199004)(189003)(13464003)(81156014)(66066001)(66446008)(7736002)(66946007)(5640700003)(305945005)(2501003)(99286004)(66556008)(66476007)(4326008)(186003)(71190400001)(476003)(3846002)(2616005)(6116002)(11346002)(118296001)(6916009)(2906002)(5660300002)(6512007)(86362001)(486006)(256004)(2351001)(6486002)(6246003)(14454004)(25786009)(81166006)(8676002)(446003)(966005)(76176011)(6506007)(316002)(53546011)(102836004)(6306002)(229853002)(76116006)(91956017)(26005)(8936002)(36756003)(71200400001)(478600001)(64756008)(6436002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DM6PR11MB3513;
- H:DM6PR11MB2873.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: cisco.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: LjPHNxg4v0nGLjyLRPVwRnoDSVafzbUdZ21KyEtHb8PSgI+9lNrjSUwvlnOcEHxlgkeHrxPeE7dQ4wLD16sK/ihvg/edS9RfS4mMcdnc9n7EzlUXqeF+QlPea89K4yaxIJXQjRaejeQaMq+VazQ+AUWsvoAmeYVbxyrsQj2TNBwSpJBM5vcrfarYiwVumiOBSmwOBMzYnKW+HYZG2klFdB8rdvnFOEy27HxgSOSJG4izwO66FXbX1p90rZe4notBJ3rl5pq+A7JdTs3i2URuyWWbd2yTjovn/RgLLspooo0+t2pARsR5cnX/bqpJvwIqsUy0ww5LZQZK43uGnQDfdG+oQ87eM0trLOJt4BYdzYj7D/uqMeS6Mss7nnSE6KjWhGv1xpdKSCNiUNykB0rP9kev+vBhO8qMFTmHFZ0pOj6rJuonsiF96maV6ydu2AcCbsFRK0kuOOnp1cac/SxJQjYW3m8MO+0eu1qcyNhDqro=
-x-ms-exchange-transport-forked: True
-Content-ID: <35AA58FCF0200341A04F70E4F60091DB@namprd11.prod.outlook.com>
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.143.18.86]
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9c70b4c3-21bc-4230-1c4a-08d762589b98
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Nov 2019 01:28:20.2856 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 5ae1af62-9505-4097-a69a-c1553ef7840e
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: PejCJks2XQ8o0m32HkdTnv3y3C7OeK2aguDQlfXUcKfxLVvpUzTgVEk/8MAOrpsVBvvWVdF0H8ABLm+skYdtVw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3513
-X-OriginatorOrg: cisco.com
-X-Outbound-SMTP-Client: 173.36.7.18, xch-aln-008.cisco.com
-X-Outbound-Node: rcdn-core-9.cisco.com
-X-Spam-Score: -7.6 (-------)
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,18.0.572
+ definitions=2019-11-06_07:2019-11-06,2019-11-06 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxlogscore=999
+ suspectscore=0 mlxscore=0 phishscore=0 clxscore=1015 spamscore=0
+ adultscore=0 impostorscore=0 malwarescore=0 bulkscore=0 lowpriorityscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-1910280000 definitions=main-1911060198
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 impostorscore=0
+ mlxlogscore=999 phishscore=0 mlxscore=0 priorityscore=1501 clxscore=1015
+ adultscore=0 spamscore=0 suspectscore=0 bulkscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-1910280000
+ definitions=main-1911060198
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: intel.com]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ for more information. [URIs: cisco.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM white-list
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1iSA7u-001YCb-3W
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+X-Headers-End: 1iSRfF-003c9f-92
 Subject: Re: [tboot-devel] Creating a TXT/tboot policy suitable for a modern
  system with TXT+TPM2
 X-BeenThere: tboot-devel@lists.sourceforge.net
@@ -181,65 +129,112 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-From: "Paul Moore \(pmoore2\) via tboot-devel"
- <tboot-devel@lists.sourceforge.net>
-Reply-To: "Paul Moore \(pmoore2\)" <pmoore2@cisco.com>
-Cc: "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
+Cc: tboot-devel@lists.sourceforge.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Tue, 2019-11-05 at 23:02 +0000, Travis.Gilbert@dell.com wrote:
-> > -----Original Message-----
-> > From: Paul Moore (pmoore2) via tboot-devel <tboot-
-> > devel@lists.sourceforge.net>
-> > Sent: Tuesday, November 5, 2019 16:50
-> > To: lukasz.hawrylko@linux.intel.com; 
-> > tboot-devel@lists.sourceforge.net
-> > Subject: [tboot-devel] Creating a TXT/tboot policy suitable for a
-> > modern
-> > system with TXT+TPM2
-> > 
-> > 
-> > 
-> > Hi Lukasz, others,
-> > 
-> > I'm in the process of working on the TXT/sig extensions to the LCP
-> > but I'm
-> > running into problems using the tboot tools to create a working LCP
-> > as a
-> > baseline.  Simply put, the instructions I've been able to find
-> > either in the
-> > sources, the mailing list archives, or through Google searches do
-> > not produce
-> > a working LCP on my test system.  The tools/arguments are either
-> > wrong, or
-> > the resulting LCP is bogus.
+> -----Original Message-----
+> From: Paul Moore (pmoore2) <pmoore2@cisco.com>
+> Sent: Tuesday, November 5, 2019 19:28
+> To: Gilbert, Travis
+> Cc: tboot-devel@lists.sourceforge.net
+> Subject: Re: Creating a TXT/tboot policy suitable for a modern system with
+> TXT+TPM2
 > 
-> I had to patch lcptools-v2 because I found the same problem. Nothing
-> would produce a good LCP.
+> On Tue, 2019-11-05 at 23:02 +0000, Travis.Gilbert@dell.com wrote:
+> > > -----Original Message-----
+> > > From: Paul Moore (pmoore2) via tboot-devel <tboot-
+> > > devel@lists.sourceforge.net>
+> > > Sent: Tuesday, November 5, 2019 16:50
+> > > To: lukasz.hawrylko@linux.intel.com;
+> > > tboot-devel@lists.sourceforge.net
+> > > Subject: [tboot-devel] Creating a TXT/tboot policy suitable for a
+> > > modern system with TXT+TPM2
+> > >
+> > >
+> > >
+> > > Hi Lukasz, others,
+> > >
+> > > I'm in the process of working on the TXT/sig extensions to the LCP
+> > > but I'm running into problems using the tboot tools to create a
+> > > working LCP as a baseline.  Simply put, the instructions I've been
+> > > able to find either in the sources, the mailing list archives, or
+> > > through Google searches do not produce a working LCP on my test
+> > > system.  The tools/arguments are either wrong, or the resulting LCP
+> > > is bogus.
+> >
+> > I had to patch lcptools-v2 because I found the same problem. Nothing
+> > would produce a good LCP.
+> >
+> > > Before I start hacking away at the tools to get them to create a
+> > > functional LCP that tboot understands, does anyone have a working
+> > > how-to for creating a LCP using the current sources?
+> >
+> > When I patched lcptools-v2, I added a simple how-to for an MLE LCP,
+> > it's in the mailing list archives at the link below. If you need more,
+> > I have a few other examples.
+> >
+> > https://sourceforge.net/p/tboot/mailman/message/35976955/
 > 
-> > Before I start hacking away at the tools to get them to create a
-> > functional LCP
-> > that tboot understands, does anyone have a working how-to for
-> > creating a
-> > LCP using the current sources?
+> Thanks Travis, that got me going in the right direction; I needed to add a
+> tboot policy element to make my system happy, but that was a trivial
+> addition to your instructions above.
 > 
-> When I patched lcptools-v2, I added a simple how-to for an MLE LCP,
-> it's in the mailing list archives at the link below. If you need more,
-> I have a few other examples.
+> If you're willing to share your other examples, I'd love to see them, and I'm
+> sure others would as well.
 > 
-> https://sourceforge.net/p/tboot/mailman/message/35976955/
+> Thanks again.
 
-Thanks Travis, that got me going in the right direction; I needed to add
-a tboot policy element to make my system happy, but that was a trivial
-addition to your instructions above.
+I've got about 20 some of which are negative test cases. They're bash scripts. I've stripped out the beginning shell line to make it more email handler friendly. #9 is actually split into 5 different tests signing various other policies that were previously unsigned. They were designed to be run in order as some later tests rely on the outputs of previous tests. I've included #3 and one of #9. Let me know if you have interest in any of the others. You don't have to take ownership or define the index every time, but keeping it in the script didn't cause us any issues. We could just copy some of the intermediate files and keep things simple when running tests out of order on multiple machines.
 
-If you're willing to share your other examples, I'd love to see them,
-and I'm sure others would as well.
+TXT - Scenario#1, Single MLE element and Unsigned Policy
+TXT - Scenario#2, Three MLE elements and Unsigned LCP
+TXT - Scenario#3, One PCONF element and Unsigned LCP
+TXT - Scenario#4, Two PCONF elements and Unsigned LCP
+TXT - Scenario#5, MLE, PCONF list Unsigned
+TXT - Scenario#6, SINIT Revocation (Negative Testing)
+TXT - Scenario#7, MLE Mismatch 1 - wrong hash file (Negative Testing)
+TXT - Scenario#8, PCONF mismatch (Negative Testing)
+TXT - Scenario#9, Signed policies with 2048 keys
+TXT - Scenario#10, Signed policy with 1024 key
+TXT - Scenario#11, Signed policy with 3072 key
+TXT - Scenario#12: signed policy with invalid key size (2000)
+TXT - Scenario#13 Input Validation, signed policy with invalid key size (512)
+TXT - Scenario#14, signed policy with invalid key size (4096)
+TXT - Scenario#15, MLE Mismatch - change in boot parameters (Negative Testing)
 
-Thanks again.
+<3>
+cd /boot
+tpm2_takeownership -o new -e new -l new
+tpm2_nvdefine -x 0x1c10106 -a 0x40000001 -P new -s 70 -t 0x204000A
 
+#TXT - Scenario#3, One PCONF element and Unsigned LCP
+tpm2_listpcrs -g 0x0B -o 1pcrs
+truncate -s 32 1pcrs #only select PCR0 for the policy
+lcp2_crtpolelt --create --type pconf --out 1pconf.elt 1pcrs
+lcp2_crtpollist --create --out lists3_unsig.lst 1pconf.elt
+lcp2_crtpol --create --type list --pol lists3.pol --alg sha256 --sign 0x0A --data lists3.data lists3_unsig.lst
+tpm2_nvwrite -x 0x1c10106 -a 0x40000001 -P new -f lists3.pol
+echo TBOOT_POLICY_DATA_FILE="lists3.data" > /etc/default/grub-tboot
+grub2-mkconfig -o /boot/grub2/grub.cfg
+</3>
+
+<9>
+cd /boot
+tpm2_takeownership -o new -e new -l new
+tpm2_nvdefine -x 0x1c10106 -a 0x40000001 -P new -s 70 -t 0x204000A
+
+#TXT - Scenario#9, Signed policies with 2048 keys
+openssl genrsa -out privkey.pem 2048
+openssl rsa -pubout -in privkey.pem -out pubkey.pem
+cp lists1_unsig.lst lists1_sig.lst
+lcp2_crtpollist --sign --pub pubkey.pem --priv privkey.pem --out lists1_sig.lst
+lcp2_crtpol --create --type list --alg sha256 --sign 0x0A --pol lists9a.pol --data lists9a.data lists1_sig.lst
+tpm2_nvwrite -x 0x1c10106 -a 0x40000001 -P new -f lists9a.pol
+echo GRUB_TBOOT_POLICY_DATA="lists9a.data" > /etc/default/grub-tboot
+grub2-mkconfig -o /boot/grub2/grub.cfg
+</9>
 
 _______________________________________________
 tboot-devel mailing list
