@@ -2,78 +2,68 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5303B108E0D
-	for <lists+tboot-devel@lfdr.de>; Mon, 25 Nov 2019 13:36:03 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 278AF10EA87
+	for <lists+tboot-devel@lfdr.de>; Mon,  2 Dec 2019 14:09:39 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1iZDaw-0005HP-3Z; Mon, 25 Nov 2019 12:35:58 +0000
+	id 1iblSD-0007Sm-Mg; Mon, 02 Dec 2019 13:09:29 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <Petre.Scheie@gd-ms.com>) id 1iZDat-0005HA-AR
- for tboot-devel@lists.sourceforge.net; Mon, 25 Nov 2019 12:35:55 +0000
+ (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1iblRw-0007Qk-Tw
+ for tboot-devel@lists.sourceforge.net; Mon, 02 Dec 2019 13:09:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=MIME-Version:Content-Type:Message-ID:Date:Subject:
- To:From:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
+ :References:In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Z4BiNL5kA20UAAc8vhYnPLkAk40X9gJGiPPFYJqmZqg=; b=Rei5l+iKYH//vjbM0yrbLJEHxd
- QSnaJb/lZy1PRYUWgZOAdMpzTCkbb1TcxXKs3J6Ar4IbpQPwBJE5r01Xi2K6fEZLplT+d/yFJvFIs
- oLLNWfluclwZcGuvXPeGE8SfeLBpMQbXq3HAf+BbpxOzsVHRVb4rYjU/XOEPwVnon7KM=;
+ bh=EFPZbPjxdY922SUULyutkI2T5IfD7cO4ToSulWNfAkE=; b=LLqG5V6treNj7TUY3vnA7R7k86
+ VWoCVVPJl3+GqAjr/NfDuRP+mMDMppKpA0AIorl8V7dlgBQv4rrZCSm8uKuSU+7kuHypeQImpgQrm
+ JjtmVhCiZo/tvsEFCUjtmHbh5dfG+DLRunpv1Ek6cr2tf89A8SVSMByeQvM39HdmgWlA=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=MIME-Version:Content-Type:Message-ID:Date:Subject:To:From:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=Z4BiNL5kA20UAAc8vhYnPLkAk40X9gJGiPPFYJqmZqg=; b=U
- +C/Eifz+1Rj60JuJcWUDsclYrbI4snFBMzNj8TSFelNwZra2tFTGiMva8adHZ7yAL2KlESRC8QW8s
- 1BH14MXusLtCAVmEbVGXA6R5GLuXmJGHdPnQdbtfvpEhCHRNFLT4hFue7uNWHURrUZwaywndycDxA
- d1vpmpW5acktZhmI=;
-Received: from az25dmzegs01.gd-ms.com ([63.226.32.82])
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
+ In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=EFPZbPjxdY922SUULyutkI2T5IfD7cO4ToSulWNfAkE=; b=Yc8x8GJNGqGwmz+OAyqeFaiX7Y
+ vaP90YP9N74RbTZORtWqyIDluPqBZul2KuAkQqPfwfxEPjMsqHEO/zEb8OGzJrPAK1I/qO9WwuEZZ
+ xHIXkzgpXRm12fCNIyKT2i2wyh7vFOkyAPdQgpB3QCR41jlo1gYz5gvELrYpVLCh9yjk=;
+Received: from mga18.intel.com ([134.134.136.126])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1iZDap-004nWv-6z
- for tboot-devel@lists.sourceforge.net; Mon, 25 Nov 2019 12:35:55 +0000
-Received: from unknown (HELO az25sec06.localdomain) ([10.240.16.97])
- by az25dmzegs01.gd-ms.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2019 05:35:40 -0700
-Received: from AZDC-MMB02.GD-MS.US (azdc-mmb02.gd-ms.us [10.136.100.24])
- by az25sec06.localdomain (Postfix) with ESMTP id BCE691140053
- for <tboot-devel@lists.sourceforge.net>; Mon, 25 Nov 2019 12:41:03 +0000 (UTC)
-Received: from AZDC-MMB02.GD-MS.US (10.136.100.24) by AZDC-MMB02.GD-MS.US
- (10.136.100.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 25 Nov
- 2019 05:35:40 -0700
-Received: from AZDC-MMB02.GD-MS.US ([192.168.10.83]) by AZDC-MMB02.GD-MS.US
- ([192.168.10.83]) with mapi id 15.00.1497.000; Mon, 25 Nov 2019 05:35:40
- -0700
-From: "Scheie, Peter M" <Petre.Scheie@gd-ms.com>
-To: "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
-Thread-Topic: unsubscribe
-Thread-Index: AdWjjM6UkFAM8lYCTtW200mrdq0qvw==
-Date: Mon, 25 Nov 2019 12:35:39 +0000
-Message-ID: <b2763a4e91604c669f7959f381a181af@AZDC-MMB02.GD-MS.US>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.136.100.111]
-x-tm-snts-smtp: 3860831504C7B0B02AF369C308C4C85C125EA88DE4E777049B6C75A62327A5D42000:8
+ id 1iblRv-00GgAJ-4p
+ for tboot-devel@lists.sourceforge.net; Mon, 02 Dec 2019 13:09:12 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2019 05:09:05 -0800
+X-IronPort-AV: E=Sophos;i="5.69,268,1571727600"; d="scan'208";a="204551698"
+Received: from lhawrylk-desk.igk.intel.com ([10.102.89.27])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2019 05:09:04 -0800
+Message-ID: <60a05460106ef7cf1186e96d476c4564a500f5e2.camel@linux.intel.com>
+From: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
+To: "Paul Moore (pmoore2)" <pmoore2@cisco.com>, 
+ "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
+Date: Mon, 02 Dec 2019 14:09:01 +0100
+In-Reply-To: <fbb29bfec178bb4b4d586df217d202fbe54430a4.camel@cisco.com>
+References: <bbaf0eeb3ddb8791533fc9dfba23ed57d3a2c9bd.camel@cisco.com>
+ <ba9fa4341c9b9fa27c8ea3229f879d25614a900f.camel@cisco.com>
+ <fbb29bfec178bb4b4d586df217d202fbe54430a4.camel@cisco.com>
+User-Agent: Evolution 3.30.5 (3.30.5-1.fc29) 
 MIME-Version: 1.0
-X-Content-Scanned: Fidelis Mail
-X-Spam-Score: 1.1 (+)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 MIME_HTML_MOSTLY       BODY: Multipart message mostly text/html MIME
- 1.0 HTML_MESSAGE           BODY: HTML included in message
- 0.0 TVD_SPACE_RATIO        No description available.
-X-Headers-End: 1iZDap-004nWv-6z
-Subject: [tboot-devel] unsubscribe
+X-Headers-End: 1iblRv-00GgAJ-4p
+Subject: Re: [tboot-devel] [RFC] tboot: kernel signature verification
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,100 +75,120 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8666724529535042100=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
---===============8666724529535042100==
-Content-Language: en-US
-Content-Type: multipart/alternative;
-	boundary="_000_b2763a4e91604c669f7959f381a181afAZDCMMB02GDMSUS_"
+Hi Paul
 
---_000_b2763a4e91604c669f7959f381a181afAZDCMMB02GDMSUS_
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+I went through all steps and I was able to create LCP with certificated,
+VLP with TB_HTYPE_PECOFF and finally got platform booted with PCR 20
+extended by certificate hash (to be honest I didn't check if it is
+correct). So everything works, however I have few notes :)
 
-unsubscribe
+If VLP is present under its own index (for TPM 2.0 it is 0x01C10131),
+tboot will not read LCP at all, so certificate will not be available. I
+think that we should modify program flow, so even if VLP is present, LCP
+should be read to check if LCP_CUSTOM_ELEMENT_CERTS_UUID element is
+there.
 
---_000_b2763a4e91604c669f7959f381a181afAZDCMMB02GDMSUS_
-Content-Type: text/html; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Still I can't verify signature of custom build kernel signed by my own
+key, I am trying to figure out what is wrong, but without luck. One
+thing that I found is a problem in pkcs1_search_signer
+function (pkcs1.c:101), it is comparing certificate subject, but not
+from the root of certificate. I know that this is working fine with
+Fedora's certificate, but I don't know if this is valid for every case. 
+With my simple certificate this was a first problem that I found. At
+least, you should check if pointer to next element in chain is not NULL.
 
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
->
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0in;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:#0563C1;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{mso-style-priority:99;
-	color:#954F72;
-	text-decoration:underline;}
-span.EmailStyle17
-	{mso-style-type:personal-compose;
-	font-family:"Calibri",sans-serif;
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-family:"Calibri",sans-serif;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal">unsubscribe<o:p></o:p></p>
-</div>
-</body>
-</html>
+Thanks,
+Lukasz
 
---_000_b2763a4e91604c669f7959f381a181afAZDCMMB02GDMSUS_--
+On Wed, 2019-11-20 at 23:05 +0000, Paul Moore (pmoore2) via tboot-devel
+wrote:
+> On Fri, 2019-10-18 at 13:27 +0000, Paul Moore (pmoore2) via tboot-devel
+> wrote:
+> > On Thu, 2019-09-19 at 15:39 +0000, Paul Moore (pmoore2) via
+> > tboot-devel wrote:
+> > > Hello,
+> > > 
+> > > I've been working on adding PECOFF/kernel signature verification to
+> > > tboot ...
+> 
+> Hello everyone,
+> 
+> I just pushed another update to my git repository under the working-
+> txtsig branch:
+> 
+> * 
+> https://github.com/pcmoore/misc-tboot/tree/working-txtsig
+> 
+> 
+> This update is notable in that it adds the missing policy support; no
+> longer is the Fedora CA built into the tboot binary, verification
+> certificates should be included in the LCP and the tboot VLP specifies
+> which modules are subject to signature verification.  While there is
+> still work to be done, I believe the code is now feature complete (or
+> very close to it).  I would appreciate sanity checks on my approach,
+> especially when it comes to the policy changes.
+> 
+> The commit descriptions have additional information, but in order to
+> include certificates in the LCP, you would do the following:
+> 
+>  # lcp2_crtpolelt --create \
+>      --type custom --uuid certificates test.der \
+>      --out test.elt
+> 
+> ... in this case test.der is a DER encoded X509 certificate; multiple
+> certificates may be concatenated together into the file, tboot will load
+> each certificate.  Once the policy ELT has been created, it can be
+> included in the LCP just as you would any other ELT module.
+> 
+> Once you have created a certificate ELT, you need to tell the tboot VLP
+> to perform PECOFF signature verification on the kernel module; you can
+> do that with the following command(s):
+> 
+>   # tb_polgen --create --type nonfatal test.vlp
+>   # tb_polgen --add --num 0 --pcr 20 --hash pecoff test.vlp
+>   # tb_polgen --show test.vlp
+>   policy:
+>          version: 2
+>          policy_type: TB_POLTYPE_CONT_NON_FATAL
+>          hash_alg: TB_HALG_SHA1
+>          policy_control: 00000001 (EXTEND_PCR17)
+>          num_entries: 1
+>          policy entry[0]:
+>                  mod_num: 0
+>                  pcr: 20
+>                  hash_type: TB_HTYPE_PECOFF
+>                  num_hashes: 0
+> 
+> ... the pecoff/TB_HTYPE_PECOFF hash type instructs tboot to perform
+> PECOFF signature verification on the given module.  When selected, the
+> digest of the trusted root for the signing authority will be extended
+> into the given PCR, which happens to be PCR 20 in the example above.  As
+> a point of clarification, the "trusted root" is not necessarily the root
+> CA of the signature chain, but rather the "nearest" certificate that was
+> loaded from the LCP which is part of the signature chain.  This should
+> provide for the most flexibility while preserving a signature root of
+> trust in the LCP/TPM.
+> 
+> Comments and feedback on this approach are encouraged!
+> 
+> -Paul
+> 
+> 
+> _______________________________________________
+> tboot-devel mailing list
+> tboot-devel@lists.sourceforge.net
+> 
+> https://lists.sourceforge.net/lists/listinfo/tboot-devel
+> 
+> 
 
 
---===============8666724529535042100==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============8666724529535042100==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 tboot-devel mailing list
 tboot-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/tboot-devel
-
---===============8666724529535042100==--
-
