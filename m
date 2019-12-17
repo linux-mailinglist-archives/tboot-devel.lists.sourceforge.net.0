@@ -2,35 +2,35 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25B1112367D
-	for <lists+tboot-devel@lfdr.de>; Tue, 17 Dec 2019 21:06:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A29B11236D4
+	for <lists+tboot-devel@lfdr.de>; Tue, 17 Dec 2019 21:13:14 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:
 	Reply-To:From:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Subject:MIME-Version:Content-ID:In-Reply-To:
 	References:Message-ID:Date:To:Sender:Cc:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=k20n4h7+hPlkL/DYsYGSXkMoDTczyMZwjxebo1e3jxs=; b=II6YY9uKbofI9XBya8TV3Ltuo
-	O5w7EclqdEGP0pL9ouKQ8FSkyh+Wiu4JFkq5VYiFGXjGFvYAXosqbfBLeS77oUgWf/meI4m4itAI+
-	1jN4rD6/tX2LjLGSVaAwChxhy7i1YP6DhLSaP9/Rd6dYuVSHecldkUWMPSUeBe/71whOU=;
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	 bh=pmLmB7XykjIg+4qPaEULOkgnHqShR+mfQqBHQCcXrMY=; b=Qh0EbT5meJpxkKAUP10rse53o
+	ttm+h9HsMVrJQE2QKrY5b3GWLlC5F8XIemH4vyLgHyNaTish/K4wazcHH90voeto7+0bGKdV9/5Qf
+	B0NeUvVqN4i8jDjvepu7T3VXeqws+MAJ53nl0+DLi22yH7ZN1XoFDy4IuOXmmX/lIL1zs=;
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1ihJ6z-0003Dc-At; Tue, 17 Dec 2019 20:06:29 +0000
+	id 1ihJDU-0008Hb-4g; Tue, 17 Dec 2019 20:13:12 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <pmoore2@cisco.com>) id 1ihJ6y-0003DV-Ap
- for tboot-devel@lists.sourceforge.net; Tue, 17 Dec 2019 20:06:28 +0000
+ (envelope-from <pmoore2@cisco.com>) id 1ihJDS-0008HO-Oc
+ for tboot-devel@lists.sourceforge.net; Tue, 17 Dec 2019 20:13:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=MIME-Version:Content-Transfer-Encoding:Content-ID:
  Content-Type:In-Reply-To:References:Message-ID:Date:Subject:To:From:Sender:
  Reply-To:Cc:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=0k5v08U2wzu8X6xThzgWgay0mP6V7EL5WNn7B0a/8e4=; b=NIode76Qq0p1HRAdap7ziSBEFc
- XJz2ygGfKXryCpDDPj2H3xxLeYzh8Ce3J9rYU6wQOzQfR3XKjliPacI9sTYRxoglezKczOxwD5Bmn
- Jk5uOxg846ul9tKr8wrjebaGn9G/aWXnM7vA9soFb/VlLEVZkKsS5K8vt+iSYlp2IhSs=;
+ bh=iT9wFzsOYbNT7QSN0/Q7C3xmkoewHNv4jae6j+ORpQU=; b=JDHrx+ANtseD3gyn47Y1oiJPOw
+ 0JU5hotulcg5pL3sY8DhaiBLFf/yudGtp56xzPAcqE5ozv0c8Me3PBsh2LFON8jabe1+92Xcft5YB
+ 8BYU04PMdwcvJy8toCMxKRUto28mY4WwV+ACrfTu2xv+uuz991H+qJ8bq+2bQCGlLtss=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:
@@ -38,87 +38,86 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=0k5v08U2wzu8X6xThzgWgay0mP6V7EL5WNn7B0a/8e4=; b=bMulEffowdiZzPCWk7jTdT7iGW
- zIJ0NIlyzNTcCq30QnZOGGmBIUYA6doDDBY1XfFwiHcMibmXKWRlZ9GZHl3vCJqewKLJApd9jqp1n
- BWpQcPHJ48CO7k2CeW5YR+3SDh9lHeFtyMGJSZVULTxSS+XaO7pUdN5sVH6sTSmoZJrw=;
-Received: from alln-iport-6.cisco.com ([173.37.142.93])
+ bh=iT9wFzsOYbNT7QSN0/Q7C3xmkoewHNv4jae6j+ORpQU=; b=CJoXFF0WydSCovWGY75NxZVaLA
+ jzcue2vKFxIG3XKsEoXp5918zyeBlD1KPDMbqPshw8bb8HfNEXa/cEg+rmj2O3rjnwd3buAvYveio
+ oIaL2uvjs6ZUT9i+pb7NqWtPibxu9vsJ2/TPiL1pTZ4Y9KlISnMgi1G3D+TmIfdbHrNo=;
+Received: from rcdn-iport-3.cisco.com ([173.37.86.74])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps (TLSv1.2:DHE-RSA-SEED-SHA:128)
- (Exim 4.92.2) id 1ihJ6w-003rv9-0c
- for tboot-devel@lists.sourceforge.net; Tue, 17 Dec 2019 20:06:28 +0000
+ (Exim 4.92.2) id 1ihJDQ-003sNZ-Lf
+ for tboot-devel@lists.sourceforge.net; Tue, 17 Dec 2019 20:13:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=cisco.com; i=@cisco.com; l=3560; q=dns/txt; s=iport;
- t=1576613185; x=1577822785;
+ d=cisco.com; i=@cisco.com; l=1422; q=dns/txt; s=iport;
+ t=1576613588; x=1577823188;
  h=from:to:subject:date:message-id:references:in-reply-to:
  content-id:content-transfer-encoding:mime-version;
- bh=0k5v08U2wzu8X6xThzgWgay0mP6V7EL5WNn7B0a/8e4=;
- b=Li60wxGju5CPuWX437W7Tln1YPnJyqdpCAQjFaQa8DHyuD+UmW/jceJa
- iW48CO8h356y8+fl48AM7cyItGA/K6froseVYINyiKU0m1E5vX4253rj7
- lRKU/BUiz0TsI73sjSv/o2IE3sZTJYLTHOZW9jcZJgUxkAX6hkSsdRVqE 8=;
-IronPort-PHdr: =?us-ascii?q?9a23=3A3NPTfBba+9j9y7ryacJHf2f/LSx94ef9IxIV55?=
- =?us-ascii?q?w7irlHbqWk+dH4MVfC4el20gebRp3VvvRDjeee87vtX2AN+96giDgDa9QNMn?=
- =?us-ascii?q?1NksAKh0olCc+BB1f8Kavyais9BskYfFRk5Hq8d0NSHZW2ag=3D=3D?=
+ bh=iT9wFzsOYbNT7QSN0/Q7C3xmkoewHNv4jae6j+ORpQU=;
+ b=hBoBeDzv6ztOrSsqMNAcpPIYopf9iM6lZkBbw+wRHOFvmqaRgRv4241e
+ X395F98mB9wJseECC062GKL8bHm0YnDQOAETClKBEjYCxNfh2oZvvq09g
+ tOV0I9u/bympYIKSVkVEOoku8vIHF05QwU94OKHpwWwEdL0RRJ9u4nKYG w=;
+IronPort-PHdr: =?us-ascii?q?9a23=3AnKkQZBNRLZ3dJKiJ/kol6mtXPHoupqn0MwgJ65?=
+ =?us-ascii?q?Eul7NJdOG58o//OFDEu60/l0fHCIPc7f8My/HbtaztQyQh2d6AqzhDFf4ETB?=
+ =?us-ascii?q?oZkYMTlg0kDtSCDBjjKfntdSFgNM9DT1RiuXq8NBsdFQ=3D=3D?=
 X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A0C6AwC1NPld/5BdJa1lHQEBAQkBEQU?=
- =?us-ascii?q?FAYFtBQELAYFKKScFbFggBAsqCoN6g0YDixNOghGYBoJSA1QJAQEBDAEBIwo?=
- =?us-ascii?q?CAQGEQAIXggEkNwYOAgMNAQEEAQEBAgEFBG2FNwyFXgEBAQECARIRBA0MAQE?=
- =?us-ascii?q?4DwIBCBgCAiYCAgIwFRACBAE0gwEkgiIDDiABAgyjaQKBOIhhdX8zgn4BAQW?=
- =?us-ascii?q?BNQGDYRiCFwMGgQ4oAYwXghqBEYMTPoJkAoE9JoMQgl6BQAGOdIV6mFoGBII?=
- =?us-ascii?q?0hy+OYRuCQ4d2kBCLJ4MmiFCRfQIEAgQFAg4BAQWBaCOBWHCBboFOUBEUjRK?=
- =?us-ascii?q?Dc4VChRF0gSiOFYEwAYEPAQE?=
-X-IronPort-AV: E=Sophos;i="5.69,326,1571702400"; d="scan'208";a="403069365"
-Received: from rcdn-core-8.cisco.com ([173.37.93.144])
- by alln-iport-6.cisco.com with ESMTP/TLS/DHE-RSA-SEED-SHA;
- 17 Dec 2019 20:06:17 +0000
-Received: from XCH-ALN-010.cisco.com (xch-aln-010.cisco.com [173.36.7.20])
- by rcdn-core-8.cisco.com (8.15.2/8.15.2) with ESMTPS id xBHK6HmY023879
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A0DQAQB4Nvld/4gNJK1lHQEBAQkBEQU?=
+ =?us-ascii?q?FAYFsBgELAYFKJAUnBYFEIAQLKgqDeoNGA4sUToIRmAaBLoEkA1QJAQEBDAE?=
+ =?us-ascii?q?BLQIBAYRAAheCASQ2Bw4CAw0BAQQBAQECAQUEbYU3DIVfAQEBAxIREQwBATg?=
+ =?us-ascii?q?PAgEIGAICJgICAjAVEAIEATSFRwMuAQKkAgKBOIhhdYEygn4BAQWFFhiCFwm?=
+ =?us-ascii?q?BDigBjBeCGoNvNT6ESYMQgl6BQAGOdJ5UBgSCNIxmiSobmkmLJ4Mmmk0CBAI?=
+ =?us-ascii?q?EBQIOAQEFgVkJKYFYcIFugU5QERSNEgsYgQQBB4JEilN0gSiPRQGBDwEB?=
+X-IronPort-AV: E=Sophos;i="5.69,326,1571702400"; d="scan'208";a="672503292"
+Received: from alln-core-3.cisco.com ([173.36.13.136])
+ by rcdn-iport-3.cisco.com with ESMTP/TLS/DHE-RSA-SEED-SHA;
+ 17 Dec 2019 20:12:29 +0000
+Received: from XCH-RCD-002.cisco.com (xch-rcd-002.cisco.com [173.37.102.12])
+ by alln-core-3.cisco.com (8.15.2/8.15.2) with ESMTPS id xBHKCTsD015589
  (version=TLSv1.2 cipher=AES256-SHA bits=256 verify=FAIL);
- Tue, 17 Dec 2019 20:06:17 GMT
-Received: from xhs-rtp-001.cisco.com (64.101.210.228) by XCH-ALN-010.cisco.com
- (173.36.7.20) with Microsoft SMTP Server (TLS) id 15.0.1473.3;
- Tue, 17 Dec 2019 14:06:16 -0600
-Received: from xhs-aln-002.cisco.com (173.37.135.119) by xhs-rtp-001.cisco.com
- (64.101.210.228) with Microsoft SMTP Server (TLS) id 15.0.1473.3;
- Tue, 17 Dec 2019 15:06:15 -0500
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (173.37.151.57)
- by xhs-aln-002.cisco.com (173.37.135.119) with Microsoft SMTP Server (TLS) id
- 15.0.1473.3 via Frontend Transport; Tue, 17 Dec 2019 14:06:15 -0600
+ Tue, 17 Dec 2019 20:12:29 GMT
+Received: from xhs-rtp-002.cisco.com (64.101.210.229) by XCH-RCD-002.cisco.com
+ (173.37.102.12) with Microsoft SMTP Server (TLS) id 15.0.1473.3;
+ Tue, 17 Dec 2019 14:12:28 -0600
+Received: from xhs-rtp-001.cisco.com (64.101.210.228) by xhs-rtp-002.cisco.com
+ (64.101.210.229) with Microsoft SMTP Server (TLS) id 15.0.1473.3;
+ Tue, 17 Dec 2019 15:12:27 -0500
+Received: from NAM04-BN3-obe.outbound.protection.outlook.com (64.101.32.56) by
+ xhs-rtp-001.cisco.com (64.101.210.228) with Microsoft SMTP Server
+ (TLS) id
+ 15.0.1473.3 via Frontend Transport; Tue, 17 Dec 2019 15:12:27 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RNkHDG0xrm0CY0yLJ+8LohvayuHNhKaV1+/xr3joTEJcZ+XAOqvjie9hnOwWa2XQuEyL9TRdTP4PuRIfbbCBY/9kBQwObFM6NvRvBmZ+gNgGVbCQrY7pSmKB8pk9ijGj+8qjL1dYiSXS5+HcwBTQB9RKJtdTmo9II6m339FgqapwC5O3KTOoxmDePKZTCvGugmZZWXNb3ygqXV7Rwnj5gmZzcMJFpBtSmzGMgC1aQuoeU+m+X2uLQZQOqHX1Zj+FRe7kydkKEf4wlTn6zcUJ9RHIuxouldtHgopfdxU4XWF3/QKrd3m9DCPkdkAgHbkz6CISkrmwEm1qZapwxRn8DQ==
+ b=X/cNRw7cBQiGvil2aDsdQnMYJTS+pO1bV7nn0aTVxjB8N4NXfjCePfFmM6tmBeWUvdn5/FTA5zUUpP2jWTcfq5iWfTfkyKhPJf5P6bfKWx0CkJlwyiqXa3Yup+jlnAuRCpe/SjqA082RoUtKauuo4biaCIq8IpHrXUXrIf7NinF4UCo4iXOojr0xn+X1kOaInv8uikkFPb7oNKlfl/NZWPni1WqlnV24q8SdPVXfXOXfaio6f6Zq/+CNfaf7zWzrgyquw3yrf5tDMM6jz5Zq/n0Ktkrii4n1siICCCsRkfAKLTJjcRNLinHLOnSmUMpSilbVgB6K/Uceo6XM+L5HUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0k5v08U2wzu8X6xThzgWgay0mP6V7EL5WNn7B0a/8e4=;
- b=fgpHbWcgszkt97vuAPg5V0BBV338p5Vd/xSf6hKF5yRbucGoLWbtrWOd2GxfRKBdbuyB35Hu/AQ14USMeOpwz8e2dYKYdP5pGCFvNTpHGAnbCTnBfmErYzIRAdrN1JGpY3MIQroSLekZzHDg/2OGWp1UoYWb+avym81WbeeBPoUKCRqBLJlt1b2HgiFs9LjxVccKdXDZh8Oc9NweWkxe8MhvNQoKJfmuFhw026p8/7zX0c6nKMDuCcSYwZ9tKZyN5pdAJ0HGybaEqJmEb/u+etpVxRNOXxiaLAgZABFvBOQ2cvHWEeMB9gjzGJgFrLRQg3i0oMicGks2iDQx9VSHxg==
+ bh=iT9wFzsOYbNT7QSN0/Q7C3xmkoewHNv4jae6j+ORpQU=;
+ b=OchS+8hTIUXY0d94eRP97EwopLeqkA0nOfM3+HSHtrAp8bg0P7BT4NA5VUx2v15NU3I2RllqgeMcDmAzZ+0juJRT0xHfvghAGWhdrXkE0kJiCe4sbYjDiujxCvVbXBNtfumqOem/mMAN5Pppag/YllL5Q34DqgC7a6n31S+9iSn30jl30797T56ykLLAgIOBRR1DwbrrXDYegMMj9Nax6rFaRjnmLVaYOao6ULwBwa2GbN7oh702xJ7hdojAOfWF0Pb6bzqChf3Cz1vps1vIqMi+kmRFGv/0WmoCAvp9nWnIGMp1OnW7GXmjGL5Jyprf7ZJfSib2eyLiG9kY4K85+g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=cisco.com; dmarc=pass action=none header.from=cisco.com;
  dkim=pass header.d=cisco.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cisco.onmicrosoft.com; 
  s=selector2-cisco-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0k5v08U2wzu8X6xThzgWgay0mP6V7EL5WNn7B0a/8e4=;
- b=veoI4Uo/RAPmAABEVojo/GaKje0PzD0mHA+sTdc+RtXlJN5XDu0I0Jfck4gXPz1H+JR48BVrj9sYAqHPZJZ9uHuV090BhRM5pPV5Mkdbl/njlQdRtJSdzA/KaeHdHE4VcVb3Mete7poHjMYQ/Uk4+2itk2YAUKc78lc8PqmTQnA=
+ bh=iT9wFzsOYbNT7QSN0/Q7C3xmkoewHNv4jae6j+ORpQU=;
+ b=HoHwu3wv6f5uh0IRmabsrOVAFSLIYAJiDoMTLsBUDWH0wMU7wNf9i2K0tv+mInSv8CdDMQnzDhwkSNeskUYuY4LEyMlhVo7VB0pTpBpvzRLyEPpczOgp8tbyL65y3Yqct7Q2GY6G4T0BORILq4UyNG3URITr9zhotJpMa6wViJ0=
 Received: from BN7PR11MB2866.namprd11.prod.outlook.com (52.135.246.157) by
  BN7PR11MB2785.namprd11.prod.outlook.com (52.135.254.19) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2538.15; Tue, 17 Dec 2019 20:06:14 +0000
+ 15.20.2538.15; Tue, 17 Dec 2019 20:12:26 +0000
 Received: from BN7PR11MB2866.namprd11.prod.outlook.com
  ([fe80::99ce:89ae:9dc7:8efc]) by BN7PR11MB2866.namprd11.prod.outlook.com
  ([fe80::99ce:89ae:9dc7:8efc%2]) with mapi id 15.20.2538.019; Tue, 17 Dec 2019
- 20:06:14 +0000
+ 20:12:26 +0000
 To: "lukasz.hawrylko@linux.intel.com" <lukasz.hawrylko@linux.intel.com>,
  "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
 Thread-Topic: [tboot-devel] [RFC] tboot: kernel signature verification
-Thread-Index: AQHVbwB0th12F6sDfUCgP40i/qpaH6dgkXwAgDR+gACAEjVXgIADPEsAgALikQCAALYXgIARMpaA
-Date: Tue, 17 Dec 2019 20:06:13 +0000
-Message-ID: <eefde0b8f223d6e0c73468f3eb032ce186167fea.camel@cisco.com>
+Thread-Index: AQHVbwB0th12F6sDfUCgP40i/qpaH6dgkXwAgDR+gACAEjVXgIADPEsAgALikQCAEeppAA==
+Date: Tue, 17 Dec 2019 20:12:26 +0000
+Message-ID: <4981a097e7aeda6240fcd614164b72b69e25a2aa.camel@cisco.com>
 References: <bbaf0eeb3ddb8791533fc9dfba23ed57d3a2c9bd.camel@cisco.com>
  <ba9fa4341c9b9fa27c8ea3229f879d25614a900f.camel@cisco.com>
  <fbb29bfec178bb4b4d586df217d202fbe54430a4.camel@cisco.com>
  <60a05460106ef7cf1186e96d476c4564a500f5e2.camel@linux.intel.com>
  <bd1c6b6134911fd9f7c9c0434ca648c407ddc8f0.camel@cisco.com>
  <ceaca929e1b06cae46aff198872af05874ada24b.camel@linux.intel.com>
- <10173e9af141fb38c0a4482b6f8f58f1c31ccb0f.camel@cisco.com>
-In-Reply-To: <10173e9af141fb38c0a4482b6f8f58f1c31ccb0f.camel@cisco.com>
+In-Reply-To: <ceaca929e1b06cae46aff198872af05874ada24b.camel@linux.intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -127,13 +126,13 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=pmoore2@cisco.com; 
 x-originating-ip: [173.38.117.72]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0b9f65d6-26c8-467d-9dd2-08d7832c91bb
+x-ms-office365-filtering-correlation-id: 86226018-5212-4cb2-0cdf-08d7832d6fdd
 x-ms-traffictypediagnostic: BN7PR11MB2785:
-x-microsoft-antispam-prvs: <BN7PR11MB27854263D9B9613E3A40B07AF8500@BN7PR11MB2785.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-microsoft-antispam-prvs: <BN7PR11MB27853DACDB0A5AC1DE68FC76F8500@BN7PR11MB2785.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
 x-forefront-prvs: 02543CD7CD
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(376002)(366004)(346002)(136003)(396003)(39860400002)(189003)(199004)(76116006)(2906002)(15650500001)(6506007)(186003)(110136005)(2616005)(81166006)(86362001)(81156014)(26005)(6512007)(71200400001)(64756008)(66556008)(36756003)(316002)(91956017)(966005)(66946007)(8676002)(66446008)(478600001)(6486002)(8936002)(5660300002)(66476007);
+ SFS:(10009020)(376002)(366004)(346002)(136003)(396003)(39860400002)(189003)(199004)(76116006)(2906002)(6506007)(186003)(4744005)(110136005)(2616005)(81166006)(86362001)(81156014)(26005)(6512007)(71200400001)(64756008)(66556008)(36756003)(316002)(66946007)(8676002)(66446008)(478600001)(6486002)(8936002)(5660300002)(66476007);
  DIR:OUT; SFP:1101; SCL:1; SRVR:BN7PR11MB2785;
  H:BN7PR11MB2866.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
@@ -141,27 +140,25 @@ received-spf: None (protection.outlook.com: cisco.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ocI0WDLSSgY7a605HYxmzq25kn5BZTY9SwjODs7QUOk08bUyFhOAipTwydjNmcttQg+zBpRQbB3JVrWAM4AOPijhlMxa1k/WZRO6amObQJx9vhXkkzAoKfSXEq3yAX8rrQsWH7sFZptsLPJzAr1gbiXwamhYNrENcfVlea1oFF7D3NT+LvDgwe4C1jl/Xiz4boUXSTZuRV4bE3KAvG230PBXP+RI4oA+TDwzWepVMeygBSlmi+bWgoFRFv8zrzNp+MlDJgWoJS48KCnk/duu+qZ5TQk1vy7lq2wcqfFaVZxW7spB9fLc7WQwH85oC1bo25/weLdR9hSmi5yRuj7+GhD91bv2MHI0RSkrF8Lmvp5qJslc/3fC0Gi82hAhcnMvvAx5HljFT/POT0Cidr0LJ50hOK46F9AtfQAggfXeJSlyJG4jqiUfQ9CalV0joM3YrPPM4A97grO28rRCNA3vgReDqFpGKaWGuq449vWqaP0=
+x-microsoft-antispam-message-info: QmpzDyLgnd/s8jV98+SKrHKL2f0lqR07pSuRgRVURD/sVna1k/a8HIkqCmFWXNv4pMHtyRwtlII09i+Yhu3qnh0+woAzrNHOrkvCyGWdsoWtgSMJhK6rSmaP9/Hb5mQrT89xZF77La/v40o9OkEEGV7a0r0beFF7wm+QgGjAy5nVzud0K8LzQALvgn8pyIL5vlX26Ae3jGhPGiMBuJJSeQbfmMWb7l/A96wWbHkz8h6960m6Iq5254C8bUbA4oCaqkavXCF+wpNk0r3rh/drYSuYQ1o+E64IL4NgoiagEQcQLXYPwNb/5WI2VzpX8k/XMM1nE3fQhEGqzUYCs8/en0Mq8isSmJVtybbCUeiOp2dWO83lmo1JdZlOghnAV7xoQDX9xCqb5Pn8lDBE8papH6akYdzXBGwzYJ2iw7eo0acI+Lc7VNFUqLfg0iIbhkt/
 x-ms-exchange-transport-forked: True
-Content-ID: <C92AE4AFAF513640965EA07CCFB55B8E@namprd11.prod.outlook.com>
+Content-ID: <4582F12D1F92DE4EBC3C054BDB2C152E@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0b9f65d6-26c8-467d-9dd2-08d7832c91bb
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Dec 2019 20:06:13.9758 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 86226018-5212-4cb2-0cdf-08d7832d6fdd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Dec 2019 20:12:26.8519 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 5ae1af62-9505-4097-a69a-c1553ef7840e
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 9h5PVxNgbJeepzSiZceeHcqfkFDoZbZUmYWt1BzYWdjzrgrar6SoTt1AT4wQ/Ay2SKz6xm2Br5RDyeopQWQKWQ==
+X-MS-Exchange-CrossTenant-userprincipalname: MfBVHotZiK+y9QO4J78NuWlQHgS8sWATG7vTQG88EO0VJIZ/tIDT5TCxBHgg0r6kAT645RhlnbfWLT1+MDGFvg==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR11MB2785
 X-OriginatorOrg: cisco.com
-X-Outbound-SMTP-Client: 173.36.7.20, xch-aln-010.cisco.com
-X-Outbound-Node: rcdn-core-8.cisco.com
+X-Outbound-SMTP-Client: 173.37.102.12, xch-rcd-002.cisco.com
+X-Outbound-Node: alln-core-3.cisco.com
 X-Spam-Score: -7.6 (-------)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: hawrylko.pl]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [173.37.86.74 listed in wl.mailspike.net]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM white-list
@@ -170,7 +167,9 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1ihJ6w-003rv9-0c
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1ihJDQ-003sNZ-Lf
 Subject: Re: [tboot-devel] [RFC] tboot: kernel signature verification
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
@@ -190,66 +189,31 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Fri, 2019-12-06 at 21:28 +0000, Paul Moore (pmoore2) via tboot-devel
-wrote:
-> On Fri, 2019-12-06 at 11:37 +0100, Lukasz Hawrylko wrote:
-> > On Wed, 2019-12-04 at 14:33 +0000, Paul Moore (pmoore2) wrote:
-> > > Can you elaborate a bit more on what you mean by "the root of
-> > > certificate"?  Alternatively, could you upload the kernel and
-> > > signing
-> > > certificate somewhere I could grab so I can play with it?
-> > 
-> > Maybe I used wrong words, I am talking about pkcs1_search_signer
-> > function and following lines:
-> > 
-> >   if (!asn1_blob_cmp(&entry->cert.serial, serial) &&
-> >       !asn1_blob_cmp(&entry->cert.ca->subject, subject))
-> > 
-> > If I change them to
-> > 
-> >   if (!asn1_blob_cmp(&entry->cert.serial, serial) &&
-> >       !asn1_blob_cmp(&entry->cert.subject, subject))
-> > 
-> > it will find my certificate.
+On Fri, 2019-12-06 at 11:37 +0100, Lukasz Hawrylko wrote:
+> On Thu, 2019-12-05 at 17:20 +0000, Paul Moore (pmoore2) wrote:
+> > A question for discussion: if the VLP is loaded from it's own
+> > nvindex,
+> > and there is also a VLP present inside the LCP, which VLP do we want
+> > to
+> > use?  I'm assuming it is the VLP we loaded directly, and not from
+> > inside
+> > the LCP, but thought it was worth checking.
+> >  
 > 
-> Thanks, that makes it much more clear.  One of the benefits of sharing
-> code is that it helps remove any uncertainties. :)
-> 
-> > Could you please explain me why are you
-> > using serial from root of entry and subject from sub-element? Is it
-> > connected with certificate chain? What if there is just the simplest
-> > possible certificate that is not signed by anybody?
-> 
-> That does look a little odd, doesn't it?
+> In "stock" TBOOT, VLP loaded from its own index has higher priority
+> over
+> one embedded in LCP, so I agree with you that here it should work like
+> that.
 
-It turns out it wasn't quite as odd as originally thought.  While wrong,
-it wasn't far from the truth; the PKCS #7 blob in the signed PECOFF
-kernel image doesn't contain the signer's subject name, but rather the
-issuer's subject name.  This explains why the code worked: in the self-
-signed (Lukasz's test case) and one intermediate CA cases (the Fedora
-test case) using the CA would result in the signer being found, anything
-with more than one intermediate CA would fail.
+I was thinking about this some more and I'm now wondering if we should
+only support the new TB_HTYPE_PECOFF hash type if it is present in a VLP
+loaded from the LCP.  In order to use the new signature support admins
+are going to need to generate a new LCP to contain the certificate
+payload, why not store the VLP in the LCP at that point?
 
-I've corrected the code and pushed it to the repo/branch below:
+Is there any advantage to storing the VLP directly in the TPM and not in
+the LCP?
 
-* https://github.com/pcmoore/misc-tboot/tree/working-txtsig
-
-
-> > I have uploaded certificate and key that I have generated here: 
-> > https://cloud.hawrylko.pl/s/ivHd7HZpuLIjQ88 there is also a signed
-> > bzImage that I am using.
-> 
-> Great, thank you.  I'll take a closer look.
-
-It turns out this was due to a limitation in libtomfastmath.  Your test
-key/certificate used a 4k RSA key, but libtomfastmath had a restriction
-on keys larger than 2k (it turns out the Fedora keys are 2k).  I
-increased the libtomfastmath number limit to support 4k keys, and
-increased the tboot stack size accordingly.  The updated misc-
-tboot/working-txtsig code should now work for your self-signed test
-case, if not please let me know.
-
-Thanks,
 -Paul
 
 
