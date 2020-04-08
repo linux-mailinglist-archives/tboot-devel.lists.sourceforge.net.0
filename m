@@ -2,72 +2,89 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0ED01A243D
-	for <lists+tboot-devel@lfdr.de>; Wed,  8 Apr 2020 16:45:42 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BD611A2690
+	for <lists+tboot-devel@lfdr.de>; Wed,  8 Apr 2020 17:58:33 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1jMBxQ-0007AL-Pe; Wed, 08 Apr 2020 14:45:36 +0000
+	id 1jMD5n-0001l9-9n; Wed, 08 Apr 2020 15:58:19 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1jMBxP-0007A6-SF
- for tboot-devel@lists.sourceforge.net; Wed, 08 Apr 2020 14:45:35 +0000
+ (envelope-from <lindi@kapsi.fi>) id 1jMD5l-0001ku-4y
+ for tboot-devel@lists.sourceforge.net; Wed, 08 Apr 2020 15:58:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
- :References:In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
+ In-Reply-To:Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding
+ :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=pSFR0N7QKsMeFJpm5T+Kg1/bQPDJj38JBHriStv8oHM=; b=K7aF63h40a2xzSSpNMze0DZyQj
- FPBxivLd9eruLyJD6Ep8/sMBW6DvfQ3WpMeG44easf7avmmK9ETK17wdwW2nu7W57g8UAstoTxMLy
- Zn/aVKxlEUN9CJQih9yEhyOqqoyqM/G9pFiYXpxJCQVddjMdWo6mGP6K6O2sTSkN4Ug0=;
+ bh=Kz2JATfNjJ1XVwtMIYRxaKSA5vfUksxQDjhZI2XXpmo=; b=Pj5cDins5eJhjWemcHlUBGF9c6
+ 1ntWzhkKr2nLh7nI+nbxhncQOFpgMX5+YnLjEvW5sw7x3cw2gDklAtAKV5fs7HZseLAvGiyUuyVcL
+ UdnhSoE+2mLkWx+pUQ8sxBUQUs5V4gZxezNXlCzUAR2k3VUq+EGtGhbI61DOrjsixXzk=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
- In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
+ h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:To:
+ From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=pSFR0N7QKsMeFJpm5T+Kg1/bQPDJj38JBHriStv8oHM=; b=F8fW9Dcfkg6VYRzgBgV6njj2Cu
- MyXRGh59yTmoptGFHChfY690AO7OXlwDVALBt7wjUnG3Mb7i/2/d8+qV8kf7anIWNjUCq4JoMo3dO
- iaVttQMl63Fs+XtBdSPEyFqjRpCOmbh5+D16l44lBWo3Ut3DIM9KDGmXKN+f5u/EmcKw=;
-Received: from mga07.intel.com ([134.134.136.100])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ bh=Kz2JATfNjJ1XVwtMIYRxaKSA5vfUksxQDjhZI2XXpmo=; b=Z/w2IPJrKtk0M4EtpArCjbc6rr
+ dpgbGGct5LmWpZq5nS0npQiTYKBXrxgQrwbfKt1TT5Erybobc/HqXkrBxwEvL8B4bT8jALRT3P9Wu
+ DpfkWszjPduyPTilqoHItT7mH0Kp53PPpiQIAp3DAiWAoh759H/nVXAfgt4JeWUfrZAY=;
+Received: from mail.kapsi.fi ([91.232.154.25])
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jMBxN-007cjt-Ek
- for tboot-devel@lists.sourceforge.net; Wed, 08 Apr 2020 14:45:35 +0000
-IronPort-SDR: WQ1T9iCsQG3tLGhajWETu9x/EXy8RHQwNSgmLL24l2aaqPs+6FIi62UoMtpj/Q915CuaQlGh5d
- HL9dLk3wUzOg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2020 07:45:27 -0700
-IronPort-SDR: LhgdFoF7gdXQxA1LjhxymZA9apoBfsF324vL1729+jpFfkfAJhG2A9oZqqJ4tFqOATs5fioGT3
- mWnJD9ZgpfTA==
-X-IronPort-AV: E=Sophos;i="5.72,358,1580803200"; d="scan'208";a="425154670"
-Received: from lhawrylk-desk.ger.corp.intel.com ([10.213.23.155])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2020 07:45:23 -0700
-Message-ID: <c5561325a53303ad556dadf49ba7269295ac30fc.camel@linux.intel.com>
-From: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
-To: Timo Lindfors <timo.lindfors@iki.fi>, tboot-devel@lists.sourceforge.net
-Date: Wed, 08 Apr 2020 16:45:03 +0200
-In-Reply-To: <alpine.DEB.2.20.2004081710220.25471@mail.home>
+ id 1jMD5f-00C00X-SR
+ for tboot-devel@lists.sourceforge.net; Wed, 08 Apr 2020 15:58:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=kapsi.fi;
+ s=20161220; h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:
+ Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=Kz2JATfNjJ1XVwtMIYRxaKSA5vfUksxQDjhZI2XXpmo=; b=DZA84sIg+GPJSJP47dd3/qFZTD
+ HV/vTzBsADbZBkogkcF/pXS+FsCXcP5djCNYMou36oRbiDSkDWlSnva9l0XgjhRZMZ//QGsNwn0iv
+ WYMoZLFXj0T9tKS4mnADwaI2j4Rio2X3GHFlHUK5iEc2bMi96w9yCbfOpz9nZF0lkAUT4ZKvoYlzF
+ 16zSwwZkGXJtjc7EkHmn/y3nrH27P3jQvelAWiJBCgbJxklVyFY/q4AnP1bI+mdjSx8Dc4FLyCvBl
+ HojdAFrgPgVPxIZT74rTuJX5Ygtd4BPAgmB6SRJZCBxU1lBmD9RwnHAiLS4NcGE6VAo/SpoeYQ3iQ
+ vQCsG+kQ==;
+Received: from 82-181-208-90.bb.dnainternet.fi ([82.181.208.90] helo=mail.home)
+ by mail.kapsi.fi with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.89) (envelope-from <timo.lindfors@iki.fi>)
+ id 1jMCiY-0004GH-CN
+ for tboot-devel@lists.sourceforge.net; Wed, 08 Apr 2020 18:34:18 +0300
+Received: from localhost ([127.0.0.1]) by mail.home with esmtp (Exim 4.89)
+ (envelope-from <timo.lindfors@iki.fi>) id 1jMCiT-0006fT-QW
+ for tboot-devel@lists.sourceforge.net; Wed, 08 Apr 2020 18:34:13 +0300
+Date: Wed, 8 Apr 2020 18:34:13 +0300 (EEST)
+From: Timo Lindfors <timo.lindfors@iki.fi>
+To: tboot-devel@lists.sourceforge.net
+In-Reply-To: <c5561325a53303ad556dadf49ba7269295ac30fc.camel@linux.intel.com>
+Message-ID: <alpine.DEB.2.20.2004081831250.25596@mail.home>
 References: <alpine.DEB.2.20.2003312317470.19721@mail.home>
  <dc275925ce5f44633594ec3fd6732b13f3abeb4c.camel@linux.intel.com>
  <alpine.DEB.2.20.2004021722080.21308@mail.home>
- <d5d36808a38af260d0e8390aaaf5dc6724cf787f.camel@linux.intel.com>
+ <d5d36808a38af260d0e8390aaaf5dc6724cf787f.camel@linux.intel.com> 
  <alpine.DEB.2.20.2004081710220.25471@mail.home>
-User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
+ <c5561325a53303ad556dadf49ba7269295ac30fc.camel@linux.intel.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-X-Spam-Score: 0.0 (/)
+X-SA-Exim-Connect-IP: 82.181.208.90
+X-SA-Exim-Mail-From: timo.lindfors@iki.fi
+X-SA-Exim-Scanned: No (on mail.kapsi.fi); SAEximRunCond expanded to false
+X-Spam-Score: 0.7 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level mail
+ domains are different
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1jMBxN-007cjt-Ek
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+ 0.5 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jMD5f-00C00X-SR
 Subject: Re: [tboot-devel] tboot not picking the right ACM module on Dell
  Latitude E5470
 X-BeenThere: tboot-devel@lists.sourceforge.net
@@ -81,37 +98,64 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Wed, 2020-04-08 at 17:12 +0300, Timo Lindfors wrote:
-> On Tue, 7 Apr 2020, Lukasz Hawrylko wrote:
-> > Unfortunately, this bug is not reported anywhere. In real life scenarios
-> > I don't see any benefits of loading multiple SINITs. In most cases you
-> > have one SINIT that is dedicated to the platform.
-> 
-> After a closer inspection this might be a different bug as the reboot 
-> occurs also if I specify only one SINIT module, the file
-> 6th_gen_i5_i7_SINIT_71.BIN.
-> 
-> Why does tboot think that this file is a valid SINIT module for this CPU 
-> and try to use it? Is this a bug in the ACM module or tboot? Is there some 
-> algorithm for choosing the correct SINIT module?
-> 
 
-TBOOT has an algorithm that checks if SINIT matches platform. I can't
-tell you right now what is wrong here, I need some logs. Please run it
-once again, than after reboot, can you launch Linux without TBOOT and
-run 'txt-stat' tool that is in TBOOT's repo in 'utils' folder? What I
-need is a value of ERRORCODE field.
+On Wed, 8 Apr 2020, Lukasz Hawrylko wrote:
+> TBOOT has an algorithm that checks if SINIT matches platform. I can't
+> tell you right now what is wrong here, I need some logs. Please run it
+> once again, than after reboot, can you launch Linux without TBOOT and
+> run 'txt-stat' tool that is in TBOOT's repo in 'utils' folder? What I
+> need is a value of ERRORCODE field.
+>
+> If you can connect serial port and dump serial logs too that will be
+> awesome. Dell's docking station has RS232 connector and TBOOT's logs are
+> printed there (tested on my laptop).
 
-If you can connect serial port and dump serial logs too that will be
-awesome. Dell's docking station has RS232 connector and TBOOT's logs are
-printed there (tested on my laptop).
+$ txt-stat
+Intel(r) TXT Configuration Registers:
+ 	STS: 0x00000012
+ 	    senter_done: FALSE
+ 	    sexit_done: TRUE
+ 	    mem_config_lock: FALSE
+ 	    private_open: FALSE
+ 	    locality_1_open: FALSE
+ 	    locality_2_open: FALSE
+ 	ESTS: 0x00
+ 	    txt_reset: FALSE
+ 	E2STS: 0x0000000000000008
+ 	    secrets: FALSE
+ 	ERRORCODE: 0xc0003c11
+ 	DIDVID: 0x00000001b0068086
+ 	    vendor_id: 0x8086
+ 	    device_id: 0xb006
+ 	    revision_id: 0x1
+ 	FSBIF: 0xffffffffffffffff
+ 	QPIIF: 0x000000009d003000
+ 	SINIT.BASE: 0xaced0000
+ 	SINIT.SIZE: 327680B (0x50000)
+ 	HEAP.BASE: 0xacf20000
+ 	HEAP.SIZE: 917504B (0xe0000)
+ 	DPR: 0x00000000ad000041
+ 	    lock: TRUE
+ 	    top: 0xad000000
+ 	    size: 4MB (4194304B)
+ 	PUBLIC.KEY:
+ 	    2d [REDACTED]
+ 	    77 [REDACTED]
 
-Thanks,
-Lukasz
+***********************************************************
+ 	 TXT measured launch: FALSE
+ 	 secrets flag set: FALSE
+***********************************************************
+unable to find TBOOT log
+
+I'll check if we can get serial output.
+
+
+-Timo
 
 
 
