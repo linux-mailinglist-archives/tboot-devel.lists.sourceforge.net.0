@@ -2,106 +2,80 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEE081A7544
-	for <lists+tboot-devel@lfdr.de>; Tue, 14 Apr 2020 09:57:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3DB71A75F1
+	for <lists+tboot-devel@lfdr.de>; Tue, 14 Apr 2020 10:24:55 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1jOGRV-0001YM-60; Tue, 14 Apr 2020 07:57:13 +0000
+	id 1jOGs9-0002kX-V7; Tue, 14 Apr 2020 08:24:45 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <timo.lindfors@iki.fi>) id 1jOGRU-0001YD-Ax
- for tboot-devel@lists.sourceforge.net; Tue, 14 Apr 2020 07:57:12 +0000
+ (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1jOGs8-0002kN-4C
+ for tboot-devel@lists.sourceforge.net; Tue, 14 Apr 2020 08:24:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
- In-Reply-To:Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding
- :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
+ :References:In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Fqxwi2vhhdpt/9Q7mVvZXJy4cTZ26TA9Gu7IMOXhZ3w=; b=EKZz34qPEYxPTcqo8Ew4cTN68W
- th1WLa9Whl1RxoxfhRd/2JNUAEq5D5b4NNgJqBOftEr/OOWE8SaRuX6ZsXRDfAkWdDSDYxn35Ul5w
- Jdh2/O6KX0ejtxPb/BdlBSk/ywFiUg4fGTbcvynpvAZUiC2f/tgJuAWK7xJZhEG03ptk=;
+ bh=bwD+85nhwysX02RHFQUo+3K77X2Go1ox1d486+5wknU=; b=C9hEDVz+G4PHwlD9LqtteJ1zr5
+ ye7vJBwstQz/qcum0ugBQ4sNRJZ/vRGY96bas5GXciNP3o4eKIxnfHescsFs5wVuCHjvWYPDwlFkc
+ 9H0HH0Ht3uxA0R542Hw7d329Zbb1xqfyQodkderv+7aHkOuU6FPK96cZB/7/TI7ZNu9c=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:To:
- From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
+ In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=Fqxwi2vhhdpt/9Q7mVvZXJy4cTZ26TA9Gu7IMOXhZ3w=; b=QGxB2OMmXxX2+xH5qomMYlmnOK
- DZc+dW+n7Q+YVv+D/AsZxvMrHlnuaLpD2g7ctrpeOIy2VlYPKE63KJ2qeDQYAJT+K3+g/+ZehMQxw
- 2ap+OFxbxDStfAnpfE/sszMS4HfPkVqpZOyVl602zQMxPrTVBgVr3KeqvkJcoNUZBKiE=;
-Received: from lahtoruutu.iki.fi ([212.16.98.55])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ bh=bwD+85nhwysX02RHFQUo+3K77X2Go1ox1d486+5wknU=; b=JMjPeqy3wuF7OZhrwr+6z89PKO
+ R+1PRoaq79J4xG63oQwCl6FR8H7MhI25/7zVdSRIXGkajh++Aswx701L2zED9uU8UZRoaxJ902zoD
+ YzPG5uXOy+7Qp3kpdsas6OgqEVYFkol3dpsIDB4OWoRqoyw2h+lFRseb9AR2y0rGfIrg=;
+Received: from mga09.intel.com ([134.134.136.24])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jOGRO-00FWEr-EB
- for tboot-devel@lists.sourceforge.net; Tue, 14 Apr 2020 07:57:12 +0000
-Received: from mail.home (82-181-208-90.bb.dnainternet.fi [82.181.208.90])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- (Authenticated sender: timo.lindfors)
- by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4D8131B00436
- for <tboot-devel@lists.sourceforge.net>; Tue, 14 Apr 2020 10:40:42 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu; 
- t=1586850042;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Fqxwi2vhhdpt/9Q7mVvZXJy4cTZ26TA9Gu7IMOXhZ3w=;
- b=OXFZlEh0AAQVdl0eMMxQZqYveqRcdV5XHFf+rlArsP3CzpIbA60Kc2faXn6EVPOk0GINqI
- +k8y4JIfTE5IsZosrTguiK2BKARO4yMCwyDWNfjo0NOnxCJowhn1JmAMzhYLZ2gtlXZu5u
- xCawWdmLrDbXrGBKib94nXmI/dD3EpdYDW8vyotVNtHdeOGXFYNlaVLpI18W8qymFL0HoY
- m2NoL1ArJ/SNFJwSYN2HDz+nXHhKgfXZpxhZzDO6alZOJywEokT+dDcLmefBTNmNnq9RJo
- u7PxLGUCO2mGKydU7ZVlEfqp5xGrpXQz9/W4slH+I9ZrEt2rqXZJXNbgHl+MWg==
-Received: from localhost ([127.0.0.1]) by mail.home with esmtp (Exim 4.89)
- (envelope-from <timo.lindfors@iki.fi>) id 1jOGBR-0002rh-JT
- for tboot-devel@lists.sourceforge.net; Tue, 14 Apr 2020 10:40:37 +0300
-Date: Tue, 14 Apr 2020 10:40:37 +0300 (EEST)
-From: Timo Lindfors <timo.lindfors@iki.fi>
-To: tboot-devel@lists.sourceforge.net
-In-Reply-To: <89eb86fd43cd9cadd48db77433959d708d060e74.camel@linux.intel.com>
-Message-ID: <alpine.DEB.2.20.2004141036360.11002@mail.home>
+ id 1jOGs5-00EUKS-5I
+ for tboot-devel@lists.sourceforge.net; Tue, 14 Apr 2020 08:24:43 +0000
+IronPort-SDR: 1ZSMaSw7SJi7yoCyaSHCTjZjotkel1BucvoEb8B6/LlS8VPelJNe1QmZHx6zy4xzIUw0LyZHi9
+ RBMFur9PaWmQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Apr 2020 01:24:35 -0700
+IronPort-SDR: fssN+kUB4wgIrg6Lig3DmStGcPA4cZB8lhxRU7KO8o2SMuTtloUBk3bmoxaBVgfDqsU8C6eYg+
+ mdmabqlD/4rQ==
+X-IronPort-AV: E=Sophos;i="5.72,382,1580803200"; d="scan'208";a="399884452"
+Received: from lhawrylk-desk.ger.corp.intel.com ([10.213.26.93])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Apr 2020 01:24:34 -0700
+Message-ID: <1787201313da7a0fdc21a52e6319c94c80c995bb.camel@linux.intel.com>
+From: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
+To: Timo Lindfors <timo.lindfors@iki.fi>, tboot-devel@lists.sourceforge.net
+Date: Tue, 14 Apr 2020 10:24:32 +0200
+In-Reply-To: <alpine.DEB.2.20.2004141036360.11002@mail.home>
 References: <alpine.DEB.2.20.2003312317470.19721@mail.home>
  <dc275925ce5f44633594ec3fd6732b13f3abeb4c.camel@linux.intel.com>
  <alpine.DEB.2.20.2004021722080.21308@mail.home>
- <d5d36808a38af260d0e8390aaaf5dc6724cf787f.camel@linux.intel.com> 
+ <d5d36808a38af260d0e8390aaaf5dc6724cf787f.camel@linux.intel.com>
  <alpine.DEB.2.20.2004081710220.25471@mail.home>
  <c5561325a53303ad556dadf49ba7269295ac30fc.camel@linux.intel.com>
  <alpine.DEB.2.20.2004081831250.25596@mail.home>
  <89eb86fd43cd9cadd48db77433959d708d060e74.camel@linux.intel.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+ <alpine.DEB.2.20.2004141036360.11002@mail.home>
+User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
 MIME-Version: 1.0
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
- s=lahtoruutu; t=1586850042;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Fqxwi2vhhdpt/9Q7mVvZXJy4cTZ26TA9Gu7IMOXhZ3w=;
- b=kJJRH90VPW3BEO+qmW4Ga5AKTub/JRZ0zvOkwAJ63z/EOozkkQs0dn6TstRYUcObm0JKOW
- RUEamX/vRosW/DDz1jGVxWYztADEHUmbm17dEjIGFknW8CfWIIVHSRZTv0jgKcLg3BBBJZ
- pDaLHLyR4NyZLoaL2Xe+zfL5a31BKiTZN0WlRBXKl5rKllU7qEtA5+AFYXpv8FiOhjCz9i
- 6liN0FAk2MAuGuMv7LaL+LPc12LmXWuoqwPdFdP3DQJU21kz0UlSvZfmAPN7ttQUxpXIR/
- j3ySk7EbYHCiT3s2bDc5hKTYGt86CXeyLL5bHLrfjQaY2dMEso9ZDQ1ov27q/w==
-ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1586850042; a=rsa-sha256; cv=none;
- b=qVcgoa45HAZ2FKif9Q7cqPVZUyLtgACUzjoBkHkcxPHYWaEWrXEtwf1ssX/1kU4CjxJcQi
- HiLx4paF18BU/xJRLyer9ic/tM34Gg+eIfVuNGToNU9BRU3/HF2y0fJJjgwPhJxUlK+zxD
- 77HpHnX/y9PPKoXp130f6QOg8suMXDd1dc3QzrGbM3mXJ2/4+SaZRQigZZQ0Nn3NtNjNYo
- CSYXYootih/CLabyOwi2YiKIZVrRdVGubVRqKiA6cTIv8jiTFIIeoZJG2iTRK2zDs8FMss
- L4CRb+xyjgx3SvLa5FLxIWRMcmYZQltLkCjcgY7OrOnA48PpmRFng4Q1+CQ0+g==
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=timo.lindfors smtp.mailfrom=timo.lindfors@iki.fi
-X-Spam-Score: -0.1 (/)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [134.134.136.24 listed in wl.mailspike.net]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
-X-Headers-End: 1jOGRO-00FWEr-EB
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jOGs5-00EUKS-5I
 Subject: Re: [tboot-devel] tboot not picking the right ACM module on Dell
  Latitude E5470
 X-BeenThere: tboot-devel@lists.sourceforge.net
@@ -115,28 +89,39 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Tue, 14 Apr 2020, Lukasz Hawrylko wrote:
-> As KBL SINIT works with both SKL and KBL platforms, the old one,
-> compatible only with SKL, is not longer supported and may not work with
-> newer versions of SKL bioses. Recommendation is to use the KBL SINIT for
-> both KBL and SKL systems.
->
-> To avoid possible confusion in the future, old, not longer supported
-> SINIT, will be removed from download site. After that, there will be
-> only one binary available - 6th_7th_gen_i5_i7-SINIT_74 (that works with
-> both SKL and KBL platforms). Please do not use 6th_gen_i5_i7_SINIT_71.
+On Tue, 2020-04-14 at 10:40 +0300, Timo Lindfors wrote:
+> On Tue, 14 Apr 2020, Lukasz Hawrylko wrote:
+> > As KBL SINIT works with both SKL and KBL platforms, the old one,
+> > compatible only with SKL, is not longer supported and may not work with
+> > newer versions of SKL bioses. Recommendation is to use the KBL SINIT for
+> > both KBL and SKL systems.
+> > 
+> > To avoid possible confusion in the future, old, not longer supported
+> > SINIT, will be removed from download site. After that, there will be
+> > only one binary available - 6th_7th_gen_i5_i7-SINIT_74 (that works with
+> > both SKL and KBL platforms). Please do not use 6th_gen_i5_i7_SINIT_71.
+> Great to hear that you found the root cause! Would it be possible to 
+> publish a simple tool that can pick the right ACM module for a given CPU 
+> automatically? So that I could use that tool to generate my grub.cfg this 
+> would greatly improve usability of the whole solution. I can of course try 
+> to extract that logic from tboot but maybe such a tool already exists?
+> 
 
-Great to hear that you found the root cause! Would it be possible to 
-publish a simple tool that can pick the right ACM module for a given CPU 
-automatically? So that I could use that tool to generate my grub.cfg this 
-would greatly improve usability of the whole solution. I can of course try 
-to extract that logic from tboot but maybe such a tool already exists?
+I don't know if that tool exists. Anyway, I will look at that multiple
+SINITs bug in TBOOT, when it will be fixed, that kind of tool will not
+be required.
 
--Timo
+In mean time, you can check acminfo from utils directory. It examines
+SINIT binary and also can check if SINIT is compatible with current
+platform. You can easily adopt it (with bash scripting help) to do what
+you need.
+
+Lukasz
+
 
 
 _______________________________________________
