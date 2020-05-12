@@ -2,68 +2,94 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85F0B1CEF7A
-	for <lists+tboot-devel@lfdr.de>; Tue, 12 May 2020 10:51:20 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 341901CF18D
+	for <lists+tboot-devel@lfdr.de>; Tue, 12 May 2020 11:27:14 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1jYQd8-0008Ko-LN; Tue, 12 May 2020 08:51:14 +0000
+	id 1jYRBu-0000G8-Fd; Tue, 12 May 2020 09:27:10 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1jYQd6-0008Ke-69
- for tboot-devel@lists.sourceforge.net; Tue, 12 May 2020 08:51:12 +0000
+ (envelope-from <timo.lindfors@iki.fi>) id 1jYRBt-0000FC-9c
+ for tboot-devel@lists.sourceforge.net; Tue, 12 May 2020 09:27:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
- :References:In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
+ In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
+ :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=eQlnBWaHzao2I17gUWaXySf5FOpWBo6NLf4guYDsgzg=; b=GcrYmJiAv0Jv293nTtK95lZw3m
- n0ddt8+1DsoovbhbJUT0AL1ePIut7b8t9IRgddsDXEyx9/dxCbxqTIu/gMB1PqGMEqphN/NogPLY9
- 8mwu2VCsF/hQkbk8f9GnnZg1xzPpgMcrbNPb7KRI8Nw3gatl4TRhmfh8eZhYAivaRV1E=;
+ bh=w8+gmEUDYtpdCVCu2ljv2k8Wyc0a9XPagqydEs9B8F8=; b=dJtPoDSPbLJdWo+j19TgQmS4G8
+ m842nH9PE7bwxmPK2jmJLcN6DmvGzet3kki16AFyr26bPScx3zBRrBl1Oio+fUFDnZz12qKfR2nEz
+ 3aMa6ZFxKHPjnP7O8bEpEU7JQLGnwNTuZNONUDXJI8lK6tuAhhYlqf6UYZQNHGw5b1Ew=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
- In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
+ h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=eQlnBWaHzao2I17gUWaXySf5FOpWBo6NLf4guYDsgzg=; b=hxtLhS5loHEX6gSKPdz1c5Rrgh
- h/gLGzTwStMMDRU2MEIY66x/RldOYFqdMlsPP+uxc1zVdbqpZ6hQECJPPrt6EwshUhgz39p+n3rAP
- d6+/1Z0/Rzu2oQ8N14kRzL/AYu8G9LPtnAGIxr4PxSsCQP+4P0p3SBkvFt6dlYXiy2rY=;
-Received: from mga03.intel.com ([134.134.136.65])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ bh=w8+gmEUDYtpdCVCu2ljv2k8Wyc0a9XPagqydEs9B8F8=; b=B2ZgtZt9y6opCTSSlLi4OhOMAZ
+ 8ALBnOjZHxxjAU2awj+2XhC9i3tdrkLENTDD+laTEUSiI+4/Q76HI3Rk6nHRaCUy27ULoXAUS7lJd
+ hcsuxmSySCQwIPrX2F5K0IPjSxnuq9OP7F5tC9rVjzlG4nbzJYj7kMtkd1Cu+5cQLrv0=;
+Received: from meesny.iki.fi ([195.140.195.201])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jYQd4-00AnP2-G5
- for tboot-devel@lists.sourceforge.net; Tue, 12 May 2020 08:51:12 +0000
-IronPort-SDR: aL+R4KniZLWzTsMIluu1PkveI7eXqwWn6vihGsrjmECPx0C818emi5SUn/XkVbgfBq4APEY0ob
- 0bqc7jdoefVQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2020 01:51:04 -0700
-IronPort-SDR: N0lo+LgzBVsvvpIixaqG9Ptmqdplt7w4uN5bro2EiPRKOgsl0fIZhZ7kirq2YM3WohKLP6hwSG
- 0Sza/qZkMZFg==
-X-IronPort-AV: E=Sophos;i="5.73,383,1583222400"; d="scan'208";a="437022640"
-Received: from lhawrylk-desk.ger.corp.intel.com ([10.213.1.163])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2020 01:51:03 -0700
-Message-ID: <0006538262f002e44d5bdc18e338e294fd5185e2.camel@linux.intel.com>
-From: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
-To: Timo Lindfors <timo.lindfors@iki.fi>, tboot-devel@lists.sourceforge.net
-Date: Tue, 12 May 2020 10:50:58 +0200
-In-Reply-To: <alpine.DEB.2.20.2005101501330.5531@mail.home>
+ id 1jYRBl-002sYi-0H
+ for tboot-devel@lists.sourceforge.net; Tue, 12 May 2020 09:27:09 +0000
+Received: from mail.home (82-181-208-90.bb.dnainternet.fi [82.181.208.90])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ (Authenticated sender: timo.lindfors)
+ by meesny.iki.fi (Postfix) with ESMTPSA id AA6DD2061C;
+ Tue, 12 May 2020 12:26:41 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
+ t=1589275601;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=w8+gmEUDYtpdCVCu2ljv2k8Wyc0a9XPagqydEs9B8F8=;
+ b=EgiZu4MQlYfInBxyZOJP9kL8P5EuA409slQyKQf15SMsBfzYCI0wkHheDiS8wWPDJhDkqd
+ PioBD4maEUa2QuLcmULAgNSC6EMwtivbv0VbI7Jyev6NFWRLHZhF+0y/ZXkXus1meJwEEL
+ LLkseSpBRZjE9G7sWc5EulfFB1zCTM4=
+Received: from localhost ([127.0.0.1]) by mail.home with esmtp (Exim 4.89)
+ (envelope-from <timo.lindfors@iki.fi>)
+ id 1jYRBJ-0001tt-U2; Tue, 12 May 2020 12:26:33 +0300
+Date: Tue, 12 May 2020 12:26:33 +0300 (EEST)
+From: Timo Lindfors <timo.lindfors@iki.fi>
+To: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
+In-Reply-To: <0006538262f002e44d5bdc18e338e294fd5185e2.camel@linux.intel.com>
+Message-ID: <alpine.DEB.2.20.2005121219001.7218@mail.home>
 References: <alpine.DEB.2.20.2005101501330.5531@mail.home>
-User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
+ <0006538262f002e44d5bdc18e338e294fd5185e2.camel@linux.intel.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-X-Spam-Score: 0.0 (/)
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+ s=meesny; t=1589275601;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=w8+gmEUDYtpdCVCu2ljv2k8Wyc0a9XPagqydEs9B8F8=;
+ b=j+DnODl232jbxlOOHTeUm3dT6sdOMt4wehp+HLHk1P6wtlGZXEmKCgEQd97JOPnIgjIeMr
+ DvTMxBJHE8S+rQpEd4UV9Gd5WFcBIgvxeYG0F18eFQIiRg+UoZK8sU+RYPlCm3HnZyiTXT
+ tDnHRoUA4RfHJDXTQMfmCFJzb8p1Hx8=
+ARC-Seal: i=1; s=meesny; d=iki.fi; t=1589275601; a=rsa-sha256; cv=none;
+ b=DS6YAFtzV5NNh1kT0/RGAjVNXjkJQfmxsMBLRfMl3wjKV4ltIlBSVLynuMkEbwdZC6UMM7
+ +kllJNar/LxXaWIBegxyffDcOPruqoqFg/VhyGi4oPvSXIjpuFSiWzTF2+YYJW6Cjwmevw
+ pWA/n/dDopBKzhncvcWFaHrjyszHsaw=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=timo.lindfors smtp.mailfrom=timo.lindfors@iki.fi
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1jYQd4-00AnP2-G5
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+X-Headers-End: 1jYRBl-002sYi-0H
 Subject: Re: [tboot-devel] packaging for debian,
  some clarifications for licensing?
 X-BeenThere: tboot-devel@lists.sourceforge.net
@@ -77,53 +103,31 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: tboot-devel@lists.sourceforge.net
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Sun, 2020-05-10 at 15:12 +0300, Timo Lindfors wrote:
-> Hi,
-> 
-> I'm planning to package tboot for Debian. As part of the process I went 
-> through all the copyright and license notices in tboot-1.9.12.tar.gz.gpg.
-> 
-> Everything looks pretty smooth but I do have two concerns:
-> 
-> 1) lcptools/Linux_LCP_Tools_User_Manual.doc has the paragraph
-> 
-> "This document and the software described in it are furnished under 
-> license and may only be used or copied in accordance with the terms of the 
-> license."
-> 
-> but it is not at all clear what license this is talking about. Is it the 
-> BSD-3-clause license used in most other files or something else? Would it 
-> be possible to clarify this either in this file or in the COPYING file?
-> 
-> 2) The COPYING file states
-> 
-> "Files which do not contain any copyright information are assumed to be
-> copyrighted by Intel Corporation. All other files contain their copyright 
-> and license at the beginning of the file."
-> 
-> This is a good clarification but this file does not actually explain what 
-> the license of files without license information is. Is it the 
-> BSD-3-clause license used in most files? The files without license 
-> information that I could identify are:
-> 
+Hi
 
-Hi Timo
+On Tue, 12 May 2020, Lukasz Hawrylko wrote:
+> The base TBOOT licence is BSD-3-clause, however some files that comes
+> from other projects have different licenses (but all of them are
+> compatible with BSD-3-clause).
+>
+> I can add information to COPYING file that looks like: "All files that
+> do not have license header, have BSD-3-clause license and are
+> copyrighted by Intel Corporation". Will it solve all license gaps in
+> your opinion?
 
-The base TBOOT licence is BSD-3-clause, however some files that comes
-from other projects have different licenses (but all of them are
-compatible with BSD-3-clause).
+Yes, I think that would clarify the situation nicely but I would also 
+include the full license text in COPYING and not just a reference to 
+"BSD-3-clause". With these changes I feel I can upload this to Debian 
+Gitlab (https://salsa.debian.org/debian/tboot/), the actual upload to the 
+archive will of course still go through review by the Debian FTP master 
+team.
 
-I can add information to COPYING file that looks like: "All files that
-do not have license header, have BSD-3-clause license and are
-copyrighted by Intel Corporation". Will it solve all license gaps in
-your opinion?
-
-Thanks,
-Lukasz
+-Timo
 
 
 
