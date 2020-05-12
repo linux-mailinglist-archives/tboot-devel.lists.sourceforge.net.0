@@ -2,26 +2,26 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6408C1CEEF3
-	for <lists+tboot-devel@lfdr.de>; Tue, 12 May 2020 10:17:19 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 85F0B1CEF7A
+	for <lists+tboot-devel@lfdr.de>; Tue, 12 May 2020 10:51:20 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1jYQ6F-0003Yw-WB; Tue, 12 May 2020 08:17:16 +0000
+	id 1jYQd8-0008Ko-LN; Tue, 12 May 2020 08:51:14 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1jYQ6E-0003Yl-IC
- for tboot-devel@lists.sourceforge.net; Tue, 12 May 2020 08:17:14 +0000
+ (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1jYQd6-0008Ke-69
+ for tboot-devel@lists.sourceforge.net; Tue, 12 May 2020 08:51:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
  :References:In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=40A3vX6g2/kRaqxmLMMb742cwXM6gvhJpADoiuzucg8=; b=Ek//5ANI+9HS8x0a8/BGWGaig9
- TwE11VctvjcQeSaGP8bjjZtOtNc58uD8m8uLWCzgQ/rvEeLGh1RrYD04lQUNSWcNxOO5gygbNruoB
- KcN8RCHQU0zISJc932QYI4CDtJu2sAHsI34HTJfVQogy3UJGcFggBIXH/+fhG1L7HVZA=;
+ bh=eQlnBWaHzao2I17gUWaXySf5FOpWBo6NLf4guYDsgzg=; b=GcrYmJiAv0Jv293nTtK95lZw3m
+ n0ddt8+1DsoovbhbJUT0AL1ePIut7b8t9IRgddsDXEyx9/dxCbxqTIu/gMB1PqGMEqphN/NogPLY9
+ 8mwu2VCsF/hQkbk8f9GnnZg1xzPpgMcrbNPb7KRI8Nw3gatl4TRhmfh8eZhYAivaRV1E=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
@@ -29,33 +29,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=40A3vX6g2/kRaqxmLMMb742cwXM6gvhJpADoiuzucg8=; b=W7YKGNUK8+PmfkLp5WnxKo7MFu
- pPYtGbpWKAPSGPeKb6y+XlSjEvIda4XivUOATdd/TO2fj9XvgNcjR60ZEZFVxfs8c6oykExzx6M2e
- YeBX4SciDzl0J573YB5uBJF0uHTeXHxtzOVFuABoLiJz/3WSTi20Xo1W52RcgGF1biQc=;
-Received: from mga17.intel.com ([192.55.52.151])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ bh=eQlnBWaHzao2I17gUWaXySf5FOpWBo6NLf4guYDsgzg=; b=hxtLhS5loHEX6gSKPdz1c5Rrgh
+ h/gLGzTwStMMDRU2MEIY66x/RldOYFqdMlsPP+uxc1zVdbqpZ6hQECJPPrt6EwshUhgz39p+n3rAP
+ d6+/1Z0/Rzu2oQ8N14kRzL/AYu8G9LPtnAGIxr4PxSsCQP+4P0p3SBkvFt6dlYXiy2rY=;
+Received: from mga03.intel.com ([134.134.136.65])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jYQ6C-005o6n-Q6
- for tboot-devel@lists.sourceforge.net; Tue, 12 May 2020 08:17:14 +0000
-IronPort-SDR: B/DhbeXWlfNw4Myp6ENXbxyPjUn4yxz5kEg6XI6gz9EOBhA++fzpan5DB+RDX0+x7DwU2na8zy
- i/a6TaxoNS/A==
+ id 1jYQd4-00AnP2-G5
+ for tboot-devel@lists.sourceforge.net; Tue, 12 May 2020 08:51:12 +0000
+IronPort-SDR: aL+R4KniZLWzTsMIluu1PkveI7eXqwWn6vihGsrjmECPx0C818emi5SUn/XkVbgfBq4APEY0ob
+ 0bqc7jdoefVQ==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2020 01:17:00 -0700
-IronPort-SDR: KcMB4rBqdeNICsMfov+Ky4qJ5ulTb8Z70eog6VQ/JfSPglr27gMpQk5RMiH6+LBWhetTWrwxfZ
- Af/Qvou1dt/g==
-X-IronPort-AV: E=Sophos;i="5.73,383,1583222400"; d="scan'208";a="437008839"
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 May 2020 01:51:04 -0700
+IronPort-SDR: N0lo+LgzBVsvvpIixaqG9Ptmqdplt7w4uN5bro2EiPRKOgsl0fIZhZ7kirq2YM3WohKLP6hwSG
+ 0Sza/qZkMZFg==
+X-IronPort-AV: E=Sophos;i="5.73,383,1583222400"; d="scan'208";a="437022640"
 Received: from lhawrylk-desk.ger.corp.intel.com ([10.213.1.163])
  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2020 01:16:58 -0700
-Message-ID: <3da41313c3b91f154f53f9c2c9645ade6399cff9.camel@linux.intel.com>
+ 12 May 2020 01:51:03 -0700
+Message-ID: <0006538262f002e44d5bdc18e338e294fd5185e2.camel@linux.intel.com>
 From: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
 To: Timo Lindfors <timo.lindfors@iki.fi>, tboot-devel@lists.sourceforge.net
-Date: Tue, 12 May 2020 10:16:56 +0200
-In-Reply-To: <alpine.DEB.2.20.2005081919250.3828@mail.home>
-References: <alpine.DEB.2.20.2005081919250.3828@mail.home>
+Date: Tue, 12 May 2020 10:50:58 +0200
+In-Reply-To: <alpine.DEB.2.20.2005101501330.5531@mail.home>
+References: <alpine.DEB.2.20.2005101501330.5531@mail.home>
 User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
 MIME-Version: 1.0
 X-Spam-Score: 0.0 (/)
@@ -63,9 +63,9 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1jYQ6C-005o6n-Q6
-Subject: Re: [tboot-devel] tboot 1.9.12 build failure if CFLAGS is set in
- environment
+X-Headers-End: 1jYQd4-00AnP2-G5
+Subject: Re: [tboot-devel] packaging for debian,
+ some clarifications for licensing?
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,68 +81,48 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Sat, 2020-05-09 at 00:55 +0300, Timo Lindfors wrote:
+On Sun, 2020-05-10 at 15:12 +0300, Timo Lindfors wrote:
 > Hi,
 > 
-> I get the following build failure on debian unstable with GCC 9.3.0:
+> I'm planning to package tboot for Debian. As part of the process I went 
+> through all the copyright and license notices in tboot-1.9.12.tar.gz.gpg.
 > 
-> tar xf tboot-1.9.12.tar.gz
-> cd tboot-1.9.12/
-> env CFLAGS="-g" make
-> ...
-> cc -z noexecstack -z relo -z now -c -o obj/mem_primitives_lib.o 
-> safeclib/mem_primitives_lib.c -g -Wall -Wformat-security -Werror 
-> -Wstrict-prototypes -Wextra -Winit-self -Wswitch-default 
-> -Wunused-parameter -Wwrite-strings -Wlogical-op 
-> -Wno-missing-field-initializers -Wno-address-of-packed-member 
-> -fno-strict-aliasing -std=gnu99 -Wno-array-bounds -O2 -U_FORTIFY_SOURCE 
-> -D_FORTIFY_SOURCE=2 -m64 -I/home/lindi/tboot-1.9.12/safestringlib/include 
-> -Wall -Wformat-security -Werror -Wstrict-prototypes -Wextra -Winit-self 
-> -Wswitch-default -Wunused-parameter -Wwrite-strings -Wlogical-op 
-> -Wno-missing-field-initializers -Wno-address-of-packed-member 
-> -fno-strict-aliasing -std=gnu99 -Wno-array-bounds -O2 -U_FORTIFY_SOURCE 
-> -D_FORTIFY_SOURCE=2 -m64 -I/home/lindi/tboot-1.9.12/safestringlib/include 
-> -Iinclude -fstack-protector-strong -fPIE -fPIC -O2 -D_FORTIFY_SOURCE=2 
-> -Wformat -Wformat-security -DSTDC_HEADERS
-> safeclib/mem_primitives_lib.c: In function \u2018mem_prim_set\u2019:
-> safeclib/mem_primitives_lib.c:111:25: error: this statement may fall 
-> through [-Werror=implicit-fallthrough=]
->    111 |         case 15:  *lp++ = value32;
->        |                   ~~~~~~^~~~~~~~~
-> safeclib/mem_primitives_lib.c:112:9: note: here
->    112 |         case 14:  *lp++ = value32;
->        |         ^~~~
+> Everything looks pretty smooth but I do have two concerns:
 > 
+> 1) lcptools/Linux_LCP_Tools_User_Manual.doc has the paragraph
 > 
-> It seems that Config.mk adds -Werror and -Wextra that cause this to 
-> happen. Why doesn't this happen when CFLAGS is not set as an
-> environment variable? Apparently because
+> "This document and the software described in it are furnished under 
+> license and may only be used or copied in accordance with the terms of the 
+> license."
 > 
-> CFLAGS += $(CFLAGS_WARN) -fno-strict-aliasing -std=gnu99
+> but it is not at all clear what license this is talking about. Is it the 
+> BSD-3-clause license used in most other files or something else? Would it 
+> be possible to clarify this either in this file or in the COPYING file?
 > 
-> behaves differently with recursive makefiles if CFLAGS is in the 
-> environment:
+> 2) The COPYING file states
 > 
-> "By default, only variables that came from the environment or the command 
-> line are passed to recursive invocations."
+> "Files which do not contain any copyright information are assumed to be
+> copyrighted by Intel Corporation. All other files contain their copyright 
+> and license at the beginning of the file."
 > 
->   https://www.gnu.org/software/make/manual/html_node/Environment.html
-> 
-> Is the intent here that CFLAGS_WARN should be used for the whole build? If 
-> yes, then we need to add "export CFLAGS" to ensure that it is passed to 
-> other makefiles and also fix that build failure.
-> 
-> If not, we need to add "unexport CFLAGS" and don't necessary need to fix 
-> the switch-case statement.
-> 
-> 
-> -Timo
+> This is a good clarification but this file does not actually explain what 
+> the license of files without license information is. Is it the 
+> BSD-3-clause license used in most files? The files without license 
+> information that I could identify are:
 > 
 
-Hi
+Hi Timo
 
-Thanks for investigating that issue. Fixed in a6180f9e9e86
+The base TBOOT licence is BSD-3-clause, however some files that comes
+from other projects have different licenses (but all of them are
+compatible with BSD-3-clause).
 
+I can add information to COPYING file that looks like: "All files that
+do not have license header, have BSD-3-clause license and are
+copyrighted by Intel Corporation". Will it solve all license gaps in
+your opinion?
+
+Thanks,
 Lukasz
 
 
