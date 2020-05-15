@@ -2,70 +2,103 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36D2B1D47C5
-	for <lists+tboot-devel@lfdr.de>; Fri, 15 May 2020 10:07:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B48051D53F1
+	for <lists+tboot-devel@lfdr.de>; Fri, 15 May 2020 17:14:27 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1jZVNm-0001QJ-Oq; Fri, 15 May 2020 08:07:50 +0000
+	id 1jZc2X-000514-IE; Fri, 15 May 2020 15:14:21 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1jZVNk-0001QB-Si
- for tboot-devel@lists.sourceforge.net; Fri, 15 May 2020 08:07:48 +0000
+ (envelope-from <timo.lindfors@iki.fi>) id 1jZc2W-00050v-6z
+ for tboot-devel@lists.sourceforge.net; Fri, 15 May 2020 15:14:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
- :References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
+ In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
+ :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=btDgM4YATpXlTKkf2Hs4Joc57xukAikxh5B7FoDT3nY=; b=gPMBTv9iX9HSUYVAq83vXTASUH
- 7/D5LW17fI8sp6qbJJ0p1n1WW5Gibt9u1K8G0fWLpuXVsZdnM9t7q0MDk3ZQ+5XcVlvmme3P5M8MW
- in7Fc0pSNyytH/hE8fZKhwxH3bE7i3Ox7Med59UzM0MfByWkypcHdqnzeUixWrKXu+NI=;
+ bh=x8SbOEDsomhh2LcFGoOK9l1qiUck6ExV23Nay8iQFVg=; b=YZMYZ9vwwL7ckGC1p+zWjdji6d
+ K5++lGw7nm8Yl/VjO4DN/gy8YK8sZ6bRhwZ2NK/Ep9SkpFY/lb97h/WZ1bB1gnqKS5IvNPAVAAbw6
+ sSxmo8S8qiXRnpEEp16RY61Ym7NQLowznykJ91WsmYFwyJteyq4eVdc2G/Af1JNwmUcI=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
- In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:Content-ID:
+ h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=btDgM4YATpXlTKkf2Hs4Joc57xukAikxh5B7FoDT3nY=; b=OD+icS4/dGlW/HMUx0rWNKgTm8
- gWAtnZ4p5MJNXHPiHE5qdSn7h/CWMLl4DBQV4i1q3iKcIblNgqhe4nEulfHcXTDsUHGkVFddBngka
- 0cRmJx2g5uugANsyfl8oZxmvcSE2H3oAP41oa9o4LJaEpi61RccDT9UatLwH7hCaaCDk=;
-Received: from mga03.intel.com ([134.134.136.65])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ bh=x8SbOEDsomhh2LcFGoOK9l1qiUck6ExV23Nay8iQFVg=; b=kP31jq1ZxciOMEtffvmC8u7u3V
+ 6SJRo256rxMWXKLvRfhur8Xay07JRQzSHBTp2EG5P4tB6I6FUmTuQLKWDahdQzGw0OGzn3QOLS8Q5
+ Mrt0ojSHsIDEZwT5rQRE+9N71kW1F4y7/1JdvapC47BKMj7Mq93wrQLjiSMVUep0EamY=;
+Received: from lahtoruutu.iki.fi ([212.16.98.55])
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jZVNj-00H7eN-NV
- for tboot-devel@lists.sourceforge.net; Fri, 15 May 2020 08:07:48 +0000
-IronPort-SDR: xaKrdBngrubxb7gxVCIFLs1tfkhG7fnpO2s/g/K7vhPfp7eX7/oOhw4P+1EsbD3fj/7IsP+H0Z
- er6IqvsoGLPQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2020 01:07:42 -0700
-IronPort-SDR: h55HiyPc8+cpzKfQeDZVPpQU0wcAwcaS+pS7IXQvwO/JI85mj30LvjRCdpv3PlrzeQm/jSaXJL
- mz1cUoGaBXBQ==
-X-IronPort-AV: E=Sophos;i="5.73,394,1583222400"; d="scan'208";a="266529962"
-Received: from lhawrylk-desk.ger.corp.intel.com ([10.213.20.117])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2020 01:07:40 -0700
-Message-ID: <3d421472c4d7f92bddd40b715025283e8178d3bb.camel@linux.intel.com>
-From: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
-To: Timo Lindfors <timo.lindfors@iki.fi>
-Date: Fri, 15 May 2020 10:07:38 +0200
-In-Reply-To: <alpine.DEB.2.20.2005141640030.9904@mail.home>
+ id 1jZc2R-00BjRf-Gh
+ for tboot-devel@lists.sourceforge.net; Fri, 15 May 2020 15:14:20 +0000
+Received: from mail.home (82-181-208-90.bb.dnainternet.fi [82.181.208.90])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ (Authenticated sender: timo.lindfors)
+ by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 5F2441B00162;
+ Fri, 15 May 2020 18:14:00 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu; 
+ t=1589555640;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=x8SbOEDsomhh2LcFGoOK9l1qiUck6ExV23Nay8iQFVg=;
+ b=ADBgxWE2QXBu4z3J98TnTtt8uivpG/SvPzcgLyu8pfUuR2cNL2OdGr6ErnoJ57jjmsYZ0k
+ ygkYx/bjIlfXGkAGTU+1mnKWXtH/3k6+PAhywTMlnzl/KyjhZjtD0LsdTVsLPW/+FVq698
+ JbgTCmy9HLloH8fnkjWe150wJby6XclRhUQ5QzyCdM+opZcWSk+CUoY7VYSyoSsK4TOpnB
+ Kg5Gl+zvcwFPg0fHjz78+0dYp9zJ4OK3Ai5lIAAMDSs6ovWytXYaBzWJLupnJEInpIAQwL
+ ha5h+QSRsgY1AKEUjFieelnof8qDpN/fbkAjqQMZsVRuVQ6zJXd+tGPDJpxwSA==
+Received: from localhost ([127.0.0.1]) by mail.home with esmtp (Exim 4.89)
+ (envelope-from <timo.lindfors@iki.fi>)
+ id 1jZc25-0002uz-KW; Fri, 15 May 2020 18:13:53 +0300
+Date: Fri, 15 May 2020 18:13:53 +0300 (EEST)
+From: Timo Lindfors <timo.lindfors@iki.fi>
+To: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
+In-Reply-To: <3d421472c4d7f92bddd40b715025283e8178d3bb.camel@linux.intel.com>
+Message-ID: <alpine.DEB.2.20.2005151805340.11206@mail.home>
 References: <alpine.DEB.2.20.2005102344150.5921@mail.home>
  <109c0b38a6b6d82452ff4acc4ef8b10a6fd2b3eb.camel@linux.intel.com>
  <alpine.DEB.2.20.2005141640030.9904@mail.home>
-User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
+ <3d421472c4d7f92bddd40b715025283e8178d3bb.camel@linux.intel.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-X-Spam-Score: 0.0 (/)
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+ s=lahtoruutu; t=1589555640;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=x8SbOEDsomhh2LcFGoOK9l1qiUck6ExV23Nay8iQFVg=;
+ b=NcAT+P3vaEITGlvGiD0734fZgOGyjBJcyani9WQe9t+xVKp7eu0Nv0+FjarijGpCHKbfuS
+ VMU0qr/16HL3RY9Axp0jmKa+3PouiAgJQdBU0sVdTPs9yR4TVLD/06D8/iLeMPuVvPMYXp
+ Ou/FSp7zlxv+Ov8K5q/Ex7DdBpI/5lz7tYpq4QlC0XhkDFNB+E1o10xNuqlXVzj3UNR1PY
+ XLoUnbG21mPBGslWQNOo02M8fc20iw8PMWAlTg6SIq/IiEHko4YQO4141kXxDTXRsTeS4p
+ 451BPaTtRSoX11yMSbR7Ae8OopuzojHVYwMrPKPYryMZokLKGpR9HMG+Mw+7bg==
+ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1589555640; a=rsa-sha256; cv=none;
+ b=gSGdo8XhdgPXtuSIHA7ebXtse9+FRgXGdbrnmMOSVV/2LCXZWZQ5fBO3QruIPiPwiZW/1q
+ v8BnJFcuGiPi4EAVcvxHFvfLTf9Xh/nYyGABJrfiRwwq98MnDDoOXAdIA+r8xNnriwxtB0
+ Q4MikMqLwi3NIanaIJCiJaIMk8TZtAcYO8bjP79qBb90IXIi7+rQ/UKOmIbGggOMOa7k1Z
+ Stc1Iqi8BELdrpJLSrClLZ7hGjoTR8WDYGM121wFxTr8rL1DkBkyrg3niF0DwotMv9dsyz
+ Jd8GDW9opcjw5MCY5v7QkLp+o+HBzcZYwPHC0rr0RQ2QH97YTauoDP84s0az6A==
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=timo.lindfors smtp.mailfrom=timo.lindfors@iki.fi
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1jZVNj-00H7eN-NV
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+ 0.0 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jZc2R-00BjRf-Gh
 Subject: Re: [tboot-devel] rename parse_err?
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
@@ -79,28 +112,32 @@ List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
 Cc: tboot-devel@lists.sourceforge.net
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Thu, 2020-05-14 at 16:42 +0300, Timo Lindfors wrote:
-> Hi,
-> 
-> On Thu, 14 May 2020, Lukasz Hawrylko wrote:
-> > Agree, this should be changed. I have also renamed acminfo to txt-
-> > acminfo, now all these tools has 'txt-' prefix.
-> 
-> Great. I guess you also updated the man pages to refer to these new names? 
-> Also docs/Makefile should list man pages for all commands that are 
-> installed.
-> 
-> -Timo
-> 
+Hi,
 
-Done.
+On Fri, 15 May 2020, Lukasz Hawrylko wrote:
+> Done.
 
-Thanks,
-Lukasz
+Thanks, I'll do some testing and ask for further feedback. Would it be 
+possible to release a new version after some time with all these
+changes so that they would be part of the eventual Debian upload?
+
+Btw, can you recommend some tool for defining an NVRAM region that would 
+allow me to specify the DRTM PCR values that need to match before it can 
+be accessed? tpm_nvdefine -f works only with PCRs <= 15. I sent a patch
+last summer to fix this but the project does not seem to be very active
+and the patch appears to have been forgotten:
+
+https://www.mail-archive.com/trousers-tech@lists.sourceforge.net/msg00684.html
+
+As far as I understand, the defindex tool in tboot does not let me specify 
+PCR values either. I need this for forward-sealing of data across 
+updates.
+
+-Timo
 
 
 
