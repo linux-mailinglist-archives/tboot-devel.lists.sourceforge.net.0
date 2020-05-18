@@ -2,77 +2,70 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7004B1D79EC
-	for <lists+tboot-devel@lfdr.de>; Mon, 18 May 2020 15:34:06 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB1EE1D7A4D
+	for <lists+tboot-devel@lfdr.de>; Mon, 18 May 2020 15:47:18 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1jafu3-0007L1-Eq; Mon, 18 May 2020 13:33:59 +0000
+	id 1jag6s-0006vV-U6; Mon, 18 May 2020 13:47:14 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1jafu1-0007Ks-LA
- for tboot-devel@lists.sourceforge.net; Mon, 18 May 2020 13:33:57 +0000
+ (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1jag6r-0006vM-DU
+ for tboot-devel@lists.sourceforge.net; Mon, 18 May 2020 13:47:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
- :References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+ :References:In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=AuC/b3UQK1Mjh98QIr2ZRs70dDGz6L309Bv8KNC1ty4=; b=YrsV7+rDQPTRoUD24H3g+DZ7Hj
- N84nv6grTU8MdMZcerSA40h4fucYKbjaaEITb7U+kSPpXtGrckR9pWSlvB4j56SMlueR/c7UNBbax
- yamL8iLR1hVDuRGTJbW8Uu/3G2DwaoxKw6t/4HVbpMMQBQ1wEfh9JXb6yfyGp5pFLUfg=;
+ bh=UyEJxMwsHbGKcJHJ1rNP/tc/dcgFmK02+jYkkRfRc4s=; b=TisNGP6IFupM87JPu2OYU1IM0J
+ EjbrYG8TtDDqQzt3UvxQlj0AnhH0gVU0eXKPw+auZgG6jasp1O9ACwZkbMuItOs29085VQ+nrm9v3
+ EYB4jO6A6n8PQ202cx88erqHAtKP6HQfommQdpuVO4ED2cIuv8EyrowmY4LBSiuNA3Kw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
- In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:Content-ID:
+ In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=AuC/b3UQK1Mjh98QIr2ZRs70dDGz6L309Bv8KNC1ty4=; b=aie3xKDkd8VuWQNt77GBo3mc6Y
- hAKcqUyfV0YmVF4nLzhxSwLIk0RCzyCLOCaAnBQqKsDI0j6mnKeW9RhhoBLvd8rZn+FtdPuh91k0L
- OURpA0earMfOVrjcsCRPtJ3KIh3tR/KNvS+IanBE0IMc25AfZvqNcUpfU24IoMUQh1ng=;
-Received: from mga06.intel.com ([134.134.136.31])
+ bh=UyEJxMwsHbGKcJHJ1rNP/tc/dcgFmK02+jYkkRfRc4s=; b=AX09NRAigH9/Jy7/o9uLKuLFyR
+ YLc6RgSEf6Qsxb9SO2AR5/BDhpdJxHDila8JL09jpIf95Up//dAeEDYlxKgcfVMML8nLIM07zQ3i+
+ EWr+69NQO+FWg0VM/3R/Oa5hGLjcUP7Nz/tjcO/LeSDZqyih6BVmRQ5OWhRPWcMIBw9I=;
+Received: from mga03.intel.com ([134.134.136.65])
  by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jaftz-00DwD8-QZ
- for tboot-devel@lists.sourceforge.net; Mon, 18 May 2020 13:33:57 +0000
-IronPort-SDR: R7Jmyrx4+taVzaB8RrUsK5eBKeVamHU0vOeYARG/oAhTISm0VC7xexjE3LWkkwEal+ClSpDbYS
- Gb5r0hINVKZw==
+ id 1jag6q-00Dx8S-AY
+ for tboot-devel@lists.sourceforge.net; Mon, 18 May 2020 13:47:13 +0000
+IronPort-SDR: R0sdWagEFrktErf765CTtXRgYlY17t0uZ6lQ/7BKLg8SU/Tc8p9A7cckyaoqM0ERoyapQYiUMs
+ QL3tqnxhoPNQ==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 May 2020 06:33:42 -0700
-IronPort-SDR: 3sOp6B65adiAojVfP3AgAqvfr+hFPBpVtMAUknfY3Y9ATddzVKwXMDVL+2gppU9ZbLif2Ts8A8
- bLB2fSPqh5dQ==
-X-IronPort-AV: E=Sophos;i="5.73,407,1583222400"; d="scan'208";a="263955011"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 May 2020 06:45:44 -0700
+IronPort-SDR: sPXykurOEmOGje0cU/Ejdjyj2stVOCH5dw5Bvt5M/mevjyrf41Z/hS8hBQWIRuPruSTaiyqmZZ
+ W5vL3EcDP+Eg==
+X-IronPort-AV: E=Sophos;i="5.73,407,1583222400"; d="scan'208";a="308111308"
 Received: from lhawrylk-desk.ger.corp.intel.com ([10.213.6.78])
- by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 May 2020 06:33:42 -0700
-Message-ID: <5a16744eca4b4bd56a795ba37e41726f0f16c090.camel@linux.intel.com>
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 May 2020 06:45:43 -0700
+Message-ID: <6d5a4ac27149a7cd6d8d87061340790f6cdf85b6.camel@linux.intel.com>
 From: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
-To: Timo Lindfors <timo.lindfors@iki.fi>
-Date: Mon, 18 May 2020 15:33:39 +0200
-In-Reply-To: <alpine.DEB.2.20.2005151805340.11206@mail.home>
-References: <alpine.DEB.2.20.2005102344150.5921@mail.home>
- <109c0b38a6b6d82452ff4acc4ef8b10a6fd2b3eb.camel@linux.intel.com>
- <alpine.DEB.2.20.2005141640030.9904@mail.home>
- <3d421472c4d7f92bddd40b715025283e8178d3bb.camel@linux.intel.com>
- <alpine.DEB.2.20.2005151805340.11206@mail.home>
+To: Timo Lindfors <timo.lindfors@iki.fi>, tboot-devel@lists.sourceforge.net
+Date: Mon, 18 May 2020 15:45:40 +0200
+In-Reply-To: <alpine.DEB.2.20.2005161559040.12143@mail.home>
+References: <alpine.DEB.2.20.2005161559040.12143@mail.home>
 User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
 MIME-Version: 1.0
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: mail-archive.com]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1jaftz-00DwD8-QZ
-Subject: Re: [tboot-devel] rename parse_err?
+X-Headers-End: 1jag6q-00Dx8S-AY
+Subject: Re: [tboot-devel] txt-acminfo report incorrect data if msr module
+ is not loaded
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,44 +77,33 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: tboot-devel@lists.sourceforge.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Fri, 2020-05-15 at 18:13 +0300, Timo Lindfors wrote:
+On Sat, 2020-05-16 at 16:03 +0300, Timo Lindfors wrote:
 > Hi,
 > 
-> On Fri, 15 May 2020, Lukasz Hawrylko wrote:
-> > Done.
+> while testing latest tboot with latest debian unstable I noticed that 
+> txt-acminfo reports "ACM does not match platform" for all ACM modules. It 
+> seems that this happens since /dev/cpu/0/msr does not exist by default in 
+> Debian. There is an error "Error: failed to open /dev/cpu/0/msr" but since 
+> txt-acminfo reports so much information this can easily be missed by a 
+> user. After I run "modprobe msr" txt-acminfo behaves normally again.
 > 
-> Thanks, I'll do some testing and ask for further feedback. Would it be 
-> possible to release a new version after some time with all these
-> changes so that they would be part of the eventual Debian upload?
-
-1.9.12 was released recently, so I don't have right now plans for new
-release timeline. There are few more changes that I am working on right
-now and I want to include them in next release.
-
+> Could we make missing /dev/cpu/0/msr a fatal error that should suggest the 
+> user to run "modprobe msr"? In any case txt-acminfo should not report 
+> "ACM does not match platform" for a valid ACM file. It should report 
+> "Could not determine if ACM matches platform (maybe you need to modprobe 
+> msr)?" or something.
 > 
-> Btw, can you recommend some tool for defining an NVRAM region that would 
-> allow me to specify the DRTM PCR values that need to match before it can 
-> be accessed? tpm_nvdefine -f works only with PCRs <= 15. I sent a patch
-> last summer to fix this but the project does not seem to be very active
-> and the patch appears to have been forgotten:
+> -Timo
 > 
-> https://www.mail-archive.com/trousers-tech@lists.sourceforge.net/msg00684.html
-> 
-> 
-> As far as I understand, the defindex tool in tboot does not let me specify 
-> PCR values either. I need this for forward-sealing of data across 
-> updates.
 > 
 
-As you are using trousers I guess that you have TPM 1.2 am I right? It
-is EOL now that's why nobody cares about trousers project, is it
-possible in your platform to use TPM 2.0? I highly recommend to upgrade,
-than you can use tpm2-tools.
+Hi Timo
+
+That sounds reasonable. Could you please send a patch with that change?
 
 Thanks,
 Lukasz
