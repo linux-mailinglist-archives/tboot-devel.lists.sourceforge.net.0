@@ -2,70 +2,99 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB1EE1D7A4D
-	for <lists+tboot-devel@lfdr.de>; Mon, 18 May 2020 15:47:18 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 76BF11D9C2D
+	for <lists+tboot-devel@lfdr.de>; Tue, 19 May 2020 18:14:48 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1jag6s-0006vV-U6; Mon, 18 May 2020 13:47:14 +0000
+	id 1jb4t9-00083i-3o; Tue, 19 May 2020 16:14:43 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1jag6r-0006vM-DU
- for tboot-devel@lists.sourceforge.net; Mon, 18 May 2020 13:47:13 +0000
+ (envelope-from <timo.lindfors@iki.fi>) id 1jb4sz-00082I-NF
+ for tboot-devel@lists.sourceforge.net; Tue, 19 May 2020 16:14:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
- :References:In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
+ In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
+ :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=UyEJxMwsHbGKcJHJ1rNP/tc/dcgFmK02+jYkkRfRc4s=; b=TisNGP6IFupM87JPu2OYU1IM0J
- EjbrYG8TtDDqQzt3UvxQlj0AnhH0gVU0eXKPw+auZgG6jasp1O9ACwZkbMuItOs29085VQ+nrm9v3
- EYB4jO6A6n8PQ202cx88erqHAtKP6HQfommQdpuVO4ED2cIuv8EyrowmY4LBSiuNA3Kw=;
+ bh=Pu/W430DQki9obzV8T329lmKz+IXMMczyis9pgg5qNo=; b=E4K2kAljp+PbbZwMocdZcaKC9m
+ GwGeG0ji1ur+uA1J8GqRBW3POfTHMXWpWOB24maaULP5uA2zWTwuIluCeSjk2j1vUDiYvHTAOuSnJ
+ WM8G0/FHQwOxs401KEX5Lq3Ng7XdLno+uI4JDnH4FfVlBF4PK+wSkM4wdn4eKm4ruetw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
- In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
+ h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=UyEJxMwsHbGKcJHJ1rNP/tc/dcgFmK02+jYkkRfRc4s=; b=AX09NRAigH9/Jy7/o9uLKuLFyR
- YLc6RgSEf6Qsxb9SO2AR5/BDhpdJxHDila8JL09jpIf95Up//dAeEDYlxKgcfVMML8nLIM07zQ3i+
- EWr+69NQO+FWg0VM/3R/Oa5hGLjcUP7Nz/tjcO/LeSDZqyih6BVmRQ5OWhRPWcMIBw9I=;
-Received: from mga03.intel.com ([134.134.136.65])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
+ bh=Pu/W430DQki9obzV8T329lmKz+IXMMczyis9pgg5qNo=; b=ZXEOpSbD8N/uqyGifbKtS8pFZ3
+ XF/tjln4Z7fhcVp4bgO+c38rJ5hCgISz4WuR98KeoQnjGHlQaZQF6oHRVGvu5q8frnmA2koKzy/t2
+ icHiKiVm0v0iCe6Ud5xDo7rTkTAKef/eJTd18IE5JeQtwCTLOfLyCQMYJ40/dTNbjwJY=;
+Received: from meesny.iki.fi ([195.140.195.201])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jag6q-00Dx8S-AY
- for tboot-devel@lists.sourceforge.net; Mon, 18 May 2020 13:47:13 +0000
-IronPort-SDR: R0sdWagEFrktErf765CTtXRgYlY17t0uZ6lQ/7BKLg8SU/Tc8p9A7cckyaoqM0ERoyapQYiUMs
- QL3tqnxhoPNQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 May 2020 06:45:44 -0700
-IronPort-SDR: sPXykurOEmOGje0cU/Ejdjyj2stVOCH5dw5Bvt5M/mevjyrf41Z/hS8hBQWIRuPruSTaiyqmZZ
- W5vL3EcDP+Eg==
-X-IronPort-AV: E=Sophos;i="5.73,407,1583222400"; d="scan'208";a="308111308"
-Received: from lhawrylk-desk.ger.corp.intel.com ([10.213.6.78])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 May 2020 06:45:43 -0700
-Message-ID: <6d5a4ac27149a7cd6d8d87061340790f6cdf85b6.camel@linux.intel.com>
-From: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
-To: Timo Lindfors <timo.lindfors@iki.fi>, tboot-devel@lists.sourceforge.net
-Date: Mon, 18 May 2020 15:45:40 +0200
-In-Reply-To: <alpine.DEB.2.20.2005161559040.12143@mail.home>
-References: <alpine.DEB.2.20.2005161559040.12143@mail.home>
-User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
+ id 1jb4sw-007aXF-1C
+ for tboot-devel@lists.sourceforge.net; Tue, 19 May 2020 16:14:33 +0000
+Received: from mail.home (89-27-97-237.bb.dnainternet.fi [89.27.97.237])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ (Authenticated sender: timo.lindfors)
+ by meesny.iki.fi (Postfix) with ESMTPSA id EF746202C7;
+ Tue, 19 May 2020 19:14:12 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
+ t=1589904853;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Pu/W430DQki9obzV8T329lmKz+IXMMczyis9pgg5qNo=;
+ b=SdxN6v5l5mkhzpmcnE8gfTsLXabYJoYbvAqGzgh7HG6kwiJEb8oi94VfiM4tbk4huJRhH3
+ 0ZzV+XXrdCT2pEkSz5mTdMLaz4EV5J1aXrhf3Sz3WRya+Bj+xKiCIaBRLhhH+Ps6vRynEw
+ gu2c+ZBEJRvJkkl9N6rPrPRYBhXCq8A=
+Received: from localhost ([127.0.0.1]) by mail.home with esmtp (Exim 4.89)
+ (envelope-from <timo.lindfors@iki.fi>)
+ id 1jb4sX-0003rv-UJ; Tue, 19 May 2020 19:14:05 +0300
+Date: Tue, 19 May 2020 19:14:05 +0300 (EEST)
+From: Timo Lindfors <timo.lindfors@iki.fi>
+To: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
+In-Reply-To: <5a16744eca4b4bd56a795ba37e41726f0f16c090.camel@linux.intel.com>
+Message-ID: <alpine.DEB.2.20.2005191907580.14855@mail.home>
+References: <alpine.DEB.2.20.2005102344150.5921@mail.home>
+ <109c0b38a6b6d82452ff4acc4ef8b10a6fd2b3eb.camel@linux.intel.com>
+ <alpine.DEB.2.20.2005141640030.9904@mail.home>
+ <3d421472c4d7f92bddd40b715025283e8178d3bb.camel@linux.intel.com> 
+ <alpine.DEB.2.20.2005151805340.11206@mail.home>
+ <5a16744eca4b4bd56a795ba37e41726f0f16c090.camel@linux.intel.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-X-Spam-Score: 0.0 (/)
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+ s=meesny; t=1589904853;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Pu/W430DQki9obzV8T329lmKz+IXMMczyis9pgg5qNo=;
+ b=uMUvoHja6gKTjuh/j22MlHbfdr29mU+ie9yoyUFOgEj1Ly4q86sU4wZ1HPS+HEA8AyVhXS
+ NfxLevrE8/tFc7yme+xQ/3JCR2xsHLvNXnjdGaK7FZilmPoTyuVjt3CvbPVt6z01JsF4u9
+ WapvEmsQIiFLLHuoGX9aB9rBp3L0Y4U=
+ARC-Seal: i=1; s=meesny; d=iki.fi; t=1589904853; a=rsa-sha256; cv=none;
+ b=gLwWH/l0NvRwkU83nbmHuH4++vMkdPey3fP0yzuvy+Y0UAOTV38JnYte4BCHWSPv0Jfpch
+ 893l/uYgN63C2OVNvpnXXmi7bKnUgeLL6cFC2WYatBtb139u5rOT/AsPOJknsbmUkwNm00
+ pKsVZkW8HV6n0LsLcRKVZjwQY0f+UiE=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=timo.lindfors smtp.mailfrom=timo.lindfors@iki.fi
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1jag6q-00Dx8S-AY
-Subject: Re: [tboot-devel] txt-acminfo report incorrect data if msr module
- is not loaded
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+X-Headers-End: 1jb4sw-007aXF-1C
+Subject: Re: [tboot-devel] rename parse_err?
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,36 +106,35 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: tboot-devel@lists.sourceforge.net
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-On Sat, 2020-05-16 at 16:03 +0300, Timo Lindfors wrote:
-> Hi,
-> 
-> while testing latest tboot with latest debian unstable I noticed that 
-> txt-acminfo reports "ACM does not match platform" for all ACM modules. It 
-> seems that this happens since /dev/cpu/0/msr does not exist by default in 
-> Debian. There is an error "Error: failed to open /dev/cpu/0/msr" but since 
-> txt-acminfo reports so much information this can easily be missed by a 
-> user. After I run "modprobe msr" txt-acminfo behaves normally again.
-> 
-> Could we make missing /dev/cpu/0/msr a fatal error that should suggest the 
-> user to run "modprobe msr"? In any case txt-acminfo should not report 
-> "ACM does not match platform" for a valid ACM file. It should report 
-> "Could not determine if ACM matches platform (maybe you need to modprobe 
-> msr)?" or something.
-> 
-> -Timo
-> 
-> 
+On Mon, 18 May 2020, Lukasz Hawrylko wrote:
+> 1.9.12 was released recently, so I don't have right now plans for new
+> release timeline. There are few more changes that I am working on right
+> now and I want to include them in next release.
 
-Hi Timo
+Ok, I can upload a mercurial snapshot as well, no problem.
 
-That sounds reasonable. Could you please send a patch with that change?
+> As you are using trousers I guess that you have TPM 1.2 am I right? It
+> is EOL now that's why nobody cares about trousers project, is it
+> possible in your platform to use TPM 2.0? I highly recommend to upgrade,
+> than you can use tpm2-tools.
 
-Thanks,
-Lukasz
+Yes, there are quite a lot of existing TPM 1.2 systems. Some support 
+upgrading to TPM 2.0 but many don't. I've been doing my testing mostly on 
+Lenovo T430s laptop. I'd like to use a newer laptop for this but the ones 
+that I have available don't support TXT (checked T460, T470 and T490).
+
+The situation is bit better with servers but due to this COVID-19 
+situation I cannot really do any of my testing on servers. Remotely 
+upgrading to TPM 2.0 sounds very scary.
+
+-Timo
+
+
 
 
 
