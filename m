@@ -2,82 +2,89 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5EE3D1DFA1B
-	for <lists+tboot-devel@lfdr.de>; Sat, 23 May 2020 20:01:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 759A11E0098
+	for <lists+tboot-devel@lfdr.de>; Sun, 24 May 2020 18:31:12 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1jcYSn-0002MN-BC; Sat, 23 May 2020 18:01:37 +0000
+	id 1jctWj-0000du-7B; Sun, 24 May 2020 16:31:05 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <timo.lindfors@iki.fi>) id 1jcYSm-0002MG-5S
- for tboot-devel@lists.sourceforge.net; Sat, 23 May 2020 18:01:36 +0000
+ (envelope-from <timo.lindfors@iki.fi>) id 1jctWh-0000dh-GY
+ for tboot-devel@lists.sourceforge.net; Sun, 24 May 2020 16:31:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=To:From:Date:Message-Id:Subject:
- Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Reply-To:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=UclB3qSC8HsVyvKVX15aQNmAK4D8sr2IbspOz/4O2So=; b=bp2ipOYk5wQQDZm0Gj9xKGFp3
- k2uDRqx2K/wdQF3XVtBY8ZXBTrUyz8FWf+D7rZiAjYxHlwvE97AcXbyOtEZtXlGwxLYEkuhtKBtIv
- em27puK2447FlrIAr3YIhOaKZ9EhTZIRNYUM5BPY6joLw/2wS09Uf2GTG1Tik3p3j2GuU=;
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
+ In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
+ :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=2iDYNS3zAlDTWQtcAPcKwSUpbUj+NE1y1eyXAv5WHdw=; b=ebs+U3yw5Zpy3lSXIBFQwra3Vp
+ 5ZIid1KNOmY6vwBp8fFWRSATWFSlhhGolaJtXZY8gdu0tJleP+KHn5hmQCOFBxVTGrRiiECN3VEbX
+ pdcsOFN+nEcbel8v/9MSrcTFJ/1Cw7pYIUovAqnasnHEc2Xe42njkbzhuN00nb9dKwx0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=To:From:Date:Message-Id:Subject:Content-Transfer-Encoding:Content-Type:
- MIME-Version:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=UclB3qSC8HsVyvKVX15aQNmAK4D8sr2IbspOz/4O2So=; b=P
- mlWlLyGcjfs9SCZ2T0+d36D2l1DX0iZgcXurIC6cdgkSKE5jpb+cXSTlx4xQc7ZXHvylYUIXS9nue
- RSEOLGBBFBFKxyPt1YphsvbIayLgNDpJ2+BNyzkqUrhQAFviY2DMroJpG9lOAuZeyQ6Zm7sE/TZIB
- 2Ghoco4vF0neYxrI=;
-Received: from meesny.iki.fi ([195.140.195.201])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=2iDYNS3zAlDTWQtcAPcKwSUpbUj+NE1y1eyXAv5WHdw=; b=YRmBLDYGlw0tK/LTUYCOdibT78
+ u/a1U7zQsbu15dstrZVtw3V9So5chIzWrtcW2Mq/RQW1wipkP/+6JQbNsb1axbHlIqiJApib7IHbT
+ iBojfTlN11W0RGQI2sPBlP3tiNzkox64D9Ag6FKC5Ogv0dd+FKkXpiDbWjqIr5dwPWEg=;
+Received: from lahtoruutu.iki.fi ([185.185.170.37])
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jcYSk-00Egfk-Hn
- for tboot-devel@lists.sourceforge.net; Sat, 23 May 2020 18:01:36 +0000
+ id 1jctWc-00AuNI-Cv
+ for tboot-devel@lists.sourceforge.net; Sun, 24 May 2020 16:31:03 +0000
 Received: from mail.home (89-27-97-237.bb.dnainternet.fi [89.27.97.237])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
  (Authenticated sender: timo.lindfors)
- by meesny.iki.fi (Postfix) with ESMTPSA id 10B9B20177
- for <tboot-devel@lists.sourceforge.net>; Sat, 23 May 2020 21:01:21 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
- t=1590256881;
+ by lahtoruutu.iki.fi (Postfix) with ESMTPSA id B95E21B00193;
+ Sun, 24 May 2020 19:15:13 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu; 
+ t=1590336913;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=UclB3qSC8HsVyvKVX15aQNmAK4D8sr2IbspOz/4O2So=;
- b=cXP0c02JDcfDDw6EIiT9oDgQtLIr7OttoBKckDrN804+kkiWMUO/GeNfmfI2GZ+/PTlfzj
- imr/QzfFwLAYNFHUWUf520R1ubnp/CINM2+UeNlvPkdhhs/yXwtm/38/q1H1GGYEP5vQmG
- 6vMxxJgY0XIR1mx+og0uAUlMJPmtP4M=
-Received: from lindi by mail.home with local (Exim 4.89)
- (envelope-from <timo.lindfors@iki.fi>) id 1jcYSP-0004jA-V5
- for tboot-devel@lists.sourceforge.net; Sat, 23 May 2020 21:01:13 +0300
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=2iDYNS3zAlDTWQtcAPcKwSUpbUj+NE1y1eyXAv5WHdw=;
+ b=KO6/4IxTxG14L1yfWYJhICU9uj1PebM5AZSK+H3A9jGtpbkJQFaaU30VHcLqCavvsgSiG3
+ ocuT27+HiHNbZn30lZca8BfzPqewdKqzmLOJPWRhvshdypk5PfKAlIyQqmaT/HH4KMZsrs
+ rWsW9e9NE/Uy8So7LfvEamRr2O/qkTTITUK56mBvgkC6+QFpPcUPlwOr2R9+Q6ZaQrOjPc
+ MZ5DvskxiIUBKYIMWxlbD3qXlsTL86z+PRI+zNXVsVHixmQQMQlbYxkMIj2Z8M7oABfbTz
+ KLHdih9f8tLHQJCx+9YuVdqX5GxBeVewXTyjlrE2Zyek5tHmTDgG5x814p2Wuw==
+Received: from localhost ([127.0.0.1]) by mail.home with esmtp (Exim 4.89)
+ (envelope-from <timo.lindfors@iki.fi>)
+ id 1jctHF-0004rz-7c; Sun, 24 May 2020 19:15:05 +0300
+Date: Sun, 24 May 2020 19:15:05 +0300 (EEST)
+From: Timo Lindfors <timo.lindfors@iki.fi>
+To: Timo Lindfors <timo.lindfors@iki.fi>
+In-Reply-To: <alpine.DEB.2.20.2005231924220.17882@mail.home>
+Message-ID: <alpine.DEB.2.20.2005241914180.17882@mail.home>
+References: <alpine.DEB.2.20.2005081919250.3828@mail.home>
+ <3da41313c3b91f154f53f9c2c9645ade6399cff9.camel@linux.intel.com>
+ <alpine.DEB.2.20.2005121234280.7218@mail.home>
+ <alpine.DEB.2.20.2005231924220.17882@mail.home>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-X-Mercurial-Node: 21e7be142605955977ea1e36b781f313058da8c9
-X-Mercurial-Series-Index: 1
-X-Mercurial-Series-Total: 1
-Message-Id: <21e7be142605955977ea.1590256865@sec-589.nixu.fi>
-X-Mercurial-Series-Id: <21e7be142605955977ea.1590256865@sec-589.nixu.fi>
-User-Agent: Mercurial-patchbomb/4.8.2
-Date: Sat, 23 May 2020 21:01:05 +0300
-From: Timo Juhani Lindfors <timo.lindfors@iki.fi>
-To: tboot-devel@lists.sourceforge.net
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
- s=meesny; t=1590256881;
+ s=lahtoruutu; t=1590336913;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=UclB3qSC8HsVyvKVX15aQNmAK4D8sr2IbspOz/4O2So=;
- b=kPg/JYxL2Xc3HNQyAx8J35/s1uS+3u6kNLcd11bNYNUkSTmt4PLbn0iTcynTT/nYgJgJWO
- G1bEe0hIYriVvrQ636CBLIDnMF3pnPS/1cLyeS93kEUW3ybzKyr0aixuQTlg4da4low9bB
- +quthGbrSE0iadfEuQhGIBCjV2j3/kA=
-ARC-Seal: i=1; s=meesny; d=iki.fi; t=1590256881; a=rsa-sha256; cv=none;
- b=WZFfu1tXkEUG6g0CnnB40CWQ7wTZMZJszJptPKB/72o3Ulf0Y7ZdTQmkWHFAnzOgBdfeXt
- bG0uJFCxJCt6fPDiLrDW9azfV/z2iCc1TG1Uap7jnGV8DqQZtPhZ4yc04WQ4uhbqhKsPd4
- Dp6zDeKpajmRbs0K13D4hMXZ6YXhSPY=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=2iDYNS3zAlDTWQtcAPcKwSUpbUj+NE1y1eyXAv5WHdw=;
+ b=RE0q7dqRTGu3fLZa2F9ccay85Mj8PuKV0ZU3ytXUEEKqncza/i3Eq4o/KdY5v0LhkRCj0J
+ quO6h9otOqhFNuS47rAXCxkR01VYnJcQIVXOOjzxWkrdkjedalQQTcic46tTDNLbbHQmnX
+ kW++RmMLCfSY9u0JGoWV+VvRmGC6PKygNybf/jlg1Bije580ZN4frW1HaNvkM5K+LsmOFg
+ 2rCcn8nC8zqtniazdJCHnWqmxH9/88RLdol9R63cYVO06CaTClip8tO5f2gh+1AgZdqQqS
+ 1KfQbqRva2+wvjJHzGiAjCyag8WTWqYM5k6F5PhWy82ZnxSqYCLF7WqQm2dQJw==
+ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1590336913; a=rsa-sha256; cv=none;
+ b=fGqnTOJwZo6QB2Q9Ozzd4rLNbsKHWzBD1vGHi3MxbydGRKc1Oz0kE0jwJSR1MNfPbKprIy
+ t52g054FN4Lg8peVfCyOIUVRMpCgz4TjOuJ8JXj/kAu4Z6DsVBXbdU/ZHJtTpWLObkLhq8
+ ssT4ETxTRCGiKEcQuTCTPV4imNWy/uIv98aFlxA7kIailHBt+/WlxqxKYWtu/SXzaJ8dI/
+ 51AK2lSozGAKKXez3+TwuYgUGPZobF6nzmKusMaZwJjkorMZsvLViqnWwhoxORz3RF64aP
+ TP9Y3cAOf7msoQDsjjU1bV0G8Yc99rKzEwLDg1x3/g/Xz+IdW+7kb6QTry/DqQ==
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=timo.lindfors smtp.mailfrom=timo.lindfors@iki.fi
 X-Spam-Score: -0.1 (/)
@@ -90,9 +97,9 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- 0.0 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1jcYSk-00Egfk-Hn
-Subject: [tboot-devel] [PATCH] Fix man page syntax error
+X-Headers-End: 1jctWc-00AuNI-Cv
+Subject: Re: [tboot-devel] tboot 1.9.12 build failure if CFLAGS is set in
+ environment
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,38 +111,24 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: tboot-devel@lists.sourceforge.net
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-# HG changeset patch
-# User Timo Juhani Lindfors <timo.lindfors@iki.fi>
-# Date 1590255451 -10800
-#      Sat May 23 20:37:31 2020 +0300
-# Branch fix/manpage-syntax1
-# Node ID 21e7be142605955977ea1e36b781f313058da8c9
-# Parent  2f505db817e62cf84a6a83649d259520e5915e24
-Fix man page syntax error
+Hi,
 
-Previously man docs/man/lcp2_crtpol.8 >/dev/null printed
+On Sat, 23 May 2020, Timo Lindfors wrote:
+> boot on Lenovo T430s when I boot the latest code from mercurial. 1.9.12 seems 
+> to boot ok. Commenting out "export CFLAGS" seems to help. How should
+> I debug this?
 
-an-old.tmac: <standard input>: line 22: 'R' is a string (producing the registered sign), not a macro.
+Currently it seems that tboot actually only boots properly if I first boot 
+Linux and then reboot and select tboot. If I cold-boot tboot then it gets 
+stuck. I'm investigating options on how to test this in a more automatic 
+way.
 
-Signed-off-by: Timo Juhani Lindfors <timo.lindfors@iki.fi>
-
-diff -r 2f505db817e6 -r 21e7be142605 docs/man/lcp2_crtpol.8
---- a/docs/man/lcp2_crtpol.8	Wed May 20 10:48:26 2020 +0200
-+++ b/docs/man/lcp2_crtpol.8	Sat May 23 20:37:31 2020 +0300
-@@ -19,7 +19,7 @@
- .IR <pol_ctrl> ]
- .B --pol
- .I <POLICY\ FILE>
--.R [ --data
-+.RB [ --data
- .IR <POLICY\ DATA\ FILE> ]
- .RB [ --mask
- .IR mask ]
-
+-Timo
 
 
 
