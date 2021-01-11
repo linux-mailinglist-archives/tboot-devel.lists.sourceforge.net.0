@@ -2,90 +2,69 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 076662E9E61
-	for <lists+tboot-devel@lfdr.de>; Mon,  4 Jan 2021 20:57:59 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B21E2F12A9
+	for <lists+tboot-devel@lfdr.de>; Mon, 11 Jan 2021 13:58:58 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1kwVzC-0008RE-BH; Mon, 04 Jan 2021 19:57:50 +0000
+	id 1kywmZ-0007sn-FH; Mon, 11 Jan 2021 12:58:51 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <jandryuk@gmail.com>) id 1kwVzB-0008Qn-7D
- for tboot-devel@lists.sourceforge.net; Mon, 04 Jan 2021 19:57:49 +0000
+ (envelope-from <lukasz.hawrylko@linux.intel.com>) id 1kywmY-0007sg-Dl
+ for tboot-devel@lists.sourceforge.net; Mon, 11 Jan 2021 12:58:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
+ :References:In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=3nyM2PBVn6YNTSBLBe7K6zj4ThJ5RBHr/xcQcvg6otg=; b=cecwUn3vosCTUXze65NMqzDREa
- juyh01PPrAE+WRYSQmprO+4TB3Kq7k4vhQM3jXrpU6350kTqTZEZ7Tmiq9NCXGVZyyOrioL2TWJb7
- tcwveAQSZ+ekwRoTo/QfK2zp7hKB4V77AVQZGLhuKkpbNn/vNjPN/cI8Fp7mOYEVxKQY=;
+ bh=73FLaFpMHQtR4MQ6K2RRc7ljNeFydPhPj1yJp//CSas=; b=dDiMMPMM4jhUrn2wRWdruw1Gji
+ DRFu30qLUrh1pA7uGemeH9vgS/Znd1EI70PwBH7DI7+egUQ/LJv/XRKi7/eOsQ/Rm/3Pbr33FJbpi
+ Fx/vakZ+KDuPihPLUIZYQGkfClzj6RZLkyq9ewzclDmm/dbf7h4yiFNvxDDKTqJMinn0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=3nyM2PBVn6YNTSBLBe7K6zj4ThJ5RBHr/xcQcvg6otg=; b=X
- reDZk5aHx3SR1elGhzqY7iiuVEcsJV8ECzIB+4/C5MX0PqdGakushVAZQWQReyUZ/X/SrOsP0gP7c
- 0sPfPszRL2+ianiV2Q7q1jKLc4DcImB0P8LGgahAZfhjKBuqVFWyMzEmgl64baOkGC6muNof0SicU
- W4zvgWh5QPjNXxTQ=;
-Received: from mail-lf1-f54.google.com ([209.85.167.54])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1kwVz7-00Cwry-0C
- for tboot-devel@lists.sourceforge.net; Mon, 04 Jan 2021 19:57:49 +0000
-Received: by mail-lf1-f54.google.com with SMTP id m12so67244272lfo.7
- for <tboot-devel@lists.sourceforge.net>; Mon, 04 Jan 2021 11:57:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=3nyM2PBVn6YNTSBLBe7K6zj4ThJ5RBHr/xcQcvg6otg=;
- b=tJqLbrqvZf+qTb6bLdIlR3nXbdnx2Er/yimrpzfFXTQcEme5SIkHv/BlUhbgTOzrko
- z1lSpKp8LT2WGIHGYZQn6PFKB6KD4Xx3V8ouQU9uKHS78TFpqrckG2Vuk8dRRoHhCwqL
- wJsCxSsPcCOMzyYtdc9sI5fByT0tr8zmOtDkGN+PPVGYpkkYrHJ3xeH1k2eWyn0w0Gtm
- XnIqH4h7v9xJ9tBOXFkIq1UTKP0RNPE7aeiSykj/qhCM4euGuP+dRYnZQxWmYYQ94CaP
- quCTeXbsNMp71VFVn/YqUW2moXPZD+DSdNmUtu9v4SMI/dcVTH2F+NSvwtEVJf909UBN
- DrYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=3nyM2PBVn6YNTSBLBe7K6zj4ThJ5RBHr/xcQcvg6otg=;
- b=cChFAJYsuV095/819jhH8IM41OGS7OH0cQriofRpdiZWFta17rbFJvCRZw/Z3wj2ge
- YlhJRf7HFz8XDjek1XrYMzDdX6DlGHcusaz9jM+Wzc9CYEWOZYns/MvASjU6wx9hENL0
- SAs0yJEboszp5xBed2+TT9qq6N0wWc8RZkkYqmkLje/OtjtOYZb10zhanzYfscFUdmcl
- T+vVcoHi8kfYhYwrKXMUpq5nKplbhFh0Ie/mVUjFjO9E/gCmLiyy2QmPaXFD3odEhWHb
- 9QYAMIcfKd936ex3suV7Q6MWJyCKs8Y3T0FM/fIQe+6BKz/A5NqcSSpEEz5WFANBEUKX
- 9Wkw==
-X-Gm-Message-State: AOAM532s81QbLc/2OXxNfEhXttHss5OPSeEo8u/DY1xIJoa6ZFuRWbvV
- FPDW6903IlGu7GAhBkOaV+OHFBYGp3NKk5dOwduO8WSHRvk=
-X-Google-Smtp-Source: ABdhPJzsNRF5XoVbkWNRziiSv2/MqENV900Fikp5C37jQ9YzMMic2MlkYf/3liovunmrYB/7KmIFHYz48RWpRrorpfs=
-X-Received: by 2002:a2e:888e:: with SMTP id k14mr37885878lji.285.1609790250643; 
- Mon, 04 Jan 2021 11:57:30 -0800 (PST)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:
+ In-Reply-To:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=73FLaFpMHQtR4MQ6K2RRc7ljNeFydPhPj1yJp//CSas=; b=afuTUyzocS8touVdJmCUeomz+I
+ 9ueDTwZFCHuWE8S1iXPs8k9WqAgPnBYdnl9vs3pA3U8L/SVDSRLWruVCNo1xb7fIybi/4lOuVaYJr
+ xZx8OeXKj/GMfpF1ZjmdPkcjAsBrlfXlVGPRbehVuSpk9gVp54lcUu/Z36V76vr6brxM=;
+Received: from mga07.intel.com ([134.134.136.100])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1kywmP-0018Eq-5N
+ for tboot-devel@lists.sourceforge.net; Mon, 11 Jan 2021 12:58:50 +0000
+IronPort-SDR: 7+yLlo4lpyVuoxB/vpsY6Zoq7ElxxcN4wM0HoUN0x3t7Ytn9dDUplPyM1gprqqzrYe2AYHC2ei
+ MCneaHWnKKIg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9860"; a="241925962"
+X-IronPort-AV: E=Sophos;i="5.79,338,1602572400"; d="scan'208";a="241925962"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2021 04:42:38 -0800
+IronPort-SDR: HJhSb64KjHfgWihOeM4N27cH97BYHhBKOb3K3BLAUQ145HUYjhOWO1EI2WhpDMkVqrV+3CKKTi
+ XngjQFajtgKw==
+X-IronPort-AV: E=Sophos;i="5.79,338,1602572400"; d="scan'208";a="363129477"
+Received: from lhawrylk-desk.ger.corp.intel.com ([10.249.139.236])
+ by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2021 04:42:37 -0800
+Message-ID: <7ed952017e8feedc1161ffc25695a6d76acb7c96.camel@linux.intel.com>
+From: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
+To: Timo Lindfors <timo.lindfors@iki.fi>, tboot-devel@lists.sourceforge.net
+Date: Mon, 11 Jan 2021 13:42:27 +0100
+In-Reply-To: <alpine.DEB.2.20.2101021923390.30583@mail.home>
+References: <alpine.DEB.2.20.2101021923390.30583@mail.home>
+User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
 MIME-Version: 1.0
-From: Jason Andryuk <jandryuk@gmail.com>
-Date: Mon, 4 Jan 2021 14:57:19 -0500
-Message-ID: <CAKf6xpskX4rBd9eAiDa60uZKQnXD-QP5EWMKnMfr4Y8T0D0j7A@mail.gmail.com>
-To: tboot-devel@lists.sourceforge.net
-X-Spam-Score: -0.1 (/)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.167.54 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (jandryuk[at]gmail.com)
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.167.54 listed in wl.mailspike.net]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
-X-Headers-End: 1kwVz7-00Cwry-0C
-Subject: [tboot-devel] 10th Gen ACM
+X-Headers-End: 1kywmP-0018Eq-5N
+Subject: Re: [tboot-devel] binaries in mercurial?
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,16 +80,57 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-Hi,
+On Sat, 2021-01-02 at 19:31 +0200, Timo Lindfors wrote:
+> Hi,
+> 
+> changeset:   620:805285ab8469
+> user:        Lukasz Hawrylko <lukasz.hawrylko@intel.com>
+> date:        Fri Nov 13 16:09:33 2020 +0100
+> summary:     Move old lcptool to deprecated folder and exclude from build
+> 
+> seems to add some binaries to mercurial version control:
+> 
+> $ hg clone 
+> http://hg.code.sf.net/p/tboot/code
+>  
+> tboot-code
+> requesting all changes
+> adding changesets
+> adding manifests
+> adding file changes
+> added 620 changesets with 2372 changes to 497 files (+1 heads)
+> new changesets cedd93279188:cc489ff0c783
+> updating to branch default
+> 403 files updated, 0 files merged, 0 files removed, 0 files unresolved
+> $ file tboot-code/deprecated/lcptools/lcp_writepol
+> tboot-code/deprecated/lcptools/lcp_writepol: ELF 64-bit LSB executable, 
+> x86-64, version 1 (SYSV), dynamically linked, interpreter 
+> /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=403efd37304c2d0ca9830ec60c1115fd9d76787c, for GNU/Linux 3.2.0, not stripped
+> 
+> This is probably accidental?
+> 
+> The exact Debian lintian errors that caused me to spot this are
+> 
+> E: tboot source: source-is-missing deprecated/lcptools/lcp_crtpconf
+> E: tboot source: source-is-missing deprecated/lcptools/lcp_crtpol
+> E: tboot source: source-is-missing deprecated/lcptools/lcp_mlehash
+> E: tboot source: source-is-missing deprecated/lcptools/lcp_readpol
+> E: tboot source: source-is-missing deprecated/lcptools/lcp_writepol
+> E: tboot source: source-is-missing deprecated/lcptools/tpmnv_defindex
+> E: tboot source: source-is-missing deprecated/lcptools/tpmnv_getcap
+> E: tboot source: source-is-missing deprecated/lcptools/tpmnv_lock
+> E: tboot source: source-is-missing deprecated/lcptools/tpmnv_relindex
+> E: tboot source: source-is-missing deprecated/lcptools/trousers_dep
+> 
+> 
+> -Timo
+> 
 
-Are SINIT ACMs available for 10th Gen processors, specifically 10th Gen 10810U?
-
-The intel page https://software.intel.com/content/www/us/en/develop/articles/intel-trusted-execution-technology.html
-has 8th_9th_gen_i5_i7-SINIT_81.zip as the latest file - but the file
-inside is named 7th_8th_gen_i5_i7-SINIT_81.bin.
+You are right, my mistake. Fixed.
 
 Thanks,
-Jason
+Lukasz
+
 
 
 _______________________________________________
