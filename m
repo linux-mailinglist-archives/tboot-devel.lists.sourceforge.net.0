@@ -2,133 +2,116 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30AC5422656
-	for <lists+tboot-devel@lfdr.de>; Tue,  5 Oct 2021 14:23:59 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.92.3)
+	by mail.lfdr.de (Postfix) with ESMTPS id 13DD8434F14
+	for <lists+tboot-devel@lfdr.de>; Wed, 20 Oct 2021 17:31:40 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1mXjU8-0004cO-7S; Tue, 05 Oct 2021 12:23:52 +0000
+	id 1mdDZ0-0001DW-0k; Wed, 20 Oct 2021 15:31:34 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- (envelope-from <loris.wilbert@outlook.fr>) id 1mXjTz-0004c3-Uu
- for tboot-devel@lists.sourceforge.net; Tue, 05 Oct 2021 12:23:44 +0000
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <this.is.a0lson@gmail.com>) id 1mdDYy-0001D7-T8
+ for tboot-devel@lists.sourceforge.net; Wed, 20 Oct 2021 15:31:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=MIME-Version:Content-Type:In-Reply-To:References:
- Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-Transfer-Encoding:
+ d=sourceforge.net; s=x; h=To:Date:Message-Id:Subject:
+ Content-Transfer-Encoding:Content-Type:MIME-Version:From:Sender:Reply-To:Cc:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=yDZzQHP7iv3AXlbqxxmrzFbJ2ZUxlVP8vOb4RaIcUhU=; b=TDV60tnJDvWTtxP/WzFqUP8HDD
- n/d/FVf5WmCu4qO/SAmmVTvTNHpXRiiSFs8yfdnk7nGdvNbuHAPVFTGJp3hq4IDUS4z4zs36B16Zs
- MBvQr2Uf1o3x8Ezv/VqAszFzv9hG+wujPHB7Ameq49NdIdlfgyU8kuKHlGpOYqLLWAMY=;
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=4Yv2vVbUvbSY6dmqoM6nVzWCpbOdkZEEoOHdzRrdg6Q=; b=M2Cn3jlxj6V5mRYKblrULDzzX
+ TkeCDzkIBNBnpEYQuIU3RpZuKZ4SUcJh/iDmxrLlLx7QBq27siI1yLDVC7eZHaAtcfCpsoFWONQ7a
+ FYUwku+5EuZMvnA28jYtoRPJsriiEyd1b6ATeTjnv3LmFszrHHRiJVL5EcuPAeMIkeb2o=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=MIME-Version:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:
- To:From:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ h=To:Date:Message-Id:Subject:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:From:Sender:Reply-To:Cc:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=yDZzQHP7iv3AXlbqxxmrzFbJ2ZUxlVP8vOb4RaIcUhU=; b=U+yQyhaY7A/F0RumnQbQmdT35N
- +yU3p9hs+S9ee6tyj3abSxh2pB7BSDLXpvI/3mbr4nVPLvNlZbgXfFDIrJgyLZfASbKyCScEDDp/G
- waA81W19o7zGj0N3Mooee61GEjLyjQahPGJdAJuN7NNHy+AW0zAwH1t18loV80B+8bp4=;
-Received: from mail-vi1eur05olkn2101.outbound.protection.outlook.com
- ([40.92.90.101] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1mXjTz-006aiQ-0x
- for tboot-devel@lists.sourceforge.net; Tue, 05 Oct 2021 12:23:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FSA7+My+hH/mQg/Yedgpye3qwXZUcDoOLnSM21M0Tty/nHxZfLMeqJWQZMOd+VRoz3GZt0CanI70ksaHBVSpU7nwBBtuDJjVL8A3pqS0J4HTSzU3dX7UCwKv5COu93kaREHThXnvLKG7ipPQJqBb4rFZS8MIZG2UbzeeMbI3X5O3H2uzZ65vt86F4Hq8+pmWZV2wmbYAKvXCT6jrR/gl3t5xGIJR+W5Rqn0PKp9vesdt+YcW2uxu10s1Rjc5VS3NRgQ1ND/6GIFDitly5qOiPZ89aRifdK5yoll3pwZFwNy4GXIYt8mSi540V1/CdNp1SFqCbbhpUk3qvRe08GVbAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=yDZzQHP7iv3AXlbqxxmrzFbJ2ZUxlVP8vOb4RaIcUhU=;
- b=IW6gcp0ULSBhWqoc04Y4dxB9noGFDhco3pi6o1U7/CJt/pJZnmkJ9B9mK8LCzScjZKefR3Ayz1mM9fQCiITYFommp0OzyM5v9tsuNKN6ou485xEN/hvo5Kyc+39D///bqQ9hrQTIpzeCmLfTPIPxDj68EIoP9zDWugRP5b+z4JVGiGHAbv//uTNNibhqaGqn1K51yM9dvGXrwSf1NZcRSGpUHWC3B8b05F7wj08YvobtbR3vnZ5S7sQTQ3AG45lbZx/UVdTsFzKmDN0ZpY1zAyIogn8Ol8b/eyIZsAInZ9gsZVyMUAhU2RbTW/S+v7vPfeZBjUdArmKSIeemHRr3uw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from DB8EUR05FT065.eop-eur05.prod.protection.outlook.com
- (2a01:111:e400:fc0f::41) by
- DB8EUR05HT043.eop-eur05.prod.protection.outlook.com (2a01:111:e400:fc0f::245)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.14; Tue, 5 Oct
- 2021 12:23:32 +0000
-Received: from PA4P191MB1664.EURP191.PROD.OUTLOOK.COM (2a01:111:e400:fc0f::53)
- by DB8EUR05FT065.mail.protection.outlook.com
- (2a01:111:e400:fc0f::306) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.14 via Frontend
- Transport; Tue, 5 Oct 2021 12:23:32 +0000
-Received: from PA4P191MB1664.EURP191.PROD.OUTLOOK.COM
- ([fe80::b047:5a71:1193:aca1]) by PA4P191MB1664.EURP191.PROD.OUTLOOK.COM
- ([fe80::b047:5a71:1193:aca1%3]) with mapi id 15.20.4566.022; Tue, 5 Oct 2021
- 12:23:32 +0000
-From: Loris Wilbert <loris.wilbert@outlook.fr>
-To: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>,
- "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
-Thread-Topic: [tboot-devel] Issue with warm reboot
-Thread-Index: AQHXrsC+dO6H7X3CTEG9GbzLtUKydquuiicAgAEpX4WACBp5gIADCS88gANUMgCABhxkFA==
-Date: Tue, 5 Oct 2021 12:23:32 +0000
-Message-ID: <PA4P191MB1664A2753CE295CD8C36B2289FAF9@PA4P191MB1664.EURP191.PROD.OUTLOOK.COM>
-References: <PA4P191MB1664AB08B4D7E7B035C25D309FA19@PA4P191MB1664.EURP191.PROD.OUTLOOK.COM>
- <e069c86ccfbb0b0068c2244fe6835d1324f52e9b.camel@linux.intel.com>
- <PA4P191MB1664C5127164099A9989D8009FA29@PA4P191MB1664.EURP191.PROD.OUTLOOK.COM>
- <efa17770eb9ecd5d34be353793450171ab95f5a5.camel@linux.intel.com>
- <PA4P191MB1664B832D84B818805C91A3B9FA99@PA4P191MB1664.EURP191.PROD.OUTLOOK.COM>
- <5d181f239830a04d65031feded30640a00399c90.camel@linux.intel.com>
-In-Reply-To: <5d181f239830a04d65031feded30640a00399c90.camel@linux.intel.com>
-Accept-Language: fr-FR, en-US
-Content-Language: fr-FR
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-suggested_attachment_session_id: cee73566-eab3-c57d-e579-80fc6e2bfb80
-x-incomingtopheadermarker: OriginalChecksum:AE1111078052882B729B1969C87EB144DBFC862A8A1BF7C8DDA2F1BF0210DC60;
- UpperCasedChecksum:B3AB5FEA48483DFDF5A2D6D4FB10AFBD92510DBC2D30E4A6B8BE3CAD3A0DA252;
- SizeAsReceived:7358; Count:44
-x-tmn: [5T2AzBN8WI/cpIBmI44UKSy3vaFVYzUw]
-x-ms-publictraffictype: Email
-x-incomingheadercount: 44
-x-eopattributedmessage: 0
-x-ms-office365-filtering-correlation-id: db225507-41af-419b-571a-08d987faf247
-x-ms-traffictypediagnostic: DB8EUR05HT043:
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: m+MZ8Qm162OTaqgntcZG4jBocniqL8sSsPKNSy5qPu361w97IiFZSiCO6lYco0tF7BnH+reAT8Uttuq7xS5qf2lKKbP2U06OiJdeQ7alUXnwb6pRb2aEEzBArvp+C7+UI4InflzR0p+UL/bYMHQFgvBijzejuJ/rPJV8D0Z+dhWevGHEL7f63SCZ5NiCGdRwofdANn9VRvA92+fdw8djSkiDD/WyINNoa+3Om0mP0k19iwgK2z/ox/pTQZOQdciUyUv+ywecf9m9+HKo2Ex0OrSjJcsVJzCKOsNthWnTtjn5E+8acFB734Q5zpifUCoWDEr3gk3mKmRe/QgFDPgllwQGMpyQNQxhdaAltf5Im7rbtF3OQT5x6e8cs2pbSksa+IHy+xNtP9E5KGXTI5El66uOhgSThdQw/bkDDqikvucXey53dscTxbpSu2SsB9zX
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: EOFuRP+4dNkC4GYu4R0VjM+m59/egg/SUFKBVahDGuUVPK9/HJyYNjNkPYfKAVyEuY/igp9pdlkI3ChlSU3vN5/eiaCgU5BEQqcva3TPBNPkB3hFg6ODugcC18UbWIg55etxZ7cqjM8ER+sdJ2oZOw==
-x-ms-exchange-transport-forked: True
+ bh=4Yv2vVbUvbSY6dmqoM6nVzWCpbOdkZEEoOHdzRrdg6Q=; b=ZV/EOTaOnksGPjZoUjOlSiQrPc
+ gWcYkw7erGqRu79aI2VNwWecz9c0Lb0lcbvNFI/pSHuI6nFgYj5ukjvvmOp4dJ5meS2ntfyXcng22
+ dVviKOKd5p6FNXvp7CVLDqw9uWB1eM0+uDsJQKmvzYqPo6T5RZB1G+/T1j3ko0vNjkXc=;
+Received: from mail-qv1-f48.google.com ([209.85.219.48])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.3)
+ id 1mdDYt-0001T4-Od
+ for tboot-devel@lists.sourceforge.net; Wed, 20 Oct 2021 15:31:32 +0000
+Received: by mail-qv1-f48.google.com with SMTP id a16so2297704qvm.2
+ for <tboot-devel@lists.sourceforge.net>; Wed, 20 Oct 2021 08:31:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:mime-version:content-transfer-encoding:subject:message-id
+ :user-agent:date:to;
+ bh=4Yv2vVbUvbSY6dmqoM6nVzWCpbOdkZEEoOHdzRrdg6Q=;
+ b=nAVywqPhOXY2weQtzSbTVaMeC+Ttddmu8zYUSshvwx1s6OpB8/ImyGuPhybOeG/wfs
+ /KSUhvhhW0DolMxeKo6ASsZN8WcDhrcbOWrlpprcPfL7ECtKlW7n/weSzraolEry02a0
+ m7BqvLU3HNlDmYrUl/P54RuacbRm0waPdt49+Q1Em8R719gk4NCsGAzz4lN8CxoKmsII
+ X6g5nG3XPWsU+k8ebvMQmp44kb8a3c68fiHSTgon3JkCpz2gJ3805izf1SR2uN63qMT6
+ +O2reFOuUyBUjPCAHC4IiXI0wefD+Gu6RoD+z0COIEiIEDMIKjm/1PA2bREHNX2mb8Uq
+ pOyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:mime-version:content-transfer-encoding
+ :subject:message-id:user-agent:date:to;
+ bh=4Yv2vVbUvbSY6dmqoM6nVzWCpbOdkZEEoOHdzRrdg6Q=;
+ b=r3NLvb5cORDFyJeKe3zzL/pvF3mNL+BzPLhbkuRhEntg6qlBJ6KGY2Udmd9RWhYoIG
+ 4KoWOJFrWXuxKjZjtJGquApKvDdFYuACDU56Ii7TfV/4tvHxNHPMSsrLSE9BJJfun2rn
+ N9buYq5g1KHNrOOP+ukGIuBS9msP3wBuLFixYCDb5pq2xh563MmZPJV5MRwqy01PUb9A
+ jgvtpfFRJLUXuaWQCYLyvu/nsp19HjuXWZaXKbbIVH3pbVGyhGIsCin55ia4663Mbqb0
+ iGoY5JrCFXtt9VFIjxpDy+wqA2H7IVwFMSRxMb3qt4TnSy/4cIOWKfiZlUQBS2d2lgw+
+ EvUQ==
+X-Gm-Message-State: AOAM531HF7fheJjkKoYjUv3xG0E+QzuYU7VpC9Ku8emdp23tSJvzGk6n
+ BuAa8goclMiug2y+RGIVdo05vIAYe+I=
+X-Google-Smtp-Source: ABdhPJzSP37oQiKuxQpYonnGI207oNd6ivRuaTt18HFRCS14sdceBvzo5ODF2SyC7Rx58pe61TGHXA==
+X-Received: by 2002:ad4:45ed:: with SMTP id q13mr50353qvu.7.1634743881651;
+ Wed, 20 Oct 2021 08:31:21 -0700 (PDT)
+Received: from development ([24.214.236.228])
+ by smtp.gmail.com with ESMTPSA id z30sm1096496qtm.55.2021.10.20.08.31.19
+ for <tboot-devel@lists.sourceforge.net>
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 20 Oct 2021 08:31:21 -0700 (PDT)
+From: alex <this.is.a0lson@gmail.com>
+X-Google-Original-From: "alex" <alex@development>
+Received: by development (sSMTP sendmail emulation);
+ Wed, 20 Oct 2021 10:31:18 -0500
 MIME-Version: 1.0
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-AuthSource: DB8EUR05FT065.eop-eur05.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-Network-Message-Id: db225507-41af-419b-571a-08d987faf247
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Oct 2021 12:23:32.5672 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Internet
-X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8EUR05HT043
-X-Spam-Score: -0.0 (/)
+Message-Id: <patchbomb.1634743878@development>
+User-Agent: Mercurial-patchbomb/5.3.1
+Date: Wed, 20 Oct 2021 10:31:18 -0500
+To: tboot-devel@lists.sourceforge.net
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi Lukasz,
- Ok I will contact Getac. Thank you for your support.
- Content analysis details:   (-0.0 points, 6.0 required)
+ Content preview: These patches allow tboot to boot an OS kernel/VMM using
+ Multiboot2
+ with a proper EFI Memory map. This is relevant to booting a non-Linux OS,
+ such as Xen. Issues fixed: - The EFI-related code for marking reserved memory
+ ranges did not create a new range if the requested range was outside all
+ existing ranges. (This was different behavior than the related code for hand
+ [...] Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.92.90.101 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [40.92.90.101 listed in wl.mailspike.net]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [loris.wilbert[at]outlook.fr]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ provider [this.is.a0lson[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 HTML_MESSAGE           BODY: HTML included in message
-X-Headers-End: 1mXjTz-006aiQ-0x
-Subject: Re: [tboot-devel] Issue with warm reboot
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.219.48 listed in wl.mailspike.net]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.219.48 listed in list.dnswl.org]
+X-Headers-End: 1mdDYt-0001T4-Od
+Subject: [tboot-devel] [PATCH 0 of 3] Use correct EFI memory map for
+ Multiboot2 booting
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -140,258 +123,29 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1575387245295123677=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
---===============1575387245295123677==
-Content-Language: fr-FR
-Content-Type: multipart/alternative;
-	boundary="_000_PA4P191MB1664A2753CE295CD8C36B2289FAF9PA4P191MB1664EURP_"
+These patches allow tboot to boot an OS kernel/VMM using
+Multiboot2 with a proper EFI Memory map.  This is relevant to booting
+a non-Linux OS, such as Xen.
 
---_000_PA4P191MB1664A2753CE295CD8C36B2289FAF9PA4P191MB1664EURP_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Issues fixed:
 
-Hi Lukasz,
+- The EFI-related code for marking reserved memory ranges did not create
+  a new range if the requested range was outside all existing ranges.
+  (This was different behavior than the related code for handling the E820 memory map)
 
-Ok I will contact Getac.
+- Although tboot previously updated its internal copy of the EFI Memory Map,
+  the EFI Memory map used for Multiboot2 booting of the OS kernel/VMM was the original,
+  lacking tboot's updates to it.
 
-Thank you for your support.
+- There was no safeguard that prevented tboot's updated Multiboot2 content from
+  overflowing the original area used for such.
 
-Loris
-
-________________________________
-De : Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
-Envoy=E9 : vendredi 1 octobre 2021 15:01
-=C0 : Loris Wilbert <loris.wilbert@outlook.fr>; tboot-devel@lists.sourcefor=
-ge.net <tboot-devel@lists.sourceforge.net>
-Objet : Re: [tboot-devel] Issue with warm reboot
-
-Hi Loris
-
-I have no idea how can I help you here. Can you ask Getac if they have test=
-ed X500 with Intel TXT and if it is officially supported?
-
-Thanks,
-Lukasz
-
------Original Message-----
-From: Loris Wilbert <loris.wilbert@outlook.fr<mailto:Loris%20Wilbert%20%3cl=
-oris.wilbert@outlook.fr%3e>>
-To: Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com<mailto:Lukasz%20Hawryl=
-ko%20%3clukasz.hawrylko@linux.intel.com%3e>>, tboot-devel@lists.sourceforge=
-.net <tboot-devel@lists.sourceforge.net<mailto:%22tboot-devel@lists.sourcef=
-orge.net%22%20%3ctboot-devel@lists.sourceforge.net%3e>>
-Subject: RE: [tboot-devel] Issue with warm reboot
-Date: Wed, 29 Sep 2021 10:26:02 +0000
-
-Hi Lukasz,
-
-I have this problem with a Getac X500 G3 (CPU : Intel(R) Core(TM) i5-7440HQ=
- CPU @ 2.80GHz).
-
-I realised the same test on another Getac X500 G3 and the same issue appear=
-.
-
-Thanks,
-
-Loris
-________________________________
-De : Lukasz Hawrylko <lukasz.hawrylko@linux.intel.com>
-Envoy=E9 : lundi 27 septembre 2021 13:49
-=C0 : Loris Wilbert <loris.wilbert@outlook.fr>; tboot-devel@lists.sourcefor=
-ge.net <tboot-devel@lists.sourceforge.net>
-Objet : Re: [tboot-devel] Issue with warm reboot
-
-On Wed, 2021-09-22 at 08:18 +0000, Loris Wilbert wrote:
-> Hi Lukasz,
->
-> I've attached full TBOOT logs to this mail.
->
-> Thank you for you assistance.
-
-This looks like an issue with TPM. Is it possible to replace TPM module
-on the system? Did you try to run TBOOT on another system with the same
-specs?
-
-Thanks,
-Lukasz
-
-
-
-
-
-
---_000_PA4P191MB1664A2753CE295CD8C36B2289FAF9PA4P191MB1664EURP_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
-</head>
-<body dir=3D"ltr">
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0);">
-Hi Lukasz,</div>
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0);">
-<br>
-</div>
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0);">
-Ok I will contact Getac.</div>
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0);">
-<br>
-</div>
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0);">
-Thank you for your support.</div>
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0);">
-<br>
-</div>
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0);">
-Loris</div>
-<div id=3D"appendonsend"></div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-<br>
-</div>
-<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
-<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" co=
-lor=3D"#000000" style=3D"font-size:11pt"><b>De :</b> Lukasz Hawrylko &lt;lu=
-kasz.hawrylko@linux.intel.com&gt;<br>
-<b>Envoy=E9 :</b> vendredi 1 octobre 2021 15:01<br>
-<b>=C0 :</b> Loris Wilbert &lt;loris.wilbert@outlook.fr&gt;; tboot-devel@li=
-sts.sourceforge.net &lt;tboot-devel@lists.sourceforge.net&gt;<br>
-<b>Objet :</b> Re: [tboot-devel] Issue with warm reboot</font>
-<div>&nbsp;</div>
-</div>
-<div dir=3D"ltr">
-<div>Hi Loris</div>
-<div><br>
-</div>
-<div>I have no idea how can I help you here. Can you ask Getac if they have=
- tested X500 with Intel TXT and if it is officially supported?</div>
-<div><br>
-</div>
-<div>Thanks,</div>
-<div>Lukasz</div>
-<div><br>
-</div>
-<div>-----Original Message-----</div>
-<div><b>From</b>: Loris Wilbert &lt;<a href=3D"mailto:Loris%20Wilbert%20%3c=
-loris.wilbert@outlook.fr%3e">loris.wilbert@outlook.fr</a>&gt;</div>
-<div><b>To</b>: Lukasz Hawrylko &lt;<a href=3D"mailto:Lukasz%20Hawrylko%20%=
-3clukasz.hawrylko@linux.intel.com%3e">lukasz.hawrylko@linux.intel.com</a>&g=
-t;, tboot-devel@lists.sourceforge.net &lt;<a href=3D"mailto:%22tboot-devel@=
-lists.sourceforge.net%22%20%3ctboot-devel@lists.sourceforge.net%3e">tboot-d=
-evel@lists.sourceforge.net</a>&gt;</div>
-<div><b>Subject</b>: RE: [tboot-devel] Issue with warm reboot</div>
-<div><b>Date</b>: Wed, 29 Sep 2021 10:26:02 +0000</div>
-<div><br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-Hi Lukasz,</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-I have this problem with a Getac X500 G3 (CPU :&nbsp;<span style=3D"font-si=
-ze:11.0pt; font-family:&quot;Calibri&quot;,sans-serif">Intel(R) Core(TM) i5=
--7440HQ CPU @ 2.80GHz</span>).</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-I realised the same test on another Getac X500 G3 and the same issue appear=
-.</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-Thanks,</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-<br>
-</div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-Loris</div>
-<div id=3D"x_appendonsend"></div>
-<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
-<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
-color=3D"#000000" style=3D"font-size:11pt"><b>De :</b> Lukasz Hawrylko &lt;=
-lukasz.hawrylko@linux.intel.com&gt;<br>
-<b>Envoy=E9 :</b> lundi 27 septembre 2021 13:49<br>
-<b>=C0 :</b> Loris Wilbert &lt;loris.wilbert@outlook.fr&gt;; tboot-devel@li=
-sts.sourceforge.net &lt;tboot-devel@lists.sourceforge.net&gt;<br>
-<b>Objet :</b> Re: [tboot-devel] Issue with warm reboot</font>
-<div>&nbsp;</div>
-</div>
-<div class=3D"x_BodyFragment"><font size=3D"2"><span style=3D"font-size:11p=
-t">
-<div class=3D"x_PlainText">On Wed, 2021-09-22 at 08:18 +0000, Loris Wilbert=
- wrote:<br>
-&gt; Hi Lukasz,<br>
-&gt; <br>
-&gt; I've attached full TBOOT logs to this mail.<br>
-&gt; <br>
-&gt; Thank you for you assistance.<br>
-<br>
-This looks like an issue with TPM. Is it possible to replace TPM module<br>
-on the system? Did you try to run TBOOT on another system with the same<br>
-specs?<br>
-<br>
-Thanks,<br>
-Lukasz<br>
-<br>
-<br>
-<br>
-</div>
-</span></font></div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div><span></span></div>
-</div>
-</body>
-</html>
-
---_000_PA4P191MB1664A2753CE295CD8C36B2289FAF9PA4P191MB1664EURP_--
-
-
---===============1575387245295123677==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============1575387245295123677==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 tboot-devel mailing list
 tboot-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/tboot-devel
-
---===============1575387245295123677==--
-
