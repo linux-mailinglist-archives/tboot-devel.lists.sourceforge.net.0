@@ -2,111 +2,84 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2AB0E4DD093
-	for <lists+tboot-devel@lfdr.de>; Thu, 17 Mar 2022 23:14:20 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id F2AEB4DE4D8
+	for <lists+tboot-devel@lfdr.de>; Sat, 19 Mar 2022 01:28:59 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1nUyNs-0004gv-Gt; Thu, 17 Mar 2022 22:14:15 +0000
+	id 1nVMpe-0003BP-MQ; Sat, 19 Mar 2022 00:28:46 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <timo.lindfors@iki.fi>) id 1nUyNg-0004gi-CW
- for tboot-devel@lists.sourceforge.net; Thu, 17 Mar 2022 22:14:03 +0000
+ (envelope-from <z23@posteo.net>) id 1nVMpc-0003BJ-T1
+ for tboot-devel@lists.sourceforge.net; Sat, 19 Mar 2022 00:28:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=To:From:Date:References:In-Reply-To:Message-Id:
- Subject:Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Reply-To:
- Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=OuKo4yVzrB0svvZN8iYavTylyR9no8rV1wnJvETIpEk=; b=lrK+Hr3F43DP5SoztqPAHQL6gl
- ama/xMXevjM0J0FMWKqqOyUOrWJLoQEekvTg9OWtzE2dZFCGmdyWXJdK4PV/VE6o/ipJsdHTYpCej
- UKYZuBV5vqULf/knGnzvx1M79Owm19p/O/u2nI+U3z8RcOWFtZ0tVmmp+Z9tyvZ/CoIY=;
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
- ; h=To:From:Date:References:In-Reply-To:Message-Id:Subject:
- Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Reply-To:Cc:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:References:To:From:Subject:Sender:Reply-To:Cc:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=OuKo4yVzrB0svvZN8iYavTylyR9no8rV1wnJvETIpEk=; b=NVz27TVN4Ndp2tGd6MIDQq/5TN
- veOdDwXKzA1l66aWTwinA9ujlMi4eABO1wdlUZQxFaoIeXfnSYkJZJmS0/GuNaGvOO+8TKuYkGsp6
- MXMaovz2fYEiYYJw9hbifhdDLQNEX6Ro8W60iOvRQPU5SgOXnL10F+5NX/BvPDo8ylK0=;
-Received: from [185.185.170.37] (helo=lahtoruutu.iki.fi)
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ bh=/6jWana9i4mdbF5IMsaVhys4Ps/Dh8PaVo3D9bV521M=; b=FAP+sVw1soH9ujH4GzoIiqiPz1
+ VzuQxVUZWwzIXNSh9KdEsJ9lNeoQyJNCZQGcy9yCx0s8+h+qBpwxcgyb8uSr01UGbfdZa1737qN8C
+ sdMtFicId0hyEnd6UNIlydVn0BJ2c9V8+qxzWn3FtpvHfUDib1cd6MSg5HHgZ0QjgSvI=;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
+ ;
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+ Message-ID:References:To:From:Subject:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=/6jWana9i4mdbF5IMsaVhys4Ps/Dh8PaVo3D9bV521M=; b=hzrl9ozqpvhHFKcfpQUk4oS3/f
+ ioPGFDwfMnJeWlKJfmGEEf21s39ovjUHc9KzBQ1mQjq6qki4Vhf8m5d6iv2y3isv+njdEUChx/hER
+ ZxHNtKhc7t5XgtQ63cn9Qjqx/qm84f9QNHe/gdmb8KPlI/ouzRn+Gr1PVgKpoul8/bTc=;
+Received: from mout01.posteo.de ([185.67.36.65])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1nUyNd-002Lg5-AE
- for tboot-devel@lists.sourceforge.net; Thu, 17 Mar 2022 22:14:02 +0000
-Received: from mail.home (82-181-195-69.bb.dnainternet.fi [82.181.195.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- (Authenticated sender: timo.lindfors)
- by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 9742A1B0022A
- for <tboot-devel@lists.sourceforge.net>; Fri, 18 Mar 2022 00:13:44 +0200 (EET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu; 
- t=1647555224;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OuKo4yVzrB0svvZN8iYavTylyR9no8rV1wnJvETIpEk=;
- b=WgEp/Suo2pxrOwuwrNsbsm6yD8Y32eXL2n+Ao6mzY35HoWzvSRS/OQiT6U3t1t/nnaQ4uO
- KjhqhrKEqriWj2YNn9GiJTX5gXLU3sCF4GLkYPSRyRf1ROkOOZBIAUaFcr8kcws3o1AZCS
- RtUxRsTSkfQfsl3KjhWoQCv7s5BTyG9/XSOnFkcxdma9iDWc1jgoe8AZvUNkB2CNHuGxM8
- +S1eneUhj7gJzmz/i3VDoiKVMZ+efmeDh5BLiz9NbjHTL9fENvookzTUrRFD/UacGE/rKf
- +Y67dHMxfnVjMb1eNW0V0c2u8eO+87zGd4TBQMEV3/tdOEFlHPY6IZ8k+Wrmhg==
-Received: from localhost ([::1] helo=[127.0.1.1])
- by mail.home with esmtp (Exim 4.89)
- (envelope-from <timo.lindfors@iki.fi>) id 1nUwSB-0007rz-Tw
- for tboot-devel@lists.sourceforge.net; Thu, 17 Mar 2022 22:10:35 +0200
+ id 1nVMxW-0007QG-S4
+ for tboot-devel@lists.sourceforge.net; Sat, 19 Mar 2022 00:28:44 +0000
+Received: from submission (posteo.de [185.67.36.169]) 
+ by mout01.posteo.de (Postfix) with ESMTPS id 52390240026
+ for <tboot-devel@lists.sourceforge.net>; Sat, 19 Mar 2022 01:28:35 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.net; s=2017;
+ t=1647649715; bh=2/P0N9ZeW6e+gUxJVKSwC9JmyD16SILyWyEnBhiDIpQ=;
+ h=Subject:From:To:Date:From;
+ b=bAmex0PSBAsykBc0cOdD9qYRgqVqw6FTqZ36hv6pNDGMsTV+bhSLZ2T6EgQw4gDB4
+ 3orrH+UynyVFia/hpvZn0R8KziSm/+71zZNzlZCahrpgo/viFQMuV6MwY2ca5iZxTw
+ 0BZEmC9R0MFEAWEvhJEF7/dgREvJfTWUrSVcAuf8GIoz1MaLcDi37JzSzK4AJ0fOjs
+ o1QlCkNfIOuAYIY6BQcOwIhiRR+zjNvB5U6WFKOWaHoGtRWhduxuaG6auXbvzcPh60
+ bzaL4ggEoSOKq//QqlMfOxSPtW0DpN1a/5fWRBBTCXO5KWMw5kf4d9QRuAiN9qFz6J
+ 5cmOmqJpjrpzQ==
+Received: from customer (localhost [127.0.0.1])
+ by submission (posteo.de) with ESMTPSA id 4KL1vQ36gPz9rxF;
+ Sat, 19 Mar 2022 01:28:34 +0100 (CET)
+From: Derek Dolney <z23@posteo.net>
+To: =?UTF-8?B?xYF1a2FzeiBIYXdyecWCa28=?= <lukasz@hawrylko.pl>,
+ tboot-devel@lists.sourceforge.net
+References: <4b3349f2-69f2-d6d3-ab66-6178af102333@posteo.net>
+ <dcb47ad40ac22b08380312c1c18f322848ccd4d6.camel@hawrylko.pl>
+ <6ca692b5-c54d-c57c-03a8-e774a86762c0@posteo.net>
+Message-ID: <3ae8a2cd-9ca3-1feb-4a96-0abc54277b34@posteo.net>
+Date: Sat, 19 Mar 2022 00:27:33 +0000
 MIME-Version: 1.0
-X-Mercurial-Node: 538c14b1428d0625ebb3f9c3cae21656fd4c3b06
-X-Mercurial-Series-Index: 3
-X-Mercurial-Series-Total: 3
-Message-Id: <538c14b1428d0625ebb3.1647555218@nx-2008>
-X-Mercurial-Series-Id: <94606b71c3dabaabee81.1647555216@nx-2008>
-In-Reply-To: <94606b71c3dabaabee81.1647555216@nx-2008>
-References: <94606b71c3dabaabee81.1647555216@nx-2008>
-User-Agent: Mercurial-patchbomb/5.6.1
-Date: Fri, 18 Mar 2022 00:13:38 +0200
-From: =?iso-8859-1?q?Timo_Lindfors?= <timo.lindfors@iki.fi>
-To: tboot-devel@lists.sourceforge.net
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=timo.lindfors smtp.mailfrom=timo.lindfors@iki.fi
-ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1647555224; a=rsa-sha256; cv=none;
- b=kuXyZtq/y9DjVZZO33iCFshCnkgGLEAok/g4MG+EX60HEqyNRs0aBIgbIgkb96UN12FnDW
- J8FH5q7q8f0Mdok1fLNCAXqdZC+45oG2ylhJF2NZdQyCuDMhTFn9gwU43TZDjfZaQK0Kbl
- zRrkycGHE0Y3JnGRKvB/SUeb8+/PDFsA7TyR4zLIU8R4inCgGNbX9eXg0qgkzr4b3KvqM+
- 7X77MmBC5aWbseafDhBfdNeXuTpRt+kSn7Ja6SnF/CgE9YXkgpcA0cAWvbye5Gv4012sO8
- kgR/IvcQh2QWTJiiVD4QJxYtLoPdKqBMz3h8cFrbtntkHcLprJxhDFpGPClYzQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
- s=lahtoruutu; t=1647555224;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OuKo4yVzrB0svvZN8iYavTylyR9no8rV1wnJvETIpEk=;
- b=u83K5rPyiLuz2whQcLDTPTgCcXMdSr+4c8/c6wNDSECN4UQchjWl5zbF9CMKUI8v1rxVV2
- YNXgl/LG3L15fub6uOKBrcqQoI4bFzKiAWLOUeGsC4cQOxTHOrXT+eXlA9hTDYrlJSeO3b
- SP6AzsqoRjKxBgZ/l2VDVJ2R14UTTEtbA8Kfoy9IoNQFOZoyj5Y280BoWcK2Hw5uWy/m70
- G1NiIVDK4CB4mj9iUjAmGpmNZKtUNqpyIZLJxjRIPXGJ4dw2hG+bnEJywk38iizAlTpAmb
- Q5/y+aZWiyMXxHq16AftDNsnugwi4ce4nrwytnqHaFay7kL3YkkM5CkEJEblMw==
-X-Spam-Score: 0.4 (/)
+In-Reply-To: <6ca692b5-c54d-c57c-03a8-e774a86762c0@posteo.net>
+Content-Language: en-US
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: # HG changeset patch # User Timo Lindfors
- <timo.lindfors@iki.fi>
- # Date 1647554330 -7200 # Thu Mar 17 23:58:50 2022 +0200 # Node ID
- 538c14b1428d0625ebb3f9c3cae21656fd4c3b06
- # Parent e45ccbe6bf59ba534a [...] 
- Content analysis details:   (0.4 points, 6.0 required)
+ Content preview:  I did a git bisect on the Linux kernel and found that the
+ commit below is the one that breaks tboot+suspend to ram. It is part of a
+ series of some cpu hotplug commits. I don't know how this would affe [...]
+ Content analysis details:   (-2.5 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [185.185.170.37 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [185.67.36.65 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H5      RBL: Excellent reputation (+5)
+ [185.67.36.65 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -116,10 +89,9 @@ X-Spam-Report: Spam detection software,
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
-X-Headers-End: 1nUyNd-002Lg5-AE
-Subject: [tboot-devel] [PATCH 3 of 3] Allow selecting only SINIT modules
- that match platform
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1nVMxW-0007QG-S4
+Subject: Re: [tboot-devel] suspend problem since kernel 5.15
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -135,93 +107,349 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-# HG changeset patch
-# User Timo Lindfors <timo.lindfors@iki.fi>
-# Date 1647554330 -7200
-#      Thu Mar 17 23:58:50 2022 +0200
-# Node ID 538c14b1428d0625ebb3f9c3cae21656fd4c3b06
-# Parent  e45ccbe6bf59ba534ad628f7be45e7c34629e19b
-Allow selecting only SINIT modules that match platform
-This introduces GRUB_TBOOT_SINIT_SELECT_MATCHING that defaults to
-false.
+I did a git bisect on the Linux kernel and found that the commit below
+is the one that breaks tboot+suspend to ram. It is part of a series of
+some cpu hotplug commits. I don't know how this would affect tboot
+suspend but I paste the patch below hoping that maybe you knowledgeable
+devs would get some ideas just by seeing it.
 
-Signed-off-by: Timo Lindfors <timo.lindfors@iki.fi>
+Just to be clear: if I build a kernel from the commit just before this
+one I can suspend and resume, but if I build with this commit I can not
+suspend, laptop gets stuck on blinking power LED. (Note I did this
+bisect using tboot 1.10.5).
 
-diff -r e45ccbe6bf59 -r 538c14b1428d tboot/20_linux_tboot
---- a/tboot/20_linux_tboot	Thu Mar 17 23:58:45 2022 +0200
-+++ b/tboot/20_linux_tboot	Thu Mar 17 23:58:50 2022 +0200
-@@ -40,6 +40,7 @@
- [ -z "${GRUB_CMDLINE_LINUX_TBOOT}" ] && unset GRUB_CMDLINE_LINUX_TBOOT
- [ -z "${GRUB_TBOOT_POLICY_DATA}" ] && unset GRUB_TBOOT_POLICY_DATA
- [ -z "${GRUB_TBOOT_SINIT_LIST}" ] && unset GRUB_TBOOT_SINIT_LIST
-+[ -z "${GRUB_TBOOT_SINIT_SELECT_MATCHING}" ] && unset GRUB_TBOOT_SINIT_SELECT_MATCHING
- # Command line for tboot itself
- : ${GRUB_CMDLINE_TBOOT='logging=serial,memory,vga'}
- # Linux kernel parameters to append for tboot
-@@ -48,6 +49,8 @@
- : ${GRUB_TBOOT_POLICY_DATA=''}
- # List of SINIT modules to use, glob patterns are supported
- : ${GRUB_TBOOT_SINIT_LIST='/boot/*sinit* /boot/*SINIT*'}
-+# Use only SINIT modules that match the current platform
-+: ${GRUB_TBOOT_SINIT_SELECT_MATCHING='false'}
- 
- export TEXTDOMAIN=grub
- export TEXTDOMAINDIR=${prefix}/share/locale
-@@ -164,8 +167,16 @@
- tboot_list=`for i in /boot/tboot*.gz; do
-         if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
-       done`
-+if [ "x${GRUB_TBOOT_SINIT_SELECT_MATCHING}" = "xtrue" ] && [ ! -e /dev/cpu/0/msr ]; then
-+  modprobe msr
-+fi
- sinit_list=`for i in ${GRUB_TBOOT_SINIT_LIST}; do
-         basename=$(basename $i)
-+        if [ "x${GRUB_TBOOT_SINIT_SELECT_MATCHING}" = "xtrue" ] \
-+            && ! txt-acminfo "$i" | grep -qx "ACM matches platform"; then
-+          # Skip SINIT that does not match
-+          continue
-+        fi
-         if grub_file_is_not_garbage "$i" ; then echo -n "$basename " ; fi
-       done`
- if [ -n "${GRUB_TBOOT_POLICY_DATA}" ]; then
-diff -r e45ccbe6bf59 -r 538c14b1428d tboot/20_linux_xen_tboot
---- a/tboot/20_linux_xen_tboot	Thu Mar 17 23:58:45 2022 +0200
-+++ b/tboot/20_linux_xen_tboot	Thu Mar 17 23:58:50 2022 +0200
-@@ -41,6 +41,7 @@
- [ -z "${GRUB_CMDLINE_LINUX_XEN_TBOOT}" ] && unset GRUB_CMDLINE_LINUX_XEN_TBOOT
- [ -z "${GRUB_TBOOT_POLICY_DATA}" ] && unset GRUB_TBOOT_POLICY_DATA
- [ -z "${GRUB_TBOOT_SINIT_LIST}" ] && unset GRUB_TBOOT_SINIT_LIST
-+[ -z "${GRUB_TBOOT_SINIT_SELECT_MATCHING}" ] && unset GRUB_TBOOT_SINIT_SELECT_MATCHING
- # Command line for tboot itself
- : ${GRUB_CMDLINE_TBOOT='logging=serial,memory,vga'}
- # Xen parameters to append for tboot
-@@ -51,6 +52,8 @@
- : ${GRUB_TBOOT_POLICY_DATA=''}
- # List of SINIT modules to use, glob patterns are supported
- : ${GRUB_TBOOT_SINIT_LIST='/boot/*sinit* /boot/*SINIT*'}
-+# Use only SINIT modules that match the current platform
-+: ${GRUB_TBOOT_SINIT_SELECT_MATCHING='false'}
- 
- export TEXTDOMAIN=grub
- export TEXTDOMAINDIR=${prefix}/share/locale
-@@ -194,8 +197,16 @@
- tboot_list=`for i in /boot/tboot*.gz; do
-         if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
-       done`
-+if [ "x${GRUB_TBOOT_SINIT_SELECT_MATCHING}" = "xtrue" ] && [ ! -e /dev/cpu/0/msr ]; then
-+  modprobe msr
-+fi
- sinit_list=`for i in ${GRUB_TBOOT_SINIT_LIST}; do
-         basename=$(basename $i)
-+        if [ "x${GRUB_TBOOT_SINIT_SELECT_MATCHING}" = "xtrue" ] \
-+            && ! txt-acminfo "$i" | grep -qx "ACM matches platform"; then
-+          # Skip SINIT that does not match
-+          continue
-+        fi
-         if grub_file_is_not_garbage "$i" ; then echo -n "$basename " ; fi
-       done`
- if [ -n "${GRUB_TBOOT_POLICY_DATA}" ]; then
+------------------------------------------------
+commit 453e41085183980087f8a80dada523caf1131c3c (HEAD, refs/bisect/bad)
+Author: Vincent Donnefort <vincent.donnefort@arm.com>
+Date:   Tue Feb 16 10:35:06 2021 +0000
 
+    cpu/hotplug: Add cpuhp_invoke_callback_range()
+
+    Factorizing and unifying cpuhp callback range invocations,
+especially for
+    the hotunplug path, where two different ways of decrementing were
+used. The
+    first one, decrements before the callback is called:
+
+     cpuhp_thread_fun()
+         state = st->state;
+         st->state--;
+         cpuhp_invoke_callback(state);
+
+    The second one, after:
+
+     take_down_cpu()|cpuhp_down_callbacks()
+         cpuhp_invoke_callback(st->state);
+         st->state--;
+
+    This is problematic for rolling back the steps in case of error, as
+    depending on the decrement, the rollback will start from N or N-1.
+It also
+    makes tracing inconsistent, between steps run in the cpuhp thread and
+    the others.
+
+    Additionally, avoid useless cpuhp_thread_fun() loops by skipping empty
+    steps.
+
+    Signed-off-by: Vincent Donnefort <vincent.donnefort@arm.com>
+    Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+    Signed-off-by: Ingo Molnar <mingo@kernel.org>
+    Link:
+https://lkml.kernel.org/r/20210216103506.416286-4-vincent.donnefort@arm.com
+--------------------------------------------------------------
+
+***
+*** This is what the problem commit has done:
+***
+
+diff --git b/kernel/cpu.c a/kernel/cpu.c
+index 680ed8f427c0..23505d6abd45 100644
+--- b/kernel/cpu.c
++++ a/kernel/cpu.c
+@@ -135,6 +135,11 @@ static struct cpuhp_step *cpuhp_get_step(enum
+cpuhp_state state)
+ 	return cpuhp_hp_states + state;
+ }
+
++static bool cpuhp_step_empty(bool bringup, struct cpuhp_step *step)
++{
++	return bringup ? !step->startup.single : !step->teardown.single;
++}
++
+ /**
+  * cpuhp_invoke_callback _ Invoke the callbacks for a given state
+  * @cpu:	The cpu for which the callback should be invoked
+@@ -157,26 +162,24 @@ static int cpuhp_invoke_callback(unsigned int cpu,
+enum cpuhp_state state,
+
+ 	if (st->fail == state) {
+ 		st->fail = CPUHP_INVALID;
+-
+-		if (!(bringup ? step->startup.single : step->teardown.single))
+-			return 0;
+-
+ 		return -EAGAIN;
+ 	}
+
++	if (cpuhp_step_empty(bringup, step)) {
++		WARN_ON_ONCE(1);
++		return 0;
++	}
++
+ 	if (!step->multi_instance) {
+ 		WARN_ON_ONCE(lastp && *lastp);
+ 		cb = bringup ? step->startup.single : step->teardown.single;
+-		if (!cb)
+-			return 0;
++
+ 		trace_cpuhp_enter(cpu, st->target, state, cb);
+ 		ret = cb(cpu);
+ 		trace_cpuhp_exit(cpu, st->state, state, ret);
+ 		return ret;
+ 	}
+ 	cbm = bringup ? step->startup.multi : step->teardown.multi;
+-	if (!cbm)
+-		return 0;
+
+ 	/* Single invocation for instance add/remove */
+ 	if (node) {
+@@ -475,6 +478,15 @@ cpuhp_set_state(struct cpuhp_cpu_state *st, enum
+cpuhp_state target)
+ static inline void
+ cpuhp_reset_state(struct cpuhp_cpu_state *st, enum cpuhp_state prev_state)
+ {
++	st->target = prev_state;
++
++	/*
++	 * Already rolling back. No need invert the bringup value or to change
++	 * the current state.
++	 */
++	if (st->rollback)
++		return;
++
+ 	st->rollback = true;
+
+ 	/*
+@@ -488,7 +500,6 @@ cpuhp_reset_state(struct cpuhp_cpu_state *st, enum
+cpuhp_state prev_state)
+ 			st->state++;
+ 	}
+
+-	st->target = prev_state;
+ 	st->bringup = !st->bringup;
+ }
+
+@@ -591,10 +602,53 @@ static int finish_cpu(unsigned int cpu)
+  * Hotplug state machine related functions
+  */
+
+-static void undo_cpu_up(unsigned int cpu, struct cpuhp_cpu_state *st)
++/*
++ * Get the next state to run. Empty ones will be skipped. Returns true if a
++ * state must be run.
++ *
++ * st->state will be modified ahead of time, to match state_to_run, as
+if it
++ * has already ran.
++ */
++static bool cpuhp_next_state(bool bringup,
++			     enum cpuhp_state *state_to_run,
++			     struct cpuhp_cpu_state *st,
++			     enum cpuhp_state target)
+ {
+-	for (st->state--; st->state > st->target; st->state--)
+-		cpuhp_invoke_callback(cpu, st->state, false, NULL, NULL);
++	do {
++		if (bringup) {
++			if (st->state >= target)
++				return false;
++
++			*state_to_run = ++st->state;
++		} else {
++			if (st->state <= target)
++				return false;
++
++			*state_to_run = st->state--;
++		}
++
++		if (!cpuhp_step_empty(bringup, cpuhp_get_step(*state_to_run)))
++			break;
++	} while (true);
++
++	return true;
++}
++
++static int cpuhp_invoke_callback_range(bool bringup,
++				       unsigned int cpu,
++				       struct cpuhp_cpu_state *st,
++				       enum cpuhp_state target)
++{
++	enum cpuhp_state state;
++	int err = 0;
++
++	while (cpuhp_next_state(bringup, &state, st, target)) {
++		err = cpuhp_invoke_callback(cpu, state, bringup, NULL, NULL);
++		if (err)
++			break;
++	}
++
++	return err;
+ }
+
+ static inline bool can_rollback_cpu(struct cpuhp_cpu_state *st)
+@@ -617,16 +671,12 @@ static int cpuhp_up_callbacks(unsigned int cpu,
+struct cpuhp_cpu_state *st,
+ 	enum cpuhp_state prev_state = st->state;
+ 	int ret = 0;
+
+-	while (st->state < target) {
+-		st->state++;
+-		ret = cpuhp_invoke_callback(cpu, st->state, true, NULL, NULL);
+-		if (ret) {
+-			if (can_rollback_cpu(st)) {
+-				st->target = prev_state;
+-				undo_cpu_up(cpu, st);
+-			}
+-			break;
+-		}
++	ret = cpuhp_invoke_callback_range(true, cpu, st, target);
++	if (ret) {
++		cpuhp_reset_state(st, prev_state);
++		if (can_rollback_cpu(st))
++			WARN_ON(cpuhp_invoke_callback_range(false, cpu, st,
++							    prev_state));
+ 	}
+ 	return ret;
+ }
+@@ -690,17 +740,9 @@ static void cpuhp_thread_fun(unsigned int cpu)
+ 		state = st->cb_state;
+ 		st->should_run = false;
+ 	} else {
+-		if (bringup) {
+-			st->state++;
+-			state = st->state;
+-			st->should_run = (st->state < st->target);
+-			WARN_ON_ONCE(st->state > st->target);
+-		} else {
+-			state = st->state;
+-			st->state--;
+-			st->should_run = (st->state > st->target);
+-			WARN_ON_ONCE(st->state < st->target);
+-		}
++		st->should_run = cpuhp_next_state(bringup, &state, st, st->target);
++		if (!st->should_run)
++			goto end;
+ 	}
+
+ 	WARN_ON_ONCE(!cpuhp_is_ap_state(state));
+@@ -728,6 +770,7 @@ static void cpuhp_thread_fun(unsigned int cpu)
+ 		st->should_run = false;
+ 	}
+
++end:
+ 	cpuhp_lock_release(bringup);
+ 	lockdep_release_cpus_lock();
+
+@@ -881,19 +924,18 @@ static int take_cpu_down(void *_param)
+ 		return err;
+
+ 	/*
+-	 * We get here while we are in CPUHP_TEARDOWN_CPU state and we must not
+-	 * do this step again.
++	 * Must be called from CPUHP_TEARDOWN_CPU, which means, as we are going
++	 * down, that the current state is CPUHP_TEARDOWN_CPU - 1.
+ 	 */
+-	WARN_ON(st->state != CPUHP_TEARDOWN_CPU);
+-	st->state--;
++	WARN_ON(st->state != (CPUHP_TEARDOWN_CPU - 1));
++
+ 	/* Invoke the former CPU_DYING callbacks */
+-	for (; st->state > target; st->state--) {
+-		ret = cpuhp_invoke_callback(cpu, st->state, false, NULL, NULL);
+-		/*
+-		 * DYING must not fail!
+-		 */
+-		WARN_ON_ONCE(ret);
+-	}
++	ret = cpuhp_invoke_callback_range(false, cpu, st, target);
++
++	/*
++	 * DYING must not fail!
++	 */
++	WARN_ON_ONCE(ret);
+
+ 	/* Give up timekeeping duties */
+ 	tick_handover_do_timer();
+@@ -975,27 +1017,22 @@ void cpuhp_report_idle_dead(void)
+ 				 cpuhp_complete_idle_dead, st, 0);
+ }
+
+-static void undo_cpu_down(unsigned int cpu, struct cpuhp_cpu_state *st)
+-{
+-	for (st->state++; st->state < st->target; st->state++)
+-		cpuhp_invoke_callback(cpu, st->state, true, NULL, NULL);
+-}
+-
+ static int cpuhp_down_callbacks(unsigned int cpu, struct
+cpuhp_cpu_state *st,
+ 				enum cpuhp_state target)
+ {
+ 	enum cpuhp_state prev_state = st->state;
+ 	int ret = 0;
+
+-	for (; st->state > target; st->state--) {
+-		ret = cpuhp_invoke_callback(cpu, st->state, false, NULL, NULL);
+-		if (ret) {
+-			st->target = prev_state;
+-			if (st->state < prev_state)
+-				undo_cpu_down(cpu, st);
+-			break;
+-		}
++	ret = cpuhp_invoke_callback_range(false, cpu, st, target);
++	if (ret) {
++
++		cpuhp_reset_state(st, prev_state);
++
++		if (st->state < prev_state)
++			WARN_ON(cpuhp_invoke_callback_range(true, cpu, st,
++							    prev_state));
+ 	}
++
+ 	return ret;
+ }
+
+@@ -1168,14 +1205,12 @@ void notify_cpu_starting(unsigned int cpu)
+
+ 	rcu_cpu_starting(cpu);	/* Enables RCU usage on this CPU. */
+ 	cpumask_set_cpu(cpu, &cpus_booted_once_mask);
+-	while (st->state < target) {
+-		st->state++;
+-		ret = cpuhp_invoke_callback(cpu, st->state, true, NULL, NULL);
+-		/*
+-		 * STARTING must not fail!
+-		 */
+-		WARN_ON_ONCE(ret);
+-	}
++	ret = cpuhp_invoke_callback_range(true, cpu, st, target);
++
++	/*
++	 * STARTING must not fail!
++	 */
++	WARN_ON_ONCE(ret);
+ }
+
+ /*
+@@ -1781,8 +1816,7 @@ static int cpuhp_issue_call(int cpu, enum
+cpuhp_state state, bool bringup,
+ 	 * If there's nothing to do, we done.
+ 	 * Relies on the union for multi_instance.
+ 	 */
+-	if ((bringup && !sp->startup.single) ||
+-	    (!bringup && !sp->teardown.single))
++	if (cpuhp_step_empty(bringup, sp))
+ 		return 0;
+ 	/*
+ 	 * The non AP bound callbacks can fail on bringup. On teardown
 
 
 _______________________________________________
