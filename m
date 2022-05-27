@@ -2,26 +2,26 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83A96525F98
-	for <lists+tboot-devel@lfdr.de>; Fri, 13 May 2022 12:12:22 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 542FD536390
+	for <lists+tboot-devel@lfdr.de>; Fri, 27 May 2022 15:51:29 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1npSHP-0001Rw-89; Fri, 13 May 2022 10:12:14 +0000
+	id 1nuaN2-0003WI-3C; Fri, 27 May 2022 13:51:16 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <pawel.randzio@intel.com>) id 1npSHO-0001Rp-2K
- for tboot-devel@lists.sourceforge.net; Fri, 13 May 2022 10:12:13 +0000
+ (envelope-from <pawel.randzio@intel.com>) id 1nuaN0-0003W2-Bf
+ for tboot-devel@lists.sourceforge.net; Fri, 27 May 2022 13:51:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Content-Type
  :In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=IWjiS9mST4qjuFjH2SiWJ1pInBamKBdtNqV3KoJ5xCs=; b=OYCmP79Re7NttrJUjxgOGxknWc
- mLh0kB89Ug6ck0zKRwa+5PKoEpHr5vYW4WHUuDg3EyeAe00CVBor37SAxRB3xvU8jwuHxsReW8pmZ
- 8+yoWBRfNXburFzFHU8X3cCOjJedOIUei3A+QNOokNlbKEu2XNJYPWjNad8HZs53SiBM=;
+ bh=L9IUBMSdAW4SNUi2fda4FQXLAOh/6Us4WrnLwdVLEXA=; b=Bslc+jquXv1LIBcBsZCIHY+iIc
+ XX20Gw1fmQbsxMdFJHytOeWf6HOFTFlEPlrIfZGGNx7WtXjQm+4krjnxN0K6UxNp3+/2p1R5bJ6Db
+ +HgSBfLhyaqzBc/RA0VRyK2KTp4ryJU9xASG1AX6t5/cWRgLy4UuQ3I0xCfDxAXo9YMc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:In-Reply-To:
@@ -29,170 +29,169 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=IWjiS9mST4qjuFjH2SiWJ1pInBamKBdtNqV3KoJ5xCs=; b=SdYaVitMw2eztcM4YWG4w0mIcv
- Y9mfR+0Ku+Ch8bHPYZqiuOJUnroIKnnV7UPOlRYjfzC+jor9XnsNTLNHKmEGhF/+x63mbOo9p2kDK
- 8tp0iYP64xdZi6tWhns+a6fcFAAgR42Z+7s4MZu8UJ0e1sTIh8Wpq0Q0vpYs7snQQaWs=;
-Received: from mga17.intel.com ([192.55.52.151])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ bh=L9IUBMSdAW4SNUi2fda4FQXLAOh/6Us4WrnLwdVLEXA=; b=TVZ8GhRzAIzhRz/P2w6vQRTmcB
+ itHURiRmJ/0uatb7Z5W8hvM6D2uJ6XPzJ2B/B3CkjSeodqxSSqa0bnXoZPiY+4YaLa06leGsi8V6M
+ eUyDSAbye0JccODyDXqR79t8tYB0bFSwhYiIeMnWliMXWLrObsyKtXJkCT0QeKGs5cvY=;
+Received: from mga18.intel.com ([134.134.136.126])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1npSHJ-0000Zw-Gk
- for tboot-devel@lists.sourceforge.net; Fri, 13 May 2022 10:12:12 +0000
+ id 1nuaMu-004KTk-OG
+ for tboot-devel@lists.sourceforge.net; Fri, 27 May 2022 13:51:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1652436729; x=1683972729;
+ t=1653659468; x=1685195468;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:mime-version:content-transfer-encoding;
- bh=9ra+ZTMhoI7FcBqiEt0/2bR4uizyKR+TAYMjmGoc/7w=;
- b=OneLlzt3whxArF0YOU9MJKBnz+QX0hD5mMKPj+DW/pIVqwRgtHA18zVt
- SBLDDg8AbD7Mjc6VVl9X8X8Tkd+Bl6QJ+eABf5/ogUkO6CbJPDNiAnOWg
- nCqmxEMidG63oivMHGBsPwWFxoUmu/DiVCLHu4h6LFiq/87a8XGQfCdk4
- VbXbNUVXwxh9IiSMiBDurtDOFybACHq96kaIBwLmCrVxFtKy2wagx39Dc
- ZeimaD0aBL6Ib6gFqY20mz52TJG04N1owHm7rC4GNnyrIgKvESqnBkQ/h
- HPMn3JzfBuedZwLHj3qc0L0TtArpGO0DkeZEWG0Xi0JYLbKU59PhsUL+3 g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10345"; a="250801795"
-X-IronPort-AV: E=Sophos;i="5.91,221,1647327600"; d="scan'208";a="250801795"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 May 2022 03:12:03 -0700
+ bh=8cdtDm9nwSdRG8BLnBbc8tAuGtRRIgevNJ9G2uWgsTI=;
+ b=fbWFcooWgbPjlebCbyBWdKZgoa/Y2XQgEYuePF28J28WX7u4dPcxnfd+
+ gbhFY4HievwPOf2mvT52o7kmdhUlU0+8ApEdHtfTEU9jwtZK1vhJJWZQG
+ jAMlBraw9X8TYGYzn3CKS6Q+d94wm4lWcjWRYeyC1joR7Jd3X7x+T05jl
+ ITAs2QVs3sFj9y4S8EJfcVxFjrIWQOfqm3aZtE7q6hSK8UFIoaluBMgjp
+ kblpP8OKZ6IJ2l36MIPfBHh1b7dcT458/H3gfIW4K9CqrtJB1Z3l0BoNH
+ kmfWiz8G5Gj07pV2g6qpBBm6LVntH1Jful2z4XKL2ZMyZmGfO0jSwivR1 w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10359"; a="256554205"
+X-IronPort-AV: E=Sophos;i="5.91,255,1647327600"; d="scan'208";a="256554205"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2022 06:51:03 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,221,1647327600"; d="scan'208";a="554168074"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga002.jf.intel.com with ESMTP; 13 May 2022 03:12:02 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.91,255,1647327600"; d="scan'208";a="610284050"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga001.jf.intel.com with ESMTP; 27 May 2022 06:51:02 -0700
+Received: from fmsmsx609.amr.corp.intel.com (10.18.126.89) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Fri, 13 May 2022 03:12:02 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ 15.1.2308.27; Fri, 27 May 2022 06:51:02 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx609.amr.corp.intel.com (10.18.126.89) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Fri, 13 May 2022 03:12:02 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.173)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ 15.1.2308.27 via Frontend Transport; Fri, 27 May 2022 06:51:02 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.107)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Fri, 13 May 2022 03:12:02 -0700
+ 15.1.2308.27; Fri, 27 May 2022 06:51:01 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Zj/Z/OhSvP2IvNuGA9sEgsjHUN4W1SA+bxwwRYDs+37ojfcsEA2o2It2/auPNa4M3YTRLtPej/yaVjXphNN3Cc2f8YfhW18pXaXNVZIlF9wuG+/Qr/8KRkilMY/eb2rrk+nqstnJ41fXpZjg0FtELAO2hlfrvgt4IeDCs+T0SjkA9IDEpGo8e2PvAr1BWSRZhAX1y56pZGe2sslJvCpLyP+H0Vn/ryX3KbYS+OMPQZ3CyWQvVU6zMO8n4sZFLB0zOrcpBuW09QXUQ+YggxXkOGy6DhByk5g7yAgqAvCuBvhkS/ji60p273gWdAvltShGazOKGk8sSuGLOuc3736/RQ==
+ b=Rd1hxZDbrlfcE7IBlTUx6h50EjAgIbZlDx/dDYOauEjn6BAh2HFiKEcjqDmkKd57+/QueYuAQL1tULoEXHj9qUGfSu37dVt3XBxL6OVpawn0k4sDIPEvyD4uTA4+f4xkG+BRO8UNe8Sn5YEJXzrTJQ2zuLJl5FwY4Vw36ET4/0913OqrLJQvcQW+9rcOpiFhT3lkR1wfBVF9AJxycTSNj9MVWoh0phUK6MstG61m3KHRtUmBzSs09ConqCcTsbp8400qWuLN/cULMJu/tRdwrq3zsSnXwSrpZzwViecepq0aKQaooEVzy06PvanmIZECVvfAbr0CREJAxL1QmqfzLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=LIF1y5mfkcS59PoFrRc5gASnySHHwoRwulzWAf3GXrw=;
- b=Zu5XqI7H7mUGEVdaB0JKORdmkx4hQYlijCEbpr/BSjI6hIMpuLBiGnlpDh733fkuj1Hc/Mn5h9FtKvdrbYSfOL7PIfUwvCu2Fr8R5w7siUh3J1+hY9kjSO9EFaVp2YuCX0rN75sOU0FqbGv4Gk/BPI0c+J3660yLgeFqZZcdVYDIbqDYoWI8rYRAp5kC9tD1hHi0acyOXLNIxWLUxJk/sTRNPpZhb1sEKUbpdrz8iVMF71tBbY2VE7D6AuIRomqCnx7rWWCuHuDj85epMHCUge+40qwErP00yKVUFehLXEFdhM4hMPYh14SO2SvosZHfnfNXlmoPSpUtrOUwq4yQvA==
+ bh=glhtZ1k67ypjAQKb1Vz8v7Gg+0LF2hfsAAThOcA3JS0=;
+ b=J2Gw/dy5Ba3KG5jkl5BkJLm6QpMP4jOxfe0zf8bueUTE6Z4Jw+rtEx/pqks2AVd9nBg5wjQr2D0WLsysKVZLwRcOTv7jPy8d2o7NbqlknHz9F4fLo9KylTN/91shaXcGp/32aW4/ZjsHK15907iWFpRN6LHeGZlh0nEBlMQT7OMMAM7jjUZbkXjxYF5JNZZoMkYDtVp/yDRbK7onCTGGFNDvGNNQLIPrZVCAmHzWSKW1ru/rcmVsOrj7rHU7wL9y+zQE6VEyIofgosCO6u4N0cKopWS9ff7YiLaYxBm/5YgLNSRrsg1gbom+oqyhxFM/w42lSuw16P4/nGnj/2sfVg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from CY4PR1101MB2070.namprd11.prod.outlook.com
- (2603:10b6:910:1c::17) by MWHPR11MB1808.namprd11.prod.outlook.com
- (2603:10b6:300:10f::7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5250.14; Fri, 13 May
- 2022 10:12:00 +0000
+ (2603:10b6:910:1c::17) by BL1PR11MB5954.namprd11.prod.outlook.com
+ (2603:10b6:208:385::16) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.14; Fri, 27 May
+ 2022 13:50:54 +0000
 Received: from CY4PR1101MB2070.namprd11.prod.outlook.com
- ([fe80::1139:809d:2a86:dcc6]) by CY4PR1101MB2070.namprd11.prod.outlook.com
- ([fe80::1139:809d:2a86:dcc6%10]) with mapi id 15.20.5250.014; Fri, 13 May
- 2022 10:12:00 +0000
+ ([fe80::4169:e091:16c2:50f6]) by CY4PR1101MB2070.namprd11.prod.outlook.com
+ ([fe80::4169:e091:16c2:50f6%8]) with mapi id 15.20.5293.013; Fri, 27 May 2022
+ 13:50:54 +0000
 From: "Randzio, Pawel" <pawel.randzio@intel.com>
 To: Derek Dolney <z23@posteo.net>, =?iso-8859-2?Q?=A3ukasz_Hawry=B3ko?=
  <lukasz@hawrylko.pl>
 Thread-Topic: [tboot-devel] suspend problem since kernel 5.15
-Thread-Index: AQHYFsgdNvrgDroV/E6nh0QWYk7Ohax+foIAgAmajICAPgmhgIBV5/CAgAEqAJA=
-Date: Fri, 13 May 2022 10:12:00 +0000
-Message-ID: <CY4PR1101MB207005F236983E9353227654EBCA9@CY4PR1101MB2070.namprd11.prod.outlook.com>
+Thread-Index: AQHYFsgdNvrgDroV/E6nh0QWYk7Ohax+foIAgAmajICAPgmhgIBV5/CAgAEqAJCAFjzO8A==
+Date: Fri, 27 May 2022 13:50:54 +0000
+Message-ID: <CY4PR1101MB20706DE48541CC18F90E9F10EBD89@CY4PR1101MB2070.namprd11.prod.outlook.com>
 References: <4b3349f2-69f2-d6d3-ab66-6178af102333@posteo.net>
  <dcb47ad40ac22b08380312c1c18f322848ccd4d6.camel@hawrylko.pl>
  <6ca692b5-c54d-c57c-03a8-e774a86762c0@posteo.net>
  <3ae8a2cd-9ca3-1feb-4a96-0abc54277b34@posteo.net>
  <9da7e209-01bf-ee90-33cc-d6ed9ef355f9@posteo.net>
-In-Reply-To: <9da7e209-01bf-ee90-33cc-d6ed9ef355f9@posteo.net>
+ <CY4PR1101MB207005F236983E9353227654EBCA9@CY4PR1101MB2070.namprd11.prod.outlook.com>
+In-Reply-To: <CY4PR1101MB207005F236983E9353227654EBCA9@CY4PR1101MB2070.namprd11.prod.outlook.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
-dlp-version: 11.6.401.20
+dlp-version: 11.6.500.17
 dlp-reaction: no-action
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 503eebe4-7601-498a-5820-08da34c90525
-x-ms-traffictypediagnostic: MWHPR11MB1808:EE_
-x-microsoft-antispam-prvs: <MWHPR11MB1808BE194315AE0C70A3EB33EBCA9@MWHPR11MB1808.namprd11.prod.outlook.com>
+x-ms-office365-filtering-correlation-id: 3d1206ea-e367-47f8-8b89-08da3fe7eb55
+x-ms-traffictypediagnostic: BL1PR11MB5954:EE_
+x-microsoft-antispam-prvs: <BL1PR11MB5954F3B64D964D5F53699162EBD89@BL1PR11MB5954.namprd11.prod.outlook.com>
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 4tirGVESjPatIjgtwXpaZlg8K/96+KCLd9u8Ryjpga7t5WcDgCqo8EjX868aJfkV8UyJ0RjtYLcBKQosrWxvbFFSsIXqXND/SDoVQN19Lwaal4fisSHqvPB6v4J4Dm1/GLdiloqqYjxw/agTS6tMxPElptPDwn+7D8dVkxNAJOKlklCBInSwZ1pGk4vcVYWLSYCoE+lg9BKjUCV53WFdophmHD5q0TK1bEYt2az60tAmhb88vH1usNk+EUJ0AH9JejWilEdGxeN0onJlrGfbolxTaYfOrDt5udpgsP8YY6s38D8i+cASdIKcxfDCqx6NeitGPgN7Mn3PJfvG7gx6vCLivwCSLrs+nXypunBKFtQbtJrN8HYJtqucw36wyztxbCJsr+rS9NEuy1IvvbANmKM3Y+v+x1hTNAqb9sWdwAdzcTKI2wa7+VVIGVAb9zhho27R2LJ/tElS5xV8tu06W7SRhERJoWE6dkEQiZ2EwzQVZiKRdByO7XkTjI3mPAAozigvMaBwntpVQOj2O8jsDkezI7KSGg0VfGKHeCgAz8zq0d8oPoLxUAEd8R9QDUdDlj8f+mnMBR9bovYdzzYAsWj2CzoGHjDxbXF596h4aaphYOI96re9sdf2cOkhy24IdUcb3ZdGn+7BD12xPqQXea43tIqcw48STezj7U8frnXEgILdIdk+GpvkYi7+fNpg56mSKgvJeBKR7VDA8btkf64rBXUhtLA2gndDJvqoC+ItMQxp4qQt2UUlwMm1jORabaPtktBBgW9pVxwpcjePLBnY77Pzqy7on250t4sD1mw=
+x-microsoft-antispam-message-info: vFuXYhZIcIKvGpBCTxF/8HA0yONNGECgQiyhq3RAMLAn+fD8JGn6Dq77oqsDkmPqqVS3Naq0Np3mFaB/HU0MS/Qru0SmOgwvuJ4dszqIT1uhq6MBPnNrY0/7CuDFS18+3rDiH9/00oElm2fWNErLr2cSZITcs38qSxUnbauC4wXlaky1Khyw8ADo94zmvyM/ZBYE8A7BjSUPq8yRd1+A2kXcenD3PfDJW2q5FTg3BxUFBtoefVi72Sw7P5q7hlSGHU+nKvx/z/BW3jWgXDPVbWB/B0Fk5mjvNUR3BPjX1bTefqnHuqy9vHsmWNdLMsruWRpqi8QcijQSBak0eLUGGJN+itWc9YRb7KLw/xvxw6axm18Mw+3XnTLOhiGxja1EGektNjy//vhkjuQeemx3gz+Kh7qQo4nJJR9TLNwqD1qzX+Yy42kK9C7UcdMO/3v5uOADCZVMo8JEbiyIqqVY3Np8LhSe+daVWU0+eSwSFrlYRiW4wc+DRg5qhNl5KjevW/p4duloqA9vSdKaX3aAd2XV0sy+4z/ctB6CBKuZd/AyJVQr8nEjzL1hSLRKYNyqn/pXg1y7pqb5jhoNdg71S9vJ/nmvPfiPP0PhFcM6P8cRILJ+zy/VGPwWinIL3bf45Jh7b5e4vdNpbkoPJ7+w2Cd8J0jp9raN6VnIgG14KYV2z9p64mn4uM9gxPQAbvdBzZVE/7avjUhdvCTn2GilC7qXgEtQ+EVOC3oB5lrV/SgwYaCGetA/3paTMqWwPgUBfMJVuXwgU8Qu9cB1GSB/nZbcfsb+QDZyeZCbfdDUp9U=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CY4PR1101MB2070.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(55016003)(316002)(38100700002)(186003)(38070700005)(2906002)(15650500001)(7696005)(82960400001)(122000001)(110136005)(66446008)(66946007)(8676002)(4326008)(9686003)(66476007)(64756008)(66556008)(26005)(6506007)(76116006)(5660300002)(66574015)(508600001)(86362001)(33656002)(8936002)(71200400001)(53546011)(83380400001)(966005)(52536014);
+ SFS:(13230001)(366004)(186003)(53546011)(6506007)(83380400001)(66574015)(8676002)(4326008)(508600001)(71200400001)(66556008)(33656002)(26005)(966005)(9686003)(15650500001)(316002)(7696005)(55016003)(86362001)(110136005)(76116006)(2906002)(52536014)(5660300002)(8936002)(66946007)(38100700002)(122000001)(66446008)(38070700005)(66476007)(64756008)(82960400001);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?OmyKJgpD4/vGgr+A/UAAK/yii2yjKKkUVL++HWi0iLrnMv8kxP+r0533BO?=
- =?iso-8859-2?Q?KKRo4PEZ1at7RPUWTpTC0KhiT+ixF75nSfPawMQ4nQkClPhMB6sES3CSTx?=
- =?iso-8859-2?Q?7rLoXAfJEJEJCQLbNa3jnyQ/kGu+GJrXJxqoUhIXqrvrCCJMFhT3VitMvE?=
- =?iso-8859-2?Q?ZygnLxmyxdNAgtQjZiXzPTFa98x+bbs+NbWSmtZJJAiLp4/75IqMEiQCbe?=
- =?iso-8859-2?Q?CKvd3xw06RCHQeYsco2qEmw3gggwmaScXtZEC+bHxql2wn/7LwT6Lq0dlx?=
- =?iso-8859-2?Q?o9MAdfhAPGfMVDXkbWa5kzljl9CCv/58teBRDWb1vcmZWbx2EpLZohpJdw?=
- =?iso-8859-2?Q?A4a3AUG33av6erUXfSW14E7T9bzU2P1ibftOevF1P6wYttfEKHr64pEOIh?=
- =?iso-8859-2?Q?yjk7O5/QpOs33zt/PCSpo7JhBdiKbn9Z/iLQi1pF3GztiqoUyEQn6a5b5B?=
- =?iso-8859-2?Q?tM2fbp8XXHrP+bYeTOtBS6Ank+RTz3SYPiaIOFNYZLwjmc/HTB+I3UVB1b?=
- =?iso-8859-2?Q?RzQpt8wQ6JFw4cI3Ti9qe/IZfwPigobW6kTHA+KNnFAE8B1h6+h85ul22X?=
- =?iso-8859-2?Q?MjsN2pc5z5VwraHRXQkRvC7rvknoa3bZjfoxcX48BzT85nMW5M0k6NdVXR?=
- =?iso-8859-2?Q?XmPVLDmTzZsSPLWwW3/7J7T6U65YTKLqV3P+P8WiqpHzxEP7+250Gd0Dpc?=
- =?iso-8859-2?Q?uh3Z3pnOHRfN3WTjd3OzyIA/xlE0b+6Ydfmu6xgMZPfXkRaqCG+1A4TzL3?=
- =?iso-8859-2?Q?rNik22Zm3fJz4e9xJPstnZWD+Q6cxvxtJBm5IOWBs3ytjzqDxHRh2qcGcc?=
- =?iso-8859-2?Q?EQVFSXIuoXt5BPk618mNpBFuqMjmQaqcFPt633F5dB1eeGt+ftqYzZ63HY?=
- =?iso-8859-2?Q?PzlO6P6mWbumLPLZ/GzDcR64MHa/6T9UBjpr3sA5EF82mvjjGWlKHDLEMC?=
- =?iso-8859-2?Q?tkzxJyddDDbQFlG3o4sun88PjhAsQmDjC5a6T3zS6SrIZxiszJaNQnlHlu?=
- =?iso-8859-2?Q?xx+c4q+UFLpNSrvrb03lMuBE8t1vI+UFTwnTcSZI9Yc+UxkyXaEoIcIQw5?=
- =?iso-8859-2?Q?yeBTdIBC23JPFevw8hB+f7QKfDW3MJXfpxKSOtHcrU2TSf574/ZSOnANIv?=
- =?iso-8859-2?Q?T+9q+GDlaeqHIoZpXF3vD/Sru8ENSASL825U/IjX5uZz11wE4/cUPHqjBC?=
- =?iso-8859-2?Q?UnVGYloVsSK/eKQkOPFEdXlbQPH9x6rVnCOeCC9RC6VoCE2WdhFLCO6t7/?=
- =?iso-8859-2?Q?Qg4Ch5VyYv7BXsXJRB2kqGsw+gUO/IghUchWUlnUtUd5uzpUkF3SDycyRo?=
- =?iso-8859-2?Q?y+4/9Pu3UrR3t98fvCElr8e7+PPUXDzS5GjfnwNMnPEpg3HF28GLEIQMqK?=
- =?iso-8859-2?Q?H/qcoLcnKZO8HyhrDMP/E5BJQvXFyXOZZ9S16N54wtSD8md+LbfKssEhzL?=
- =?iso-8859-2?Q?kEPqCdaAuJzeAPvFTpLSqEpK/Ua9xDfdNckAvjmEUz4JDyW8wAF9xFwZCT?=
- =?iso-8859-2?Q?eNoLdMJf0ZjxyiHVzZ4Y7OrQfCh1t3puXfPeAcObxVrGEERbsGMxDP3aGV?=
- =?iso-8859-2?Q?FCVmI6zxFDMCHQFiYFsDujeYq+dKnSpKUbSV01XveATLxDUi8+UiW7yVKF?=
- =?iso-8859-2?Q?9l6BHswrxGZLaKcSI0BZZLo2OoZ3hfaFgvf4W5PM9MLO412SUdxEwVK8US?=
- =?iso-8859-2?Q?kCNdNoFnxxue72Eutx2IaLA0IhiZNLluBv2i4xzYFHIY0lVp4we/64MhkF?=
- =?iso-8859-2?Q?WHAtu32ZpGj2wOSa94sECCVapxCDqPwCwhx9D8zvFsJgcHwzDSKj5oKGgB?=
- =?iso-8859-2?Q?XO5smg/MLQ=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?Vfhd5FeLgpPdGmV14ypV8UWZHwYgW8olvu4jVKSq62zTX/Gp9FDHaYW26l?=
+ =?iso-8859-2?Q?6wDbNw9gsbTL8LJhALsaf4oejruCYDodQCVHWr5ktz6+XBxQJwSstV/0GC?=
+ =?iso-8859-2?Q?/iqX53U+uTSwgUxb2WKSFHuf8K1P/ve1+5CZhJg90UqGmqt4gOmlfnoe0d?=
+ =?iso-8859-2?Q?By0Ezr2jtcJ907Pm+XmRoOx2BG9pOlnNfdOlGABRmS4UC9V21tVLpdOOPT?=
+ =?iso-8859-2?Q?HkFxZRDeinEMgsij6CuD7ORsuRd3vJ77FSZ0qpQ2+SsCRotWYMbuMmyeBI?=
+ =?iso-8859-2?Q?JGULEsXIUgscYrnRJLFZwF6Rhat82Af+Zhlhvv4tII1I274zszzgPbKriJ?=
+ =?iso-8859-2?Q?bcjuxfDC8SU/hN352CHgS+6tG/9IJ0b/TLRBi7trbGcqIz7IyIbXghtCR2?=
+ =?iso-8859-2?Q?r0HQX/SfYMpe9Yxj7fv6rj8RNsLpNc4nJOltzb/TSn+/pvnHWMxTROC6CW?=
+ =?iso-8859-2?Q?NCUvcVZbnmLlPdp1ERaMGMertBa3+m6M7MYOkG3/iuJ6N7JMiMDy7V1/e6?=
+ =?iso-8859-2?Q?XWka6G/GxPN73fQHvekPQ0m+C5cqJbuElXTIQQoyA6HNCdgADZsqBORnvi?=
+ =?iso-8859-2?Q?m0NKFx9hbZ6TNXV2VcyggaXjecXDNA0TcQ7gYeJnzpDtmSdpW0G9xtIDMe?=
+ =?iso-8859-2?Q?YwUtqzM+XLpA7249vGVK80JI2sPy4F/DSJaBucKvLLfSRHV3miBmWOkgWl?=
+ =?iso-8859-2?Q?OIRYc438YMcJrIA+6D0UNTdinffxEAUGEupDj7LSpefKkXKZoTaE7g19UA?=
+ =?iso-8859-2?Q?VYaDToxo0+SGoMRjJ9A3w3oxgqPL/E7o5gZceLNseva72H6I3FU1YaBv3A?=
+ =?iso-8859-2?Q?9w+Y2wo+tU0iVEvBMY5244H6Ryxt7wYpEQt5MLkuYzipY/Js0GHEDUuOc0?=
+ =?iso-8859-2?Q?jnq4VQYHQqhX3YB4XXkWQcjYkqVEEFgnj69pqwva88WfhbQag12+YeGBGk?=
+ =?iso-8859-2?Q?myT1z5SyABN0vkgcVSIOes3+fo3FL+AKpOsPlmOj0w1HnJynvkZintt9nu?=
+ =?iso-8859-2?Q?lbrD/q1DZFilkkdBAonSR+zOPCRofyNr0y6AS+1SoEWO2C53M4x8MNjMDs?=
+ =?iso-8859-2?Q?27XqszYtkFF2tJ6zl5EUtcr86tqfmAjr5okL87evt1/tBUEsjB8NtlC2KC?=
+ =?iso-8859-2?Q?uYA+qKnQ3hrd6OXAPwNWecLuweNZvlUdDh02tF5kdlJ5zm+VIjCnF4Tdas?=
+ =?iso-8859-2?Q?PWmA3++MW4qn4qipoGuxILTwlEem0TJln3w1AKDISEs47kgVEgWGIZhjJa?=
+ =?iso-8859-2?Q?1o8Q1SQewgX0ubsMNFc+7zz41ED/dLYogzti087U88x7Aha/pK5ZGmW3fn?=
+ =?iso-8859-2?Q?Z6KuVnsuzmpUlItCM8w0cw2GIDbrzaUp0hBHR52mLxnGClETUjFAzaVNSO?=
+ =?iso-8859-2?Q?0RmtYCPmut9vwfrzX3coInsaLfNvCKt69sKXdnqcEKxPREEHqjzpD7rUFO?=
+ =?iso-8859-2?Q?8EqxClHMhB+6QFEf0so00uoqO0qqxP1mPdjdlp5U/gwNO5ZPqjj3Mj+U3j?=
+ =?iso-8859-2?Q?SRRKU9cPcEmOnhRqYdOWtCHfsRlxWehkio+WEBsGa675DN5uUGrTIE5AvC?=
+ =?iso-8859-2?Q?PIpvxo6kKuQN+wutT1K0WRFR9tBgAf/z7Ck+sAHs3Cg/cvuvN4ppdBMDEH?=
+ =?iso-8859-2?Q?jgOMxA93OEPWU1iwCfWZMIyZlpPb5qUey+ifLXBSCviZRAp4IvokvZlwnn?=
+ =?iso-8859-2?Q?s1zqbD+tEylm4U1vmOnGWGrqS6UI1iBIyCLd7Lu6/6qDaZxadXR+NrXI63?=
+ =?iso-8859-2?Q?J/e9v0FqSLBEKC0OqZVOg+5q+Xhq4EPP0u0B5IacKPHP+ZLpQVU3lvwkZY?=
+ =?iso-8859-2?Q?a2bkUSwVYw=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: CY4PR1101MB2070.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 503eebe4-7601-498a-5820-08da34c90525
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 May 2022 10:12:00.5594 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3d1206ea-e367-47f8-8b89-08da3fe7eb55
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 May 2022 13:50:54.4125 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: wrmhkmryK6ldQ9Sh21feOlVmHJRWRPPWaSc4/Z9ufoNG/DAPLN6GTUDoWCNSM0DnFDVEwmgrzFSgjblBbSMGVQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1808
+X-MS-Exchange-CrossTenant-userprincipalname: cf5g317DjvkgAmAE099wD2VoJn5y3d10ULctK83SD4hPtLALSwEdirGLaA6gah7+PDc6+Os0qd6ni0NoxfshnQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5954
 X-OriginatorOrg: intel.com
-X-Spam-Score: -3.1 (---)
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi Derek, I've also been picking at that issue for the past
- few months and reached the same wall as you have with the -EBUSY callback
- return, although your message kind of gives me a new idea for where to look
- [...] Content analysis details:   (-3.1 points, 6.0 required)
+ Content preview:  Hi Derek, I wish to gladly inform you that I've fixed the
+ bug preventing suspend with Tboot. It was in the piece of code that you've
+ highlighted - the atomic increment on ap_wfs_count variable need have been
+ moved into the else clause of the following if statement, something like
+ this: Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.151 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 T_SCC_BODY_TEXT_LINE   No description available.
- -0.6 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1npSHJ-0000Zw-Gk
+ -0.7 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
+X-Headers-End: 1nuaMu-004KTk-OG
 Subject: Re: [tboot-devel] suspend problem since kernel 5.15
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
@@ -209,6 +208,53 @@ Cc: "tboot-devel@lists.sourceforge.net" <tboot-devel@lists.sourceforge.net>
 Content-Type: text/plain; charset="iso-8859-2"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
+
+Hi Derek,
+
+I wish to gladly inform you that I've fixed the bug preventing suspend with=
+ Tboot.
+
+It was in the piece of code that you've highlighted - the atomic increment =
+on ap_wfs_count variable need have been moved into the else clause of the f=
+ollowing if statement, something like this:
+
+static int tboot_dying_cpu(unsigned int cpu) {
+	if (num_online_cpus() =3D=3D 1) {
+		if (tboot_wait_for_aps(atomic_read(&ap_wfs_count)))
+			return -EBUSY;
+	} else
+	 	atomic_inc(&ap_wfs_count);
+	return 0;
+}
+
+Otherwise, when the procedure shutdown all APs, BSP was also counted in as =
+one of them, thus creating a mismatch between what kernel had counted and w=
+hat TBOOT reported back to it.
+This caused a kernel panic, which froze the machine while putting it into s=
+uspend.
+
+I've sent a version of TBOOT Live Image equipped with this patch of the ker=
+nel to our validation teams and I'm awaiting their response after the weeke=
+nd.
+If I get positive results from their tests I will try and have this patch a=
+ttached to the official kernel repository and featured in versions 5.19 and=
+ up.
+
+Kind regards,
+Pawe=B3
+
+
+
+
+
+-----Original Message-----
+From: Randzio, Pawel =
+
+Sent: Friday, May 13, 2022 12:12 PM
+To: 'Derek Dolney' <z23@posteo.net>; =A3ukasz Hawry=B3ko <lukasz@hawrylko.p=
+l>
+Cc: tboot-devel@lists.sourceforge.net
+Subject: RE: [tboot-devel] suspend problem since kernel 5.15
 
 Hi Derek,
 
