@@ -2,105 +2,117 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7576A547368
-	for <lists+tboot-devel@lfdr.de>; Sat, 11 Jun 2022 11:47:28 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE254547657
+	for <lists+tboot-devel@lfdr.de>; Sat, 11 Jun 2022 18:09:08 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1nzxi2-0001s1-B7; Sat, 11 Jun 2022 09:47:09 +0000
+	id 1o03fZ-0005zV-Ji; Sat, 11 Jun 2022 16:09:02 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <timo.lindfors@iki.fi>) id 1nzxi0-0001ru-Ts
- for tboot-devel@lists.sourceforge.net; Sat, 11 Jun 2022 09:47:07 +0000
+ (envelope-from <tcamuso@redhat.com>) id 1o03fY-0005zC-EA
+ for tboot-devel@lists.sourceforge.net; Sat, 11 Jun 2022 16:09:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
- In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
- :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=gmD062XzLttQUxX2K4KYK7MrwPBgdCVxrJakyfWqHv4=; b=K3DLEuyY9Wj5SHp6PsUk9K4XLS
- GOuOtR64MxrqVwgHTUOlv5Gybez16h9dYGyFwXeHyjMadWHNpimP1ymcaR5dq48OWLWmkJFCdQGS0
- f4MiyKqvPOdeJ74Hg2OUzlcQ8eDiRsTNcUyhNAkQeMsaBqev3H+QSoQDxmh8gStJvvL4=;
+ bh=Jy4VrxRWt6B4ib+IKCLI6pPV9ZkJHznQ7dop04OEDjI=; b=i8F+3weVQkjcDam9DI1dO6YIBQ
+ W2a4+Yernayy7LjV3pGatjcHS2lMfqiKiAHcsqjJF6q4a+A6+trzplpF8WSIAnUVqQiaKqZtN7Nql
+ mVZ32ozob5rC38Ec+HAyg03ur9kKPi77iMWaW7e3sia4SpX9O8UlPKtGzlGofUy5DmV0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+ Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=gmD062XzLttQUxX2K4KYK7MrwPBgdCVxrJakyfWqHv4=; b=O9dohRAT+YG+Ohr5au3Id5pUAa
- t3nqEJvBzCQ3ximPMAu9E/SQoH8qUUucv3iLjsvY3mj7LExTzVKsUoWEwPcre0ZJiNU/7mUmHLQ10
- ypX4UJVsRNiFfI8T7zQO7WiO9o1DIJsTMmxxLsaGfrClUyA8mJts8044vr+unac2FAQE=;
-Received: from lahtoruutu.iki.fi ([185.185.170.37])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ bh=Jy4VrxRWt6B4ib+IKCLI6pPV9ZkJHznQ7dop04OEDjI=; b=mi3hOSZZZkK+Mk6zMA7v4BKvGr
+ UodmF8b1DZ1QZ19/PLVERZLRIjFF4uyag3oucBDNLXagtqACKoL5/uPA643BijS6YygNrMOei1lSl
+ Cn9IdDULgg4/GxP7Ql7kskKNH1XyxyY5i2Izb56hUQvlrZwocdl7untI4sDzpczR48k0=;
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1nzxhy-00Ez0f-Cb
- for tboot-devel@lists.sourceforge.net; Sat, 11 Jun 2022 09:47:07 +0000
-Received: from mail.home (82-181-195-69.bb.dnainternet.fi [82.181.195.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- (Authenticated sender: timo.lindfors)
- by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 3E3511B001E8;
- Sat, 11 Jun 2022 12:27:37 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu; 
- t=1654939657;
+ id 1o03fO-00071M-A3
+ for tboot-devel@lists.sourceforge.net; Sat, 11 Jun 2022 16:09:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1654963725;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gmD062XzLttQUxX2K4KYK7MrwPBgdCVxrJakyfWqHv4=;
- b=psVT9seT9OVbM2hY/loln+QILK7sskvPo3RpXmqN1iw/AxFFEdUeJFObE0DkDOgQuJYQUQ
- fa9Gj3xdfRESeaz2EJjX7JEtmBmZN0YvcHJoBibvhAZzoXvQMrkcQbeuOV3Ltc6oWVhqtB
- cZ8VSorFqssJe1hsISVBfDEcJe5UGpZiwodYfXdWg06JFNvnGOVrT3jRIvoTZEaCstEHVj
- mUl6A92oFpmUxQfy6LLAlo2U0yQozDe/i8JnrSbMEBIhW2kSDnaqB6sWHR7mvipAa2tLTg
- zVnf/H5q6+LVbOhy8oHNNB2Vu9AoDUHlRracmtU/psArpxVLhTXZ430Zxy4/Bw==
-Received: from localhost ([127.0.0.1]) by mail.home with esmtp (Exim 4.89)
- (envelope-from <timo.lindfors@iki.fi>)
- id 1nzvTn-000814-Aq; Sat, 11 Jun 2022 10:24:19 +0300
-Date: Sat, 11 Jun 2022 10:24:19 +0300 (EEST)
-From: Timo Lindfors <timo.lindfors@iki.fi>
-To: Tony Camuso <tcamuso@redhat.com>
-In-Reply-To: <0b09ebf4-9ab0-c41e-5d58-cef2d4ea8c19@redhat.com>
-Message-ID: <alpine.DEB.2.20.2206111021160.30792@mail.home>
+ bh=Jy4VrxRWt6B4ib+IKCLI6pPV9ZkJHznQ7dop04OEDjI=;
+ b=MaRWVj9D12RbLbYlglBcGpjogytQP0BlbCfk9dMIsmzrz25INm7b/HvmYpi7oPXCqEfx+8
+ plGv907QwsLguZu9wjD4Ie3erf7MBm8f+6QR/ybRqK8otpjN4gG5794scni85RoAq3BiE1
+ t0us7WH+pnEGS1vnlOQaz1u7tUhpE2s=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-1-AnrlKdiiPweXp8ONrR-fBQ-1; Sat, 11 Jun 2022 12:08:44 -0400
+X-MC-Unique: AnrlKdiiPweXp8ONrR-fBQ-1
+Received: by mail-qv1-f69.google.com with SMTP id
+ q36-20020a0c9127000000b00461e3828064so1502283qvq.12
+ for <tboot-devel@lists.sourceforge.net>; Sat, 11 Jun 2022 09:08:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=Jy4VrxRWt6B4ib+IKCLI6pPV9ZkJHznQ7dop04OEDjI=;
+ b=wwHfTckepQifUcp6gne+dyYpqkcmeThWos1CyI4UbAEOIzIUwBvC5zf8C11FL+1OjI
+ jXQFLI3JAaFttZVQIHlYyFxqTHEOltISPT5JpE3U7QBgYdAK7fqWRzMyEfBltaumAFQ4
+ zItP4aiO+PVUJ1np5bkH534bxXg6j+yRwQN8S0JAiDKYoYWfJbM1Xp7I6hRAAT8eGz+h
+ X5/lDQdiXloGaWcRxmiOpASU2v05N9bVcCm2H40hUGDPLNifsJx3LjdSLbHzDvSqyIb6
+ Vj2jnWS2RDiGUkgfBWKpNUAH4YW9r/TiPcPFXTOqB8ZieYonWyE/3JIYBz0I1zu/DupI
+ 0ABw==
+X-Gm-Message-State: AOAM531nzoKfeg0hx52Sr7ILU8xA4PuiGE2aKqkUM6F5LVWa19cMppWC
+ cUbibLprlaRzyUpmaGvqxvoWLRLe7HCjPPxusrnUTWrAjcA+xfYiGNb4wbDjaFSLm+N9Ns1Tvf3
+ BPiixCb+v80/MXqT8w6+zE5fNHUJFkmA=
+X-Received: by 2002:a05:6214:29eb:b0:46b:c933:c3d9 with SMTP id
+ jv11-20020a05621429eb00b0046bc933c3d9mr16941339qvb.93.1654963723634; 
+ Sat, 11 Jun 2022 09:08:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6/9dsl6TFlcZmPMl30dSLGx9oOHO26VGFmbOhzx8bUxPXafqT/NLtHXO2joMv3hzkkrS0ug==
+X-Received: by 2002:a05:6214:29eb:b0:46b:c933:c3d9 with SMTP id
+ jv11-20020a05621429eb00b0046bc933c3d9mr16941318qvb.93.1654963723367; 
+ Sat, 11 Jun 2022 09:08:43 -0700 (PDT)
+Received: from [192.168.3.2] (232.sub-174-196-204.myvzw.com. [174.196.204.232])
+ by smtp.gmail.com with ESMTPSA id
+ m13-20020ac866cd000000b00304ed2c0f25sm1492836qtp.50.2022.06.11.09.08.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 11 Jun 2022 09:08:42 -0700 (PDT)
+Message-ID: <9174302f-c4eb-fd3d-c755-569c46053f76@redhat.com>
+Date: Sat, 11 Jun 2022 12:08:40 -0400
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+To: Timo Lindfors <timo.lindfors@iki.fi>
 References: <mailman.51.1654862842.17052.tboot-devel@lists.sourceforge.net>
  <0b09ebf4-9ab0-c41e-5d58-cef2d4ea8c19@redhat.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1654939657; a=rsa-sha256; cv=none;
- b=u08ZIEbmTJGFIWD2ilMgcMYHJityFr4w7rQuxTB7ad/s2pG5oNLPK8mLvkcXYadSPKqm/x
- y/Y39tW/nuO1BQ8ESAGB6yOZyS1xH9d1WBu936qsPOCUgbCpRdYKrcAMLVGYImmvVO6zqw
- RvEB2DUMsDqK/4U2M/Rb3mukfu25dFU5jwdzFOk5FiVjTntR0nYU9+SKM8ZV1/b47xmBFw
- qSZZAOaIyA+re6uTdijQl1HJJ0mCTKkXoUaZZYGBGDvpPz9rXwF/+EZuU75VY3RVezvLKq
- TlU9/cV1ZE+txSQ9c7o6JS2k8HEhR9X6Cj/+eQsoe9soLG5SiJhO5Zaj6yNdfA==
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=timo.lindfors smtp.mailfrom=timo.lindfors@iki.fi
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
- s=lahtoruutu; t=1654939657;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=gmD062XzLttQUxX2K4KYK7MrwPBgdCVxrJakyfWqHv4=;
- b=eoqspDupB+WccYZd2di4XxnnNEzhkKHmqdVM3GA29z7MzeWNnDThE89hsj7EZ72RxbubX5
- cnVGlj3nST3QYFGVeFiPx/Jhh6XtRkksIZKFAVC7eGu/xkh4WxnlAz7nAv/QvqH6vmVDPC
- DOF/gCrMAIe1PSojb4hH1pIbWnyJA4ESzMSGCry7WOqNimSKw8XDnevI0DC49Wa5I6EBRy
- xTCreXGKwMb01slRZ8UsP/OyNLCxj4omrsEhD3AIZfg4On1Eo2nTVsmyOeDzzRvArH3qPU
- /0KrrEGDPwMDnIIjPVgd/Z1NGn/LyvofJE7FHEcg/4YikPmXLVX2IYKcNiGOxQ==
-X-Spam-Score: -0.9 (/)
+ <alpine.DEB.2.20.2206111021160.30792@mail.home>
+From: Tony Camuso <tcamuso@redhat.com>
+In-Reply-To: <alpine.DEB.2.20.2206111021160.30792@mail.home>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=tcamuso@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+X-Spam-Score: -2.6 (--)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Fri, 10 Jun 2022, Tony Camuso wrote: > If your system is
- booting in efi mode, then it needs efi. > If it's booting in legacy bios
- mode, then it doesn't need efi Commit
- https://sourceforge.net/p/tboot/code/ci/aad782103a6e
- Content analysis details:   (-0.9 points, 6.0 required)
+ Content preview:  On 6/11/2022 3:24 AM, Timo Lindfors wrote: > > On Fri, 10
+ Jun 2022, Tony Camuso wrote: >> If your system is booting in efi mode, then
+ it needs efi. >> If it's booting in legacy bios mode, then it does [...] 
+ Content analysis details:   (-2.6 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [185.185.170.37 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [170.10.129.124 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -111,7 +123,9 @@ X-Spam-Report: Spam detection software,
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1nzxhy-00Ez0f-Cb
+ -1.2 NICE_REPLY_A           Looks like a legit reply (A)
+ -1.1 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
+X-Headers-End: 1o03fO-00071M-A3
 Subject: Re: [tboot-devel] [PATCH] 20_linux_tboot: efi logic was inverted
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
@@ -124,28 +138,46 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: tboot-devel@lists.sourceforge.net
+Cc: Lenny Szubowicz <lszubowi@redhat.com>, tboot-devel@lists.sourceforge.net
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
 
-On Fri, 10 Jun 2022, Tony Camuso wrote:
-> If your system is booting in efi mode, then it needs efi.
-> If it's booting in legacy bios mode, then it doesn't need efi
 
-Commit https://sourceforge.net/p/tboot/code/ci/aad782103a6e
+On 6/11/2022 3:24 AM, Timo Lindfors wrote:
+> 
+> On Fri, 10 Jun 2022, Tony Camuso wrote:
+>> If your system is booting in efi mode, then it needs efi.
+>> If it's booting in legacy bios mode, then it doesn't need efi
+> 
+> Commit https://sourceforge.net/p/tboot/code/ci/aad782103a6e
+> 
+> says that
+> 
+> "Note that booting *without* noefi is a security risk since the EFI runtime is not part of the trust base after a dynamic launch."
+> 
+> 
+> This suggests to me that you need to use "noefi" on an EFI system to minimize risks.
 
-says that
+OK, so something is going wrong with the information that tboot is
+forwarding to the kernel launch.
 
-"Note that booting *without* noefi is a security risk since the EFI 
-runtime is not part of the trust base after a dynamic launch."
+On the efi system, with "noefi" removed from the grub command line,
+the system boots.
+
+With "noefi" in the grub command line, Device Mapper cannot find
+the root and swap devices and drops to the dracut prompt.
+
+How can I determine what info efi is providing that tboot is not?
+
+Where can I instrument the code to gain that visibility?
 
 
-This suggests to me that you need to use "noefi" on an EFI system to 
-minimize risks.
+> 
+> -Timo
+> 
 
--Timo
 
 
 _______________________________________________
