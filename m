@@ -2,78 +2,119 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C6BFC68A882
-	for <lists+tboot-devel@lfdr.de>; Sat,  4 Feb 2023 07:06:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AFCD37006E3
+	for <lists+tboot-devel@lfdr.de>; Fri, 12 May 2023 13:33:34 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1pOBgg-0008Jg-GB;
-	Sat, 04 Feb 2023 06:06:09 +0000
+	id 1pxR1b-0002la-Ms;
+	Fri, 12 May 2023 11:33:27 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <greg@wind.enjellic.com>) id 1pOBgf-0008JZ-3t
+ (envelope-from <lixiaoyi13691419520@gmail.com>) id 1pwVdF-0003Fl-D5
  for tboot-devel@lists.sourceforge.net;
- Sat, 04 Feb 2023 06:06:07 +0000
+ Tue, 09 May 2023 22:16:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:Mime-Version:Reply-To:Message-ID:
- Subject:Cc:To:From:Date:Sender:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
+ MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=cklnb2rnIRnnZjb+PS1qLK15t6RemG6JzezfbzihOYo=; b=HCiyW4S6Gq5re/jylv63lhZCQl
- h2AGXpY2yHzNsTPMHdHvfFZN4WW/a0yd6+vJbnb/d+D9chwSCITnqqSd2XO+iTt9VwvCc92e9EBWC
- XatLWdVeyDwPhKxe5czM3gBoYP/VdhCKVeHLVWkHQkrcGaZZPvmvQpV9SeP6psQlzMxQ=;
+ bh=lfLm5cL6jmX98ncghkRN2srZzW5w0nEt8rZVGcbisNo=; b=Elh5MuFcvxhGVOGmfdjVRkmMR5
+ TFZpiwQGPkYi/+fDlYWkPitiNFVXL7DMnAQjeU7Hqdn58cBfaJC1uIKAOKXVYzh0N/WcmMf2rrcnM
+ OhYT6PBpKWGVsqgRjvcl51CUL93XglNDwbX10eCxiIn7tI8izoawFanHorjm2vYhGVm0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:Mime-Version:Reply-To:Message-ID:Subject:Cc:To:From:Date:
- Sender:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
+ :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=cklnb2rnIRnnZjb+PS1qLK15t6RemG6JzezfbzihOYo=; b=B
- PjxXY6iyBFYS+JmCxkB2NaLWPsjdSrKH5KqrfgKP3nf3lbc5sapFSWxPeBBlkkkK0HFWSmCjTu569
- UqqG5kBylFfiIn3EY43Tg0kT0b1FCDPpeES6PdgKhjKz9cZ7/jaS6MkQeMoba/+rosXehxf2n9fKY
- lAZlgRLhYk44JGd0=;
-Received: from wind.enjellic.com ([76.10.64.91])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.95)
- id 1pOBgY-00AoMZ-Gv for tboot-devel@lists.sourceforge.net;
- Sat, 04 Feb 2023 06:06:06 +0000
-Received: from wind.enjellic.com (localhost [127.0.0.1])
- by wind.enjellic.com (8.15.2/8.15.2) with ESMTP id 3145cmjc010476;
- Fri, 3 Feb 2023 23:38:48 -0600
-Received: (from greg@localhost)
- by wind.enjellic.com (8.15.2/8.15.2/Submit) id 3145clRD010475;
- Fri, 3 Feb 2023 23:38:47 -0600
-Date: Fri, 3 Feb 2023 23:38:46 -0600
-From: "Dr. Greg" <greg@enjellic.com>
-To: linux-kernel@vger.kernel.org, linux-security-module@vger.kernel.org,
- xen-devel@lists.xen.org, linux-sgx@vger.kernel.org,
- tboot-devel@lists.sourceforge.net
-Message-ID: <20230204053846.GA10404@wind.enjellic.com>
-Mime-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.4i
-X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.2.3
- (wind.enjellic.com [127.0.0.1]); Fri, 03 Feb 2023 23:38:49 -0600 (CST)
-X-Spam-Score: -0.0 (/)
+ List-Owner:List-Archive; bh=lfLm5cL6jmX98ncghkRN2srZzW5w0nEt8rZVGcbisNo=; b=g
+ XfU9rXOMuBAU3w1aylrTMDtiZEsujqzLkwU8VMgwQPSnmK04nXT7xQ3aTy6Oq1Wy57Py9D2T9bcM/
+ ub7KbE7VHZVZP92n1nfM7+deBwwRdgGpkCwbwUQ7FVA53/ptsmOBY9bIcZb/4WVDcJp2FisipdDaA
+ 4guZ6AIwcalRAVbQ=;
+Received: from mail-ed1-f52.google.com ([209.85.208.52])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.95)
+ id 1pwVdE-001V2h-RN for tboot-devel@lists.sourceforge.net;
+ Tue, 09 May 2023 22:16:29 +0000
+Received: by mail-ed1-f52.google.com with SMTP id
+ 4fb4d7f45d1cf-50bd875398dso9949117a12.1
+ for <tboot-devel@lists.sourceforge.net>; Tue, 09 May 2023 15:16:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1683670582; x=1686262582;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=lfLm5cL6jmX98ncghkRN2srZzW5w0nEt8rZVGcbisNo=;
+ b=kjGWq4mic1J2v19h7b7KgdGnF7gfCKvNZoNNOo47bn/rm5IWqLXZS6sE+3RtT4/4nc
+ ExgBVk13H0nwIMigyiRritglwRPEhBy8wB26/59EFc8xTaYOS5xW+6Cb8yZLroR4K1nM
+ h9m/sZFjHbwys+6fc55/gjuwK8xoD5ifv/bt+AzdNmbU499I5U4nIXp9iYm8SYBYxk7L
+ P3Lue51miIrp8llGBtRorLuzAjQ/K/D6IMKIk0HzFWxz60cuoMyOFrvcNoPVlE9vqF/N
+ 06NTyJt0iAS3BhcbSn+u75Osczqu15eRY+/JSZAe8bN1V+68Zv6OGk2uSdPGpXKV5nUb
+ lzSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1683670582; x=1686262582;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lfLm5cL6jmX98ncghkRN2srZzW5w0nEt8rZVGcbisNo=;
+ b=QtljZXiVGeUopxEoieStvpisPMbZ9rRq1v+HLvhkUj/lmNnS/Ou6zmDDkY3lSqCULZ
+ CPlB81MC8krMxKs7WOQweXiwwAWHlfwiKcWP1Ibcc2AR7eeQ+UfOeVJAeNtNH3xC6/Pp
+ nRvZTZUHq9Ywep6bphHAMvkLnVzm4fXb9Fuer8AnOl7JS1MrsZqrRIS5M5o5dGZM9+60
+ JYNOCJ8S9YSDhz2w7g+wAjSddrrvb7F3EWLlwIvkCI6mV0TZzNx9H18nfULV2AWXsMMu
+ Znjt2FDsf6FpHxViawDz7/AHxnKjvRF1FLli/o1EkX4rqTWuolkWtoOnZZBfe7sjNaYh
+ p39g==
+X-Gm-Message-State: AC+VfDyku7YAlmzHd+iCPmKBWW2iqYAXPP4SP//PQEZg3tPXBBAmC/he
+ ZL/Ns7DORp4CgIZxnF73TKZSsw1d/4tKPZC8JuMJ38CQ3GKDvg==
+X-Google-Smtp-Source: ACHHUZ5Y09iZXl6OzaMUoGf1yAJevgJDPiIm5g5NihLvqXb69iz3AIa4ZJucv2EjnD+TzgR9Bt0wwC2PEcW7c95dZ+8=
+X-Received: by 2002:aa7:d3d0:0:b0:50d:ba93:be51 with SMTP id
+ o16-20020aa7d3d0000000b0050dba93be51mr2588216edr.26.1683670582051; Tue, 09
+ May 2023 15:16:22 -0700 (PDT)
+MIME-Version: 1.0
+From: Eric Li <lixiaoyi13691419520@gmail.com>
+Date: Tue, 9 May 2023 18:16:11 -0400
+Message-ID: <CAEyL3im5+tJJa7qwdZEjrDO_i0FsjVzLYuGEHGdgBuUtpubysQ@mail.gmail.com>
+To: tboot-devel@lists.sourceforge.net
+X-Spam-Score: 0.4 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Good evening, I hope the week has gone well for everyone.
- On behalf of the Quixote team: Izzy the Golden Retriever, Maria, John and
- myself; I am pleased to announce the initial release of the Quixote/TSEM Trust
- Orchestration System. We believe it uniquely po [...] 
- Content analysis details:   (-0.0 points, 6.0 required)
+ Content preview:  I recently found that in tboot/include/txt/heap.h,
+ os_mle_data_t
+ defines saved_misc_enable_msr with type uint32_t. However, MSRs contain 64
+ bits, so uint64_t should be used. The consequence of this bu [...] 
+ Content analysis details:   (0.4 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 HK_RANDOM_ENVFROM      Envelope sender username looks random
+ 0.0 FROM_LOCAL_DIGITS      From: localpart has long digit sequence
+ 0.3 FROM_LOCAL_HEX         From: localpart has long hexadecimal sequence
+ 0.0 HK_RANDOM_FROM         From username looks random
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [lixiaoyi13691419520[at]gmail.com]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
-X-Headers-End: 1pOBgY-00AoMZ-Gv
-Subject: [tboot-devel] Quixote/TSEM: A new security architecture and
- eco-system for Linux.
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [lixiaoyi13691419520[at]gmail.com]
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.208.52 listed in wl.mailspike.net]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.208.52 listed in list.dnswl.org]
+ -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1pwVdE-001V2h-RN
+X-Mailman-Approved-At: Fri, 12 May 2023 11:33:26 +0000
+Subject: [tboot-devel] Bug report: integer truncation in
+ saved_misc_enable_msr
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,76 +126,26 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: "Dr. Greg" <greg@enjellic.com>
-Cc: casey@schaufler-ca.com, corbet@lwn.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-Good evening, I hope the week has gone well for everyone.
+I recently found that in tboot/include/txt/heap.h, os_mle_data_t
+defines saved_misc_enable_msr with type uint32_t. However, MSRs
+contain 64 bits, so uint64_t should be used. The consequence of this
+bug is that in tboot/txt/txt.c, "os_mle_data->saved_misc_enable_msr =
+rdmsr(MSR_IA32_MISC_ENABLE);" results in integer truncation.
 
-On behalf of the Quixote team: Izzy the Golden Retriever, Maria, John
-and myself; I am pleased to announce the initial release of the
-Quixote/TSEM Trust Orchestration System.  We believe it uniquely
-positions Linux to demonstrate a new approach to security and security
-co-processor architectures.
+On my machine (Dell 7050 with Intel(R) Core(TM) i5-7600 CPU @
+3.50GHz), I see that IA32_MISC_ENABLE before SENTER is 0x4000840089.
+However, IA32_MISC_ENABLE after SENTER is restored to 0x840089, where
+the 34th bit is lost.
 
-Quixote/TSEM is based on the notion, that like all other physical
-phenomenon, the security state of a platform or workload can be
-mathematically modeled.  The objective is to provide for Linux
-security what Docker did for Linux namespace technology.
+This bug appears in tboot-1.11.1, it also appears in the latest
+version on sourceforge:
+https://sourceforge.net/p/tboot/code/ci/20d511/tree/tboot/include/txt/heap.h#l288
 
-There are two major components to this architecture.
-
-TSEM is the Trusted Security Event Modeling system.  It is a new Linux
-Security Module implementation, that at a conceptual level, is a
-blending of integrity measurement and mandatory access controls.  It
-treats the LSM hooks as the basis set for a functional description of
-the security state of a system.
-
-Quixote is the userspace software stack that makes the TSEM LSM
-useful.  It implements the concept of a Trust Orchestration System
-(TOS).  A trust orchestration environment is designed to keep a
-platform or workload in a known trust state.  It thus implements the
-notion of prospective trust rather than the retrospective trust model
-available with TPM based architectures.
-
-A patch series implementing the TSEM LSM has been submitted to the
-linux-security-module list for review and inclusion in the upstream
-kernel.
-
-The source code for the Quixote TOS and pre-compiled binaries for the
-userspace tooling can be found at the following URL:
-
-ftp://ftp.enjellic.com/pub/Quixote
-
-The source release includes a selection of TMA's that include Xen, SGX
-and micro-controller implementations.
-
-The kernel patches include a documentation file, that we believe,
-thoroughly discusses the rationale and implementation of the new
-architecture.  To avoid further indemnifying my reputation for
-loquaciousness in e-mail, I will defer interested parties to that
-document for further discussion.  The document is also included in the
-Quixote source code release for those who choose to download that.
-
-In addition to initiating a discussion on a different approach to
-security, we hope that this release keeps Casey Schaufler from turning
-more blue than he already is.  Given that I had mentioned to him two
-months ago that a new LSM would become available, "in a couple of
-weeks", that may influence conversations on changes to the Linux LSM
-architecture that are being discussed.  Such is the state of software
-development.... :-)
-
-I would be more than happy to field any additional questions that may
-be forthcoming.
-
-Best wishes for a pleasant weekend.
-
-As always,
-Dr. Greg
-
-The Quixote Project - Flailing at the Travails of Cybersecurity
+Could you please fix this bug in tboot? Thank you.
 
 
 _______________________________________________
