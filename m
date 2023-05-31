@@ -2,119 +2,109 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFCD37006E3
-	for <lists+tboot-devel@lfdr.de>; Fri, 12 May 2023 13:33:34 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29AD8717A58
+	for <lists+tboot-devel@lfdr.de>; Wed, 31 May 2023 10:41:09 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1pxR1b-0002la-Ms;
-	Fri, 12 May 2023 11:33:27 +0000
+	id 1q4HO5-0001Oe-3S;
+	Wed, 31 May 2023 08:40:57 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <lixiaoyi13691419520@gmail.com>) id 1pwVdF-0003Fl-D5
+ (envelope-from <mgerstner@suse.de>) id 1q4HO0-0001N0-Vq
  for tboot-devel@lists.sourceforge.net;
- Tue, 09 May 2023 22:16:29 +0000
+ Wed, 31 May 2023 08:40:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:To:
+ From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=lfLm5cL6jmX98ncghkRN2srZzW5w0nEt8rZVGcbisNo=; b=Elh5MuFcvxhGVOGmfdjVRkmMR5
- TFZpiwQGPkYi/+fDlYWkPitiNFVXL7DMnAQjeU7Hqdn58cBfaJC1uIKAOKXVYzh0N/WcmMf2rrcnM
- OhYT6PBpKWGVsqgRjvcl51CUL93XglNDwbX10eCxiIn7tI8izoawFanHorjm2vYhGVm0=;
+ bh=G41FRjflWxbOhjLdcudSOgVcSXfmsucrdRKFpHLm34I=; b=fgctxEAjVt4/nnLjEFy6ToTnwI
+ N7FerTnEpK3+E8GEHusnQsWyEuxGPP91GxX222hxarEqaZSo+5bFyFv4E7+z8wBJY4a1zfh7N7bOu
+ o6UeVAwLkalNMbeWEpUcO/bqDesqSK0D6HwknczwrOj7JEK1BRIiyVeCpgTAs6/r4z4U=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
+ h=Content-Type:MIME-Version:Message-ID:Subject:To:From:Date:Sender:Reply-To
  :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=lfLm5cL6jmX98ncghkRN2srZzW5w0nEt8rZVGcbisNo=; b=g
- XfU9rXOMuBAU3w1aylrTMDtiZEsujqzLkwU8VMgwQPSnmK04nXT7xQ3aTy6Oq1Wy57Py9D2T9bcM/
- ub7KbE7VHZVZP92n1nfM7+deBwwRdgGpkCwbwUQ7FVA53/ptsmOBY9bIcZb/4WVDcJp2FisipdDaA
- 4guZ6AIwcalRAVbQ=;
-Received: from mail-ed1-f52.google.com ([209.85.208.52])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ List-Owner:List-Archive; bh=G41FRjflWxbOhjLdcudSOgVcSXfmsucrdRKFpHLm34I=; b=e
+ WN9YrOetNnnGmsp6Kl+Q3AgzBMU82KjqHgpvquLVtA1M5FoA8lKIkowf1AqnKaklPpnIBbL5At5yJ
+ LyypotjPiHBp/OR1iluOJ3z9tmbSsJfpiGjZwQRTFttK7ZsJ1/oA4jYwpSzcwL6WxN9EvQEdKySaW
+ 1Nxl3ITyhBY53P7A=;
+Received: from smtp-out1.suse.de ([195.135.220.28])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.95)
- id 1pwVdE-001V2h-RN for tboot-devel@lists.sourceforge.net;
- Tue, 09 May 2023 22:16:29 +0000
-Received: by mail-ed1-f52.google.com with SMTP id
- 4fb4d7f45d1cf-50bd875398dso9949117a12.1
- for <tboot-devel@lists.sourceforge.net>; Tue, 09 May 2023 15:16:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1683670582; x=1686262582;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=lfLm5cL6jmX98ncghkRN2srZzW5w0nEt8rZVGcbisNo=;
- b=kjGWq4mic1J2v19h7b7KgdGnF7gfCKvNZoNNOo47bn/rm5IWqLXZS6sE+3RtT4/4nc
- ExgBVk13H0nwIMigyiRritglwRPEhBy8wB26/59EFc8xTaYOS5xW+6Cb8yZLroR4K1nM
- h9m/sZFjHbwys+6fc55/gjuwK8xoD5ifv/bt+AzdNmbU499I5U4nIXp9iYm8SYBYxk7L
- P3Lue51miIrp8llGBtRorLuzAjQ/K/D6IMKIk0HzFWxz60cuoMyOFrvcNoPVlE9vqF/N
- 06NTyJt0iAS3BhcbSn+u75Osczqu15eRY+/JSZAe8bN1V+68Zv6OGk2uSdPGpXKV5nUb
- lzSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683670582; x=1686262582;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=lfLm5cL6jmX98ncghkRN2srZzW5w0nEt8rZVGcbisNo=;
- b=QtljZXiVGeUopxEoieStvpisPMbZ9rRq1v+HLvhkUj/lmNnS/Ou6zmDDkY3lSqCULZ
- CPlB81MC8krMxKs7WOQweXiwwAWHlfwiKcWP1Ibcc2AR7eeQ+UfOeVJAeNtNH3xC6/Pp
- nRvZTZUHq9Ywep6bphHAMvkLnVzm4fXb9Fuer8AnOl7JS1MrsZqrRIS5M5o5dGZM9+60
- JYNOCJ8S9YSDhz2w7g+wAjSddrrvb7F3EWLlwIvkCI6mV0TZzNx9H18nfULV2AWXsMMu
- Znjt2FDsf6FpHxViawDz7/AHxnKjvRF1FLli/o1EkX4rqTWuolkWtoOnZZBfe7sjNaYh
- p39g==
-X-Gm-Message-State: AC+VfDyku7YAlmzHd+iCPmKBWW2iqYAXPP4SP//PQEZg3tPXBBAmC/he
- ZL/Ns7DORp4CgIZxnF73TKZSsw1d/4tKPZC8JuMJ38CQ3GKDvg==
-X-Google-Smtp-Source: ACHHUZ5Y09iZXl6OzaMUoGf1yAJevgJDPiIm5g5NihLvqXb69iz3AIa4ZJucv2EjnD+TzgR9Bt0wwC2PEcW7c95dZ+8=
-X-Received: by 2002:aa7:d3d0:0:b0:50d:ba93:be51 with SMTP id
- o16-20020aa7d3d0000000b0050dba93be51mr2588216edr.26.1683670582051; Tue, 09
- May 2023 15:16:22 -0700 (PDT)
-MIME-Version: 1.0
-From: Eric Li <lixiaoyi13691419520@gmail.com>
-Date: Tue, 9 May 2023 18:16:11 -0400
-Message-ID: <CAEyL3im5+tJJa7qwdZEjrDO_i0FsjVzLYuGEHGdgBuUtpubysQ@mail.gmail.com>
+ id 1q4HO0-00006i-7w for tboot-devel@lists.sourceforge.net;
+ Wed, 31 May 2023 08:40:52 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id B008C218EA
+ for <tboot-devel@lists.sourceforge.net>; Wed, 31 May 2023 08:40:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1685522442; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:
+ mime-version:mime-version:content-type:content-type;
+ bh=G41FRjflWxbOhjLdcudSOgVcSXfmsucrdRKFpHLm34I=;
+ b=D3ADuz96yjJ9G0vswSnREn2OxPrafHQXX5HPM8E/HwOv94WArk0Uu6bKMCI+QD6CLG5VId
+ mvl4wR++BBoOkaRHki2UtEf5OyUrAKL85egwk/SMo8D5ercne3uSmXUPKd+pYieQg9d4jT
+ /+ts+IvNXFkCKGn4MXGy0sGyL+sSHNA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1685522442;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:
+ mime-version:mime-version:content-type:content-type;
+ bh=G41FRjflWxbOhjLdcudSOgVcSXfmsucrdRKFpHLm34I=;
+ b=uFB6y1uN7EOKdRI22S5OejvF9CNtfvuFK72ENbgVnCl64J8eZkL5rY17rRF8sjQ1tt7JOQ
+ WMnml6bqBvhyGtAQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id A78A013488
+ for <tboot-devel@lists.sourceforge.net>; Wed, 31 May 2023 08:40:42 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+ by imap2.suse-dmz.suse.de with ESMTPSA id 9ZfdKAoId2TIZAAAMHmgww
+ (envelope-from <mgerstner@suse.de>)
+ for <tboot-devel@lists.sourceforge.net>; Wed, 31 May 2023 08:40:42 +0000
+Date: Wed, 31 May 2023 10:40:41 +0200
+From: Matthias Gerstner <mgerstner@suse.de>
 To: tboot-devel@lists.sourceforge.net
-X-Spam-Score: 0.4 (/)
+Message-ID: <ZHcICboOAuvLlT7V@kasco.suse.de>
+MIME-Version: 1.0
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  I recently found that in tboot/include/txt/heap.h,
- os_mle_data_t
- defines saved_misc_enable_msr with type uint32_t. However, MSRs contain 64
- bits, so uint64_t should be used. The consequence of this bu [...] 
- Content analysis details:   (0.4 points, 6.0 required)
+ Content preview:  Hello list, a customer is experiencing a regression using
+ tboot in some new hardware/boot environment. Their boot gets stuck in the
+ call to move_modules(), producing the following log: TBOOT: no LCP module
+ found TBOOT: This is an ELF32 file. TBOOT: kernel is ELF format TBOOT:
+ 0x6ff000
+ bytes copied from 0x101000 to 0x364f000 TBOOT: loader context was moved from
+ 0x100130 to 0x364e130 
+ Content analysis details:   (-2.5 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 HK_RANDOM_ENVFROM      Envelope sender username looks random
- 0.0 FROM_LOCAL_DIGITS      From: localpart has long digit sequence
- 0.3 FROM_LOCAL_HEX         From: localpart has long hexadecimal sequence
- 0.0 HK_RANDOM_FROM         From username looks random
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [lixiaoyi13691419520[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [lixiaoyi13691419520[at]gmail.com]
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.28 listed in list.dnswl.org]
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.208.52 listed in wl.mailspike.net]
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.208.52 listed in list.dnswl.org]
- -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1pwVdE-001V2h-RN
-X-Mailman-Approved-At: Fri, 12 May 2023 11:33:26 +0000
-Subject: [tboot-devel] Bug report: integer truncation in
- saved_misc_enable_msr
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1q4HO0-00006i-7w
+Subject: [tboot-devel] Likely bug in move_modules() causing broken boot if
+ MBI is below tboot's memory
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -126,29 +116,161 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7240390386942508413=="
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-I recently found that in tboot/include/txt/heap.h, os_mle_data_t
-defines saved_misc_enable_msr with type uint32_t. However, MSRs
-contain 64 bits, so uint64_t should be used. The consequence of this
-bug is that in tboot/txt/txt.c, "os_mle_data->saved_misc_enable_msr =
-rdmsr(MSR_IA32_MISC_ENABLE);" results in integer truncation.
 
-On my machine (Dell 7050 with Intel(R) Core(TM) i5-7600 CPU @
-3.50GHz), I see that IA32_MISC_ENABLE before SENTER is 0x4000840089.
-However, IA32_MISC_ENABLE after SENTER is restored to 0x840089, where
-the 34th bit is lost.
+--===============7240390386942508413==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="iXhnTPjuf1+OBi1q"
+Content-Disposition: inline
 
-This bug appears in tboot-1.11.1, it also appears in the latest
-version on sourceforge:
-https://sourceforge.net/p/tboot/code/ci/20d511/tree/tboot/include/txt/heap.h#l288
 
-Could you please fix this bug in tboot? Thank you.
+--iXhnTPjuf1+OBi1q
+Content-Type: multipart/mixed; protected-headers=v1;
+	boundary="JFk9Py6TEnlgqoP9"
+Content-Disposition: inline
+Date: Wed, 31 May 2023 10:40:41 +0200
+From: Matthias Gerstner <mgerstner@suse.de>
+To: tboot-devel@lists.sourceforge.net
+Subject: Likely bug in move_modules() causing broken boot if MBI is below
+ tboot's memory
 
+
+--JFk9Py6TEnlgqoP9
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hello list,
+
+a customer is experiencing a regression using tboot in some new
+hardware/boot environment. Their boot gets stuck in the call to
+move_modules(), producing the following log:
+
+    TBOOT: no LCP module found
+    TBOOT: This is an ELF32 file.
+    TBOOT: kernel is ELF format
+    TBOOT: 0x6ff000 bytes copied from 0x101000 to 0x364f000
+    TBOOT: loader context was moved from 0x100130 to 0x364e130
+
+The next logline that should occur "move modules to high memory" never
+shows up. An engineer on the customer side identified the likely cause
+of this; quote:
+
+> Looks like this is a bug in tboot... in move_modules(), it tries to copy =
+the MBI
+> and any modules that are loaded below tboot to memory above tboot--but du=
+e to
+> faulty logic in an if/then, it is not copying the MBI if its address is b=
+elow
+> tboot & below the lowest module's address.
+>
+> You can see that with the tboot messages:
+>
+> TBOOT: 0x6ff000 bytes copied from 0x101000 to 0x3586000
+> TBOOT: loader context was moved from 0x100130 to 0x3585130
+>
+> The loader context (MBI) was not moved, so when it tries to access it at =
+the new
+> location, it may see no modules, or it may get bad info, just depending o=
+n what
+> happens to me in that memory.
+>
+> The latest upstream code appears to have this bug, also.
+
+I have attached the suggested patch to this email.
+
+Can you please review the patch and apply it to the repository if the
+analysis is correct?
+
+Thanks
+
+Matthias
+
+--=20
+Matthias Gerstner <matthias.gerstner@suse.de>
+Security Engineer
+https://www.suse.com/security
+GPG Key ID: 0x14C405C971923553
+=20
+SUSE Software Solutions Germany GmbH
+HRB 36809, AG N=FCrnberg
+Gesch=E4ftsf=FChrer: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moer=
+man
+
+--JFk9Py6TEnlgqoP9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment; filename="tboot_copy_mbi.patch"
+Content-Transfer-Encoding: quoted-printable
+
+--- tboot/common/loader.c.orig	2023-05-31 01:49:45.935321582 -0500
++++ tboot/common/loader.c	2023-05-31 01:57:27.914405762 -0500
+@@ -1099,11 +1099,17 @@ move_modules(loader_ctx *lctx)
+=20
+     if ( below_tboot(lowest) )
+         from =3D lowest;
+-    else
+-        if ( below_tboot((unsigned long)lctx->addr) )
++
++    /*
++     * if MBI is below tboot & the lowest module, make sure it gets
++     * copied, too!
++     */
++    if ( below_tboot((unsigned long)lctx->addr) &&=20
++	 (unsigned long)lctx->addr < lowest )
+             from =3D (unsigned long)lctx->addr;
+-        else
+-            return;
++
++    if (from =3D=3D 0)
++	    return;
+=20
+     unsigned long highest =3D get_highest_mod_end(lctx);
+     unsigned long to =3D PAGE_UP(highest);
+
+--JFk9Py6TEnlgqoP9--
+
+--iXhnTPjuf1+OBi1q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEE82oG1A8ab1eESZdjFMQFyXGSNVMFAmR3CAkACgkQFMQFyXGS
+NVOZYRAAn7rZMhNlPHmsqH4px+3RDGfhaF5amu50PkyUEJYy/Dat2Kf8UICU6Z+O
+yHk398eIFJihTy+fCI4iy3EUNDOwf6NHgrC+z7Pg7z5Sia4I15Vjg00E9JJpVp2D
+w76CjxARvMtJEUktKOj+b18duDbvFfZ2608rLg7LKaoVRgNzRm50KHS0EWi/SSn2
+AaOX0eZPf7scGh1AYN0YbyeakEaJEZwUf/sfdbfMuJZbsVsEL1rrYgavhxxy76C2
+7sVCZBhmMYZZtHbAJuWvqao77WER9xaWRktVe86OKmAeJqiyGg6Y/RR3cHRnf6dO
+GHvs4XXEV6BBMxN36lmNtaDMjW5u54DhIhyvQ/8SHtGoYGz4Ms4UtLZc7Vbg2gAy
+V4KC7bkMTpDdMBBoflj31xhowMRnSAf1aDJAzMmxUadDFX1wKWooT9YGFLOPwvyA
+pULyHoTZ0fdILdkbGqW/vOKZg92AQpIFoohlNjNy8ZGojw6sh5y4eXdx3H8rmDRy
+LjNnZjromFeSIspvTK294YzGN9D9l3p6CApIQpfLaJPIuJN7lu5amBzVdVKWpP5c
+Thv35d1KrD0LbQ0L9XrH2nmW3z/K4OO+0/TaE7HacM2MQBhHuSEhZD8Xez8recek
+818gEtjJGdnsgu1qee5H9VHKejvvWjazLdxXj9M2xO2346SImO4=
+=gjDO
+-----END PGP SIGNATURE-----
+
+--iXhnTPjuf1+OBi1q--
+
+
+--===============7240390386942508413==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============7240390386942508413==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 tboot-devel mailing list
 tboot-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/tboot-devel
+
+--===============7240390386942508413==--
+
