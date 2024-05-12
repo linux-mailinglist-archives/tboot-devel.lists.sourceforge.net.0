@@ -2,91 +2,80 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9F65840AF8
-	for <lists+tboot-devel@lfdr.de>; Mon, 29 Jan 2024 17:12:17 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id E302D8C3725
+	for <lists+tboot-devel@lfdr.de>; Sun, 12 May 2024 17:43:25 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1rUUEx-0000J7-8B;
-	Mon, 29 Jan 2024 16:12:08 +0000
+	id 1s6BM3-0001wm-4T;
+	Sun, 12 May 2024 15:43:14 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <salah.coronya@gmail.com>) id 1rUUEv-0000J1-Hd
+ (envelope-from <jandryuk@gmail.com>) id 1s6BM2-0001wf-8u
  for tboot-devel@lists.sourceforge.net;
- Mon, 29 Jan 2024 16:12:06 +0000
+ Sun, 12 May 2024 15:43:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:From:References:To:Subject:MIME-Version
- :Date:Message-ID:Content-Type:Sender:Reply-To:Cc:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
+ MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=v2veK35XB6Sp+8V24racOOmnBJ4RDqolFr1WgQ0Wlrg=; b=U0dZNBXvK/pUKK/CFX0B2QPY4I
- bzqTeLuaVJKgzFCi5L7wpECR0wce9J7OcVcHO2UBNBgrarklbAqqjbLlojxtRNOCfltQbvPK8dARC
- lSamJBL9g8D1R8jj9vNPrvwivGVIZDqASOQOLRZvNXzfrpOkM7ikuBhMS6utx/CDKq7k=;
+ bh=ZBW2M/MA4dTsrbvcS9PhoxjodxTtp0tTbjMn0sorXRM=; b=QUYsJXwjhWWJ3Y6nrJnGawAd2a
+ RTxukh1Cug7BDaMTkLBse6Vqvo63y0S2iU3Ao+m2E/NoaCIgTrs6utiIzNXezRvsFlIN26R4fyUfP
+ GwZAz6BczimrQb6z9zHeWR6B0SvIfBe1Trfo2X/pwdcr5/v0NBRA9xIxApcKyUz2JIPc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:From:References:To:Subject:MIME-Version:Date:Message-ID:
- Content-Type:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=v2veK35XB6Sp+8V24racOOmnBJ4RDqolFr1WgQ0Wlrg=; b=EM4Qr6YEgzxAAaOopQDOtsnjgV
- FQsjjp9fdCp6memKIy2D9IEjz6syIcWePN+hYSawnhWD7jDIm/qzOYv6GLBIyIcbMbRYm54DayRBa
- NIhYivuezB4R8JX8087NpEfRzqLIxtZ3TQ3Y1OyxIcK/WLFdYjHSUp/rlgoq01cYslDU=;
-Received: from mail-io1-f54.google.com ([209.85.166.54])
+ h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
+ :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=ZBW2M/MA4dTsrbvcS9PhoxjodxTtp0tTbjMn0sorXRM=; b=d
+ lDz4jARoeBxql8gYv0d48qeIlm4zNb6yI1e9wcZPpyb4aLmDk2FXlUcQSmeQFuAxYYkMT2evgnim+
+ +us7GCZ+uRNTh02TtQEdkMsUiaUYOnZJA5+8rz6a49LiMm/iqDO34DN39K+Z5gIy/gZ4CAXjILNft
+ RVNTzUhqxYsXX6w4=;
+Received: from mail-ej1-f47.google.com ([209.85.218.47])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.95)
- id 1rUUEq-0002V6-Jo for tboot-devel@lists.sourceforge.net;
- Mon, 29 Jan 2024 16:12:06 +0000
-Received: by mail-io1-f54.google.com with SMTP id
- ca18e2360f4ac-7bee8858a8aso126804439f.0
- for <tboot-devel@lists.sourceforge.net>; Mon, 29 Jan 2024 08:12:01 -0800 (PST)
+ id 1s6BM1-0006lU-SI for tboot-devel@lists.sourceforge.net;
+ Sun, 12 May 2024 15:43:13 +0000
+Received: by mail-ej1-f47.google.com with SMTP id
+ a640c23a62f3a-a59a0e4b773so869314666b.2
+ for <tboot-devel@lists.sourceforge.net>; Sun, 12 May 2024 08:43:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1706544710; x=1707149510; darn=lists.sourceforge.net;
- h=in-reply-to:from:references:to:content-language:subject:user-agent
- :mime-version:date:message-id:from:to:cc:subject:date:message-id
- :reply-to; bh=v2veK35XB6Sp+8V24racOOmnBJ4RDqolFr1WgQ0Wlrg=;
- b=eImSU+DlTudcNcAtFPpdMS7gfjJTwVBwvkk56hIZENvdBxnVmRmo0wDAX5nQbbIuGJ
- SqWMB4EXfoi/mcELWoGPc+4KxAH9GVTkt/oQRTi01+0dpxJ22+/JwR+VHxYncR9eikqn
- Mk+Ei/vYpOeL7garLFN+jAr0easidfRGG5o1M9JX/kXp2qnqh5YiYMwi/lXc5d4xvHy4
- 9jefSGHaQjcbS3kza0wFeG+0Q9KDNqljRkf7NrbspTJvMQcrMHUIIrOeZrKEbW5xrEZp
- Lv+WXuXDlJYpWS3XybICip3ugL7AMRwOHNdvdpcueGJjA+JP8e82gMc8MmU3ttvOc91G
- yDpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706544710; x=1707149510;
- h=in-reply-to:from:references:to:content-language:subject:user-agent
- :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+ d=gmail.com; s=20230601; t=1715528586; x=1716133386; darn=lists.sourceforge.net;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
  :date:message-id:reply-to;
- bh=v2veK35XB6Sp+8V24racOOmnBJ4RDqolFr1WgQ0Wlrg=;
- b=M8LIe+UD+DpNuxgP156fpGhQxvOOjKeLz+3SomtvbVzvI9+Zi8KeuiMPZzcJ9u3xVF
- RBpf5oB0zll3j3FALEfU8iU8UWrXFm9z10ZoTovafyqtwzMkby5z4o2+vPUP0vnfLO3g
- zprRqMnqiDGR4HD9E5le3JhVUn4Nptwjap0O7DjMKE7ohZyXS6sMssQGRbuWaldHHAMP
- ycY/jkdYosRshnejqmo9GczxxJb7upZM4LIUvcE/cUmimYcQ5ljIv7Y3stKqbIdlv4W8
- fClxxB/JTtf9H+AyCvLqNIMIetXQsZ3rR48q5K8iNCVIgSrDK5kXdURAcsLXGhfNHpYB
- AFXA==
-X-Gm-Message-State: AOJu0YzdHzOi5nPcbwgqu8huYkj3GWmpJsJoNjwQZzYaV5vfYT1YeY7z
- vRHnjzBPeNZUO/ixGEfI+0rZL9C4SYh9CaJhze6MuVBm32PtMwCW+14fwwwt
-X-Google-Smtp-Source: AGHT+IEpb7tws5fN4CvyLdH9d4UHo9DHanRPTt0WuFhjswCMEF3mEcDvMtMQrHTejY1IlpVdkTkA8Q==
-X-Received: by 2002:a05:6602:2f14:b0:7bf:5f71:9de9 with SMTP id
- q20-20020a0566022f1400b007bf5f719de9mr8670122iow.18.1706544710254; 
- Mon, 29 Jan 2024 08:11:50 -0800 (PST)
-Received: from [192.168.50.68] (097-086-190-115.res.spectrum.com.
- [97.86.190.115]) by smtp.gmail.com with ESMTPSA id
- e38-20020a028629000000b0046ea72f2152sm1889090jai.47.2024.01.29.08.11.49
- for <tboot-devel@lists.sourceforge.net>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jan 2024 08:11:49 -0800 (PST)
-Content-Type: multipart/mixed; boundary="------------7XRouACWInxPiRIA2fisLI0h"
-Message-ID: <9a962ef9-0b56-46a9-ba49-eee32b622710@gmail.com>
-Date: Mon, 29 Jan 2024 10:11:48 -0600
+ bh=ZBW2M/MA4dTsrbvcS9PhoxjodxTtp0tTbjMn0sorXRM=;
+ b=bVj4CU0SOONVqlFm8I8r68CoqbSRDFdP6CjON/3Luq+YfY9yPI0H2+Sdf3EO9CgY+C
+ zM+3xScHWaeo1NYTdBnhCBFLkuyYbiaRKduIhKNoT5HTS1N69ZVhNTq9g6gHg+F1sGqv
+ AJosQSNq7C+MwkCSIRXHZRy2cYqRZB5Ma+YSjYh93FKf6ei2XGcZ6Fly5iq1plIYuyhO
+ uylo/kkWq93bcO8tPw0cpzBh3CsmMTb4LVZ7TWECSvbRiMHFfzYE70KrV9Y2uZK4uTsb
+ HEKOOHqbhdN0D9LsvdRryn4Jf2+1wBgB0t7W3tFCGqZoS7m1mQn17GN9c3WceQqqPjoT
+ iLJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1715528586; x=1716133386;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ZBW2M/MA4dTsrbvcS9PhoxjodxTtp0tTbjMn0sorXRM=;
+ b=JiQG5l5yhbutc2Caz+dfmoEbzp+guWwdvfJ/Upnyyed46jdps1kpt3IWAqol1vmd/y
+ m1GpfUTR+m/czD3THnyZydMOaoF2QuROmK41jh8uRbO7inPwkxIz/+pGgD0LWNIr7nAi
+ wOjQLf43v1Ke9N0A/TltrPXCfG14EqBb/xxtyAdC75U5m0WIcxocbSqgQXI78zSwucA7
+ 409GtnV3K64U/44UuPwnhBAA7pX4qohzrDt+1e4L+6fDEvhcTGN7VyElbQMUpabhIMM9
+ ULS/F9qcbTPeqJjyjc+uwOVsBLxbRJvbuCU6l01ctTwUU5vldCEBGWMoXp5eA/e8u1lA
+ FaOQ==
+X-Gm-Message-State: AOJu0YzVjGRZQN++nYT+841HnZBIxmEvttUZ62KQXTsgmdP+rWdwizMn
+ pzxHProQmRA7VRbs2LocJ4k4uanKxIIDqSy5ZUAFecAKiImkvI+zbVTOGXRnfzYtjI8fXUTJnt6
+ 7zyX3l/39KD5Wk5D2lBpxXeT8wVLjz1Nu
+X-Google-Smtp-Source: AGHT+IGn3BW36nE7DKpCkvL2Frdb63xMNnFnEeobfgoz9/zSydks/4fEUliFsL7yyL3L6pGkD85VnJVw5iBApImQxo0=
+X-Received: by 2002:a50:d684:0:b0:572:a13c:30ca with SMTP id
+ 4fb4d7f45d1cf-5734d5de823mr5268741a12.20.1715528585920; Sun, 12 May 2024
+ 08:43:05 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: tboot-devel@lists.sourceforge.net
-References: <87ede0fslc.fsf@oldenburg.str.redhat.com>
-From: Christopher Byrne <salah.coronya@gmail.com>
-In-Reply-To: <87ede0fslc.fsf@oldenburg.str.redhat.com>
+From: Jason Andryuk <jandryuk@gmail.com>
+Date: Sun, 12 May 2024 11:42:54 -0400
+Message-ID: <CAKf6xpvLSkouvF98c3pWd_pD7vi9vrHAsVx--9ndBh8vNTMhhA@mail.gmail.com>
+To: tboot-devel@lists.sourceforge.net, openxt <openxt@googlegroups.com>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
@@ -94,30 +83,35 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On 1/29/24 02:31, Florian Weimer wrote: > As far as I can
- tell, this warning is both technically correct and > harmless. The called
- generate_composite_hash hash function only writes > SHA1_DIGEST_SIZE [...]
+ Content preview:  Hi, I wrote this script a while ago. Maybe it'll be useful
+ to someone: https://github.com/jandryuk/tpm-event-log It parses TPM event
+ logs, like the sysfs binary_bios_measurements file from Linux or the tboot
+ TXT tpm20_binary_evtlog_tcg exposed by OpenXT. (You might need to cat sysfs
+ entries into regular files fi [...] 
  Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [salah.coronya[at]gmail.com]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.166.54 listed in wl.mailspike.net]
+ 0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
+ blocked.  See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: tpm-event-log.py]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.166.54 listed in list.dnswl.org]
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ no trust [209.85.218.47 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [jandryuk[at]gmail.com]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1rUUEq-0002V6-Jo
-Subject: Re: [tboot-devel] [PATCH] Suppress GCC 14 allocation size warning
- in lcptools-v2/pconf_legacy.c
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.218.47 listed in wl.mailspike.net]
+X-Headers-End: 1s6BM1-0006lU-SI
+Subject: [tboot-devel] tpm-event-log.py parsing script
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -129,86 +123,38 @@ List-Post: <mailto:tboot-devel@lists.sourceforge.net>
 List-Help: <mailto:tboot-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/tboot-devel>,
  <mailto:tboot-devel-request@lists.sourceforge.net?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
-This is a multi-part message in MIME format.
---------------7XRouACWInxPiRIA2fisLI0h
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Hi,
 
+I wrote this script a while ago.  Maybe it'll be useful to someone:
+https://github.com/jandryuk/tpm-event-log
 
+It parses TPM event logs, like the sysfs binary_bios_measurements file
+from Linux or the tboot TXT tpm20_binary_evtlog_tcg exposed by OpenXT.
+(You might need to cat sysfs entries into regular files first).
 
-On 1/29/24 02:31, Florian Weimer wrote:
-> As far as I can tell, this warning is both technically correct and
-> harmless.  The called generate_composite_hash hash function only writes
-> SHA1_DIGEST_SIZE bytes and uses byte accesses.
-> 
-> Thanks,
-> Florian
-> 
-> diff --git a/lcptools-v2/pconf_legacy.c b/lcptools-v2/pconf_legacy.c
-> index 443b5cd5525b9fe1..5ebc6c451f7008b1 100644
-> --- a/lcptools-v2/pconf_legacy.c
-> +++ b/lcptools-v2/pconf_legacy.c
-> @@ -324,7 +324,7 @@ static lcp_policy_element_t *create(void)
->               ERROR("Error: no pcrs were selected.\n");
->               return NULL;
->           }
-> -        digest = malloc(SHA1_DIGEST_SIZE);
-> +        digest = malloc(sizeof(*digest));
->           if (digest == NULL) {
->               ERROR("Error: failed to allocate memory for digest buffer.\n");
->               return NULL;
-> 
-> 
-> 
-> _______________________________________________
-> tboot-devel mailing list
-> tboot-devel@lists.sourceforge.net
-> https://lists.sourceforge.net/lists/listinfo/tboot-devel
+It handles TPM 1.2 and 2.0 and predates tpm2_eventlog.  The benefit
+over tpm2_eventlog is that it provides details about some events in
+the log.  Specifically, it'll parse and print UEFI boot paths, so you
+know what the system was trying to boot.  It'll also print out grub
+commands.  tboot itself doesn't provide meaningful details about its
+events.
 
-That's not the only patch that file needed. When I submitted the 
-original patch to use the correct algorithm, I missed a line.
+Printing is not exhaustive.  Mainly, it prints details about things I
+needed more info about.  That is to say, it handles things I've seen
+in actual logs, so there may be gaps.  It assumes a well formatted
+log.
 
---------------7XRouACWInxPiRIA2fisLI0h
-Content-Type: text/x-patch; charset=UTF-8; name="pconf.patch"
-Content-Disposition: attachment; filename="pconf.patch"
-Content-Transfer-Encoding: base64
+Anyway, maybe someone will find it interesting.
 
-IyBIRyBjaGFuZ2VzZXQgcGF0Y2gKIyBVc2VyIENocmlzdG9waGVyIEJ5cm5lIDxzYWxhaC5j
-b3JvbnlhQGdtYWlsLmNvbT4KIyBEYXRlIDE2NDU4NDczODMgMjE2MDAKIyAgICAgIEZyaSBG
-ZWIgMjUgMjE6NDk6NDMgMjAyMiAtMDYwMAojIE5vZGUgSUQgMTY3NjE5YjUxNjQ2YWFjMDU2
-MTA5ZmJlMmExYjExOThhMjIxY2RhZAojIFBhcmVudCAgYWJlNWI2YzAyMmYzN2E4NmU4MTBk
-YWI0NDI5MmM0NzhlM2I0YTQ4YwpsY3B0b29scy12Mi9wY29uZl9sZWdhY3kuYzogQWRkIG1p
-c3NpbmcgQkUgc2l6ZV9vZl9wY3JzIHRvIGhhc2ggYnVmZmVyCgpTaWduZWQtb2YtYnk6IENo
-cmlzdG9waGVyIEJ5cm5lIDxzYWxhaC5jb3JvbnlhQGdtYWlsLmNvbT4KCmRpZmYgLXIgYWJl
-NWI2YzAyMmYzIC1yIDE2NzYxOWI1MTY0NiBsY3B0b29scy12Mi9wY29uZl9sZWdhY3kuYwot
-LS0gYS9sY3B0b29scy12Mi9wY29uZl9sZWdhY3kuYwlUdWUgSmFuIDIzIDEyOjIwOjA3IDIw
-MjQgKzAxMDAKKysrIGIvbGNwdG9vbHMtdjIvcGNvbmZfbGVnYWN5LmMJRnJpIEZlYiAyNSAy
-MTo0OTo0MyAyMDIyIC0wNjAwCkBAIC0yNDEsNiArMjQxLDcgQEAKICAgICAgICAgRVJST1Io
-IkVycm9yOiBmYWlsZWQgdG8gYWxsb2NhdGUgYnVmZmVyIGZvciBjb21wb3NpdGUgZGlnZXN0
-LlxuIik7CiAgICAgICAgIHJldHVybiBmYWxzZTsKICAgICB9CisgICAgYnVmZi0+c2l6ZV9v
-Zl9wY3JzID0gaHRvbmwobm9fb2ZfcGNycyAqIFNIQTFfRElHRVNUX1NJWkUpOwogICAgIG1l
-bWNweV9zKAogICAgICAgICAmYnVmZi0+cGNyX3NlbGVjdGlvbiwKICAgICAgICAgc2l6ZW9m
-IGJ1ZmYtPnBjcl9zZWxlY3Rpb24sCg==
+Regards,
+Jason
 
---------------7XRouACWInxPiRIA2fisLI0h
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---------------7XRouACWInxPiRIA2fisLI0h
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 tboot-devel mailing list
 tboot-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/tboot-devel
-
---------------7XRouACWInxPiRIA2fisLI0h--
-
