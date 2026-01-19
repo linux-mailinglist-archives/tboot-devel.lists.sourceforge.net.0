@@ -2,27 +2,27 @@ Return-Path: <tboot-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+tboot-devel@lfdr.de
 Delivered-To: lists+tboot-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0889ED3B6CC
-	for <lists+tboot-devel@lfdr.de>; Mon, 19 Jan 2026 20:08:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CE7AD3B6D0
+	for <lists+tboot-devel@lfdr.de>; Mon, 19 Jan 2026 20:08:33 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Subject:To:From:Date:References:In-Reply-To:Message-Id:MIME-Version:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NMnl0BNPPF+Nkfc/1FLFhSOKpzBnMqNjnA7Fsa+5NQM=; b=U/eGdWJOvfACRBAgQ/N3lFGbNN
-	3rqkvwucf83zq5gdBAHGSLzS7hv4hJSqWRm15VgGG3fC0iIobm7+fwVDdaKhdZYFIflv4DRaeQUBy
-	BOGB4MHjI6tKfmeyjY7q8JwOi/HtpdX2pA/6sJcjJs0usjCGOzKjzxTbgiF/2VGz7lQw=;
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=dwjMtFJU46HD+unF71dSrISZTxg20xWqakCiaubYHLk=; b=dhyF+vwEOzFYogQdn7S5+vP/ff
+	nRxxibpXYtjZOqDfVNxu69vFi0pEDaWTqAHznPus16IH3OJy1R7N3FmHfy3Gr4+80JsvMKpFCMgrJ
+	flTeG5wJHFJRCiOtgPZHDEY7IvoX9KcLhhxY+qTIGLOMMC1EFMvJ6lYiaOdz0Ah8fJeU=;
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <tboot-devel-bounces@lists.sourceforge.net>)
-	id 1vhubm-0001y1-El;
-	Mon, 19 Jan 2026 19:08:14 +0000
+	id 1vhubn-0000fv-7H;
+	Mon, 19 Jan 2026 19:08:15 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
  (envelope-from <michal.camacho.romero@linux.intel.com>)
- id 1vhubk-0001xv-AP for tboot-devel@lists.sourceforge.net;
+ id 1vhubk-0000fm-S8 for tboot-devel@lists.sourceforge.net;
  Mon, 19 Jan 2026 19:08:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Cc:To:From:Date:References:In-Reply-To:Message-Id:
@@ -30,59 +30,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=ZKebQ5S00Z1dQ4840hMeFnuuFA6qBVLVWg9eekizugc=; b=WVOjhdb8LWFALsiZlUX3nnO8SL
- ra4KvZseMQG+gWOEICwjDKrGhZzzc1PjDqEQ93z9lQ4b/0+No4T8WbJa0sJutsdwY/XY5d/IlIAIn
- mO8hBCckgWdfxzWV0QXc5wpuShokHnu7H82V5OS0QyIh94S83VVG0LuaLZtSyplQs18w=;
+ bh=GdNLpB5AW7bTOYrqSv738sRdG6K6MfoMk/1UOA77CZ0=; b=aogTcGzIkw7i3ltnjB1/P6VDIp
+ IsyzDDXtJ0AlLz6nFSa6jwvxCN+N5nucrQJbhRwGhNP8E8TddDlxOBKwEuWX3/FCeXBRyXS/QeXFg
+ vauRU3tRV3qb6X9jXaVAuu1gOCyIFh5fVd8LIPbNCRJRgRofkwljBfm65eIkWJegszhA=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ; h=Cc:To:From:Date:References:In-Reply-To:Message-Id:Subject:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Reply-To:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=ZKebQ5S00Z1dQ4840hMeFnuuFA6qBVLVWg9eekizugc=; b=Lf5vHKc8iodVICIdKAiyetLdgc
- lazSFl6FYXIBY/YTp7rrfvU/CvWhzelAVs4O9qleMCWB+pMcFUYmEHAB80IYB6/B2VNzRfMUtBQxW
- vEp7xu83Oa2XxqxijYx8rjhZrM2zvciL7bkc7R6sgbZdVoQmR7Xx/JZgSH8vgVWLSeK4=;
+ bh=GdNLpB5AW7bTOYrqSv738sRdG6K6MfoMk/1UOA77CZ0=; b=N7a3T7MC0E+Ld/q9gt4QZGN1xm
+ U1HzU2rAg1D+IMWGRunYHn3P4PEWoOhXENxf6y6nJ5ICtnjc8xec8T9cHuIPKQQBMtEhAUdQAxEHk
+ DuJz2VSH/LWWcUz0WzolAiPK8TGWjrByGaCTbLbU0H6OyQWeGGGGT8C2fWIxlcUBKCEQ=;
 Received: from mgamail.intel.com ([198.175.65.10])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1vhubj-0007JM-5e for tboot-devel@lists.sourceforge.net;
- Mon, 19 Jan 2026 19:08:11 +0000
+ id 1vhubk-0007JM-Cg for tboot-devel@lists.sourceforge.net;
+ Mon, 19 Jan 2026 19:08:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1768849691; x=1800385691;
+ t=1768849692; x=1800385692;
  h=mime-version:content-transfer-encoding:subject:
  message-id:in-reply-to:references:date:from:to:cc;
- bh=nQcZIdfjVC7bYDlPAnIkL95jo2XGlFVvQ+YIWCpC3P0=;
- b=YzOBHH6js8gCcp3CfBcABc306/l7xOaUVXZLlcmtzs2MmWyk7HxAuFC1
- 1QMd/HPDrHmnkeMRRcngGQ1XIHuDvw44Rr4C1pkUPKKAxirc49SllJzGN
- Af+ivj+XH/aVJ1ILbU/Cgp2/5e+bnq3P+jFauPpbxLTo+wcbMMIreTew9
- fehy/Umg/tVKEj1J8XCCvuwnuEDmpTYkeFSvY0ZPxnQrx1p3LneqmjzrW
- EvyY3fEUYvaJh3aEKTrNDR9T0jvOzgNf6sk5pP9McNwUhBZg2LkgCOe+g
- LGEjBtCbGPyyOUzdf1PkMPQI2fFTYnRcP17cBW/dveSvAqGIK2BIkx9jF g==;
-X-CSE-ConnectionGUID: p6V7nY0KTQKstu/s/kYjGA==
-X-CSE-MsgGUID: 03NM/QC3RJCwH6eNzndWXA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11676"; a="87479293"
-X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; d="scan'208";a="87479293"
+ bh=i7Xf/YqUEherJjKStZMu0c06SXzSOh7sNo8J6h6BEpA=;
+ b=ggeyudduiDswea/DgzJswo93QNdNW8lmwFSnsUanhzHqSb6eAT7EtqXi
+ ioyaEtIsZgYOTiauHqAcFIUgHtNOHEbBYHqOSd8tgisX3nQ0K6ODLacwK
+ KE28qERVWzCguaTSXRlbjHf1DHUJ/+3UkC1Rkk8eIlsbh54ud4KMkTE0O
+ iJ8MCUgmoYnVhb6SP6ofYfZFH+F5Nh9tiSjlx9GtutasCmErSegYoNBv3
+ UQmkAjk/3JMYlEU1kP9GUtDCGSJ5NDAMQxPm0Rk92lwf7c1Z3bYz9XfC2
+ Z5B2tKWSwWUjXREaRwnqvlGQoPLiNztWWZCHLZrHAtRRcUFFHOaYcDKgz A==;
+X-CSE-ConnectionGUID: nOJpiRYCSpmW8q2Y9iJ3yQ==
+X-CSE-MsgGUID: dz3k4UlETvW5/NZHEX3SOw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11676"; a="87479296"
+X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; d="scan'208";a="87479296"
 Received: from fmviesa010.fm.intel.com ([10.60.135.150])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Jan 2026 11:08:01 -0800
-X-CSE-ConnectionGUID: yN1iKNuqQt+rb8UkZjDfgg==
-X-CSE-MsgGUID: 8aY0fpRUQzu0AuWevwlxgA==
+ 19 Jan 2026 11:08:02 -0800
+X-CSE-ConnectionGUID: k19qO8IwT/mATA1K2t1G/Q==
+X-CSE-MsgGUID: zqTrfHdwQ46LPHEDJX5BjA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; d="scan'208";a="206284116"
+X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; d="scan'208";a="206284120"
 Received: from gklab-219-098.igk.intel.com (HELO [127.0.1.1]) ([10.211.219.98])
  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Jan 2026 11:07:59 -0800
+ 19 Jan 2026 11:08:01 -0800
 MIME-Version: 1.0
-X-Mercurial-Node: d512777179769bd322ea73adc560b9e85d63c893
-X-Mercurial-Series-Index: 1
+X-Mercurial-Node: f26f17cb735a0c2e814728b852e701778c800406
+X-Mercurial-Series-Index: 2
 X-Mercurial-Series-Total: 3
-Message-Id: <d512777179769bd322ea.1768849654@gklab-219-098>
+Message-Id: <f26f17cb735a0c2e8147.1768849655@gklab-219-098>
 X-Mercurial-Series-Id: <d512777179769bd322ea.1768849654@gklab-219-098>
 In-Reply-To: <patchbomb.1768849653@gklab-219-098>
 References: <patchbomb.1768849653@gklab-219-098>
 User-Agent: Mercurial-patchbomb/6.7.2
-Date: Mon, 19 Jan 2026 20:07:34 +0100
+Date: Mon, 19 Jan 2026 20:07:35 +0100
 From: michal.camacho.romero@linux.intel.com
 To: tboot-devel@lists.sourceforge.net
 X-Spam-Score: -0.0 (/)
@@ -94,8 +94,8 @@ X-Spam-Report: Spam detection software,
  the administrator of that system for details.
  Content preview: # HG changeset patch # User Michal Camacho Romero
  <michal.camacho.romero@linux.intel.com>
- # Date 1763628749 -3600 # Thu Nov 20 09:52:29 2025 +0100 # Node ID
- d512777179769bd322ea73adc560b9e85d63c893 # [...] 
+ # Date 1767798891 -3600 # Wed Jan 07 16:14:51 2026 +0100 # Node ID
+ f26f17cb735a0c2e814728b852e701778c800406 # [...] 
  Content analysis details:   (-0.0 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -103,9 +103,9 @@ X-Spam-Report: Spam detection software,
  not necessarily valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1vhubj-0007JM-5e
-Subject: [tboot-devel] [PATCH 1 of 3] Enable to force PMR using,
- instead of TPRs
+X-Headers-End: 1vhubk-0007JM-Cg
+Subject: [tboot-devel] [PATCH 2 of 3] Fix force_pmrs option verification
+ procedure
 X-BeenThere: tboot-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -124,180 +124,82 @@ Errors-To: tboot-devel-bounces@lists.sourceforge.net
 
 # HG changeset patch
 # User Michal Camacho Romero <michal.camacho.romero@linux.intel.com>
-# Date 1763628749 -3600
-#      Thu Nov 20 09:52:29 2025 +0100
-# Node ID d512777179769bd322ea73adc560b9e85d63c893
-# Parent  5220085b54dd5fb5f2e9f59766f14756b2062ebd
-Enable to force PMR using, instead of TPRs
+# Date 1767798891 -3600
+#      Wed Jan 07 16:14:51 2026 +0100
+# Node ID f26f17cb735a0c2e814728b852e701778c800406
+# Parent  d512777179769bd322ea73adc560b9e85d63c893
+Fix force_pmrs option verification procedure
 
-Provide a possibility to replace TPRs usage with PMRs, by setting the
-additional TBOOT cmdline option "force_pmrs=true". It disables TPR
-support bit in the ACM capabilities and the similar bit in the MLE
-capabilities. This solution forced TBOOT and SINIT ACM to configure PMRs
-as their protection ranges.
+TBOOT hasn't proceed earlier force_pmrs option, due to invalid comparision condition,
+given in the get_tboot_force_pmrs function, which parses "force_pmrs" option from
+the TBOOT cmdline.
 
-diff -r 5220085b54dd -r d51277717976 tboot/common/cmdline.c
---- a/tboot/common/cmdline.c	Thu Apr 17 08:33:41 2025 -0400
-+++ b/tboot/common/cmdline.c	Thu Nov 20 09:52:29 2025 +0100
-@@ -85,6 +85,7 @@
-     { "measure_nv", "false" },       /* true|false */
-     { "extpol",    "sha256" },         /*agile|embedded|sha1|sha256|sm3|... */
-     { "ignore_prev_err", "true"},    /* true|false */
-+    { "force_pmrs", "false"},        /* true|false */
-     { "force_tpm2_legacy_log", "false"}, /* true|false */
-     { "save_vtd", "false"},          /* true|false */
-     { "dump_memmap", "false"},          /* true|false */
-@@ -541,6 +542,19 @@
+diff -r d51277717976 -r f26f17cb735a tboot/common/cmdline.c
+--- a/tboot/common/cmdline.c	Thu Nov 20 09:52:29 2025 +0100
++++ b/tboot/common/cmdline.c	Wed Jan 07 16:14:51 2026 +0100
+@@ -547,7 +547,7 @@
+     const char *force_pmrs = get_option_val(g_tboot_cmdline_options,
+                                             g_tboot_param_values,
+                                             "force_pmrs");
+-    if (force_pmrs != NULL && tb_strcmp(force_pmrs, "true"))
++    if (force_pmrs != NULL && (tb_strcmp(force_pmrs, "true") == 0))
+     {
+         return true;
      }
- }
- 
-+bool get_tboot_force_pmrs(void)
-+{
-+    const char *force_pmrs = get_option_val(g_tboot_cmdline_options,
-+                                            g_tboot_param_values,
-+                                            "force_pmrs");
-+    if (force_pmrs != NULL && tb_strcmp(force_pmrs, "true"))
-+    {
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
- bool get_tboot_force_tpm2_legacy_log(void)
- {
-     const char *force_legacy_log =
-diff -r 5220085b54dd -r d51277717976 tboot/common/tboot.c
---- a/tboot/common/tboot.c	Thu Apr 17 08:33:41 2025 -0400
-+++ b/tboot/common/tboot.c	Thu Nov 20 09:52:29 2025 +0100
-@@ -352,6 +352,7 @@
- void begin_launch(void *addr, uint32_t magic)
- {
-     tb_error_t err;
-+    bool force_pmrs = false;
- 
-     if (g_ldr_ctx->type == 0)        
-         determine_loader_type(addr, magic);
-@@ -454,10 +455,12 @@
-        if (!verify_acmod(g_sinit)) 
-            apply_policy(TB_ERR_ACMOD_VERIFY_FAILED);
-     }
--    
-+
-+    force_pmrs = get_tboot_force_pmrs();
-+
-     //We need to have g_sinit point to SINIT ACM before we can run is_tpr_supported
-     //This global variable decides whether PMR or TPR is used
--    g_tpr_support = is_tpr_supported();
-+    g_tpr_support = is_tpr_supported(force_pmrs);
- 
-     /* make TPM ready for measured launch */
-     if (!tpm_detect())
-diff -r 5220085b54dd -r d51277717976 tboot/include/cmdline.h
---- a/tboot/include/cmdline.h	Thu Apr 17 08:33:41 2025 -0400
-+++ b/tboot/include/cmdline.h	Thu Nov 20 09:52:29 2025 +0100
-@@ -55,6 +55,7 @@
- extern bool get_tboot_ignore_prev_err(void);
- extern bool get_tboot_measure_nv(void);
- extern void get_tboot_extpol(void);
-+extern bool get_tboot_force_pmrs(void);
- extern bool get_tboot_force_tpm2_legacy_log(void);
- extern bool get_tboot_save_vtd(void);
- extern bool get_tboot_dump_memmap(void);
-diff -r 5220085b54dd -r d51277717976 tboot/include/txt/acmod.h
---- a/tboot/include/txt/acmod.h	Thu Apr 17 08:33:41 2025 -0400
-+++ b/tboot/include/txt/acmod.h	Thu Nov 20 09:52:29 2025 +0100
-@@ -202,6 +202,8 @@
- extern txt_caps_t get_sinit_capabilities(const acm_hdr_t* hdr);
- extern tpm_info_list_t *get_tpm_info_list(const acm_hdr_t* hdr);
- extern void verify_IA32_se_svn_status(const acm_hdr_t *acm_hdr);
-+extern acm_info_table_t *get_acmod_info_table(const acm_hdr_t* hdr);
-+
- #endif /* __TXT_ACMOD_H__ */
- 
- /*
-diff -r 5220085b54dd -r d51277717976 tboot/include/txt/txt.h
---- a/tboot/include/txt/txt.h	Thu Apr 17 08:33:41 2025 -0400
-+++ b/tboot/include/txt/txt.h	Thu Nov 20 09:52:29 2025 +0100
-@@ -61,7 +61,7 @@
- extern bool txt_is_powercycle_required(void);
- extern void ap_wait(unsigned int cpuid);
- extern int get_evtlog_type(void);
--extern bool is_tpr_supported(void);
-+extern bool is_tpr_supported(bool);
- 
- extern uint32_t g_using_da;
- extern bool     g_tpr_support;
-diff -r 5220085b54dd -r d51277717976 tboot/txt/acmod.c
---- a/tboot/txt/acmod.c	Thu Apr 17 08:33:41 2025 -0400
-+++ b/tboot/txt/acmod.c	Thu Nov 20 09:52:29 2025 +0100
-@@ -56,7 +56,7 @@
- #include <tpm.h>
- #endif    /* IS_INCLUDED */
- 
--static acm_info_table_t *get_acmod_info_table(const acm_hdr_t* hdr)
-+acm_info_table_t *get_acmod_info_table(const acm_hdr_t* hdr)
- {
-     uint32_t user_area_off;
- 
-diff -r 5220085b54dd -r d51277717976 tboot/txt/txt.c
---- a/tboot/txt/txt.c	Thu Apr 17 08:33:41 2025 -0400
-+++ b/tboot/txt/txt.c	Thu Nov 20 09:52:29 2025 +0100
-@@ -97,7 +97,7 @@
-  * this is the structure whose addr we'll put in TXT heap
-  * it needs to be within the MLE pages, so force it to the .text section
-  */
--static __text const mle_hdr_t g_mle_hdr = {
-+static __text mle_hdr_t g_mle_hdr = {
-     uuid              :  MLE_HDR_UUID,
-     length            :  sizeof(mle_hdr_t),
-     version           :  MLE_HDR_VER,
-@@ -117,6 +117,23 @@
+diff -r d51277717976 -r f26f17cb735a tboot/txt/txt.c
+--- a/tboot/txt/txt.c	Thu Nov 20 09:52:29 2025 +0100
++++ b/tboot/txt/txt.c	Wed Jan 07 16:14:51 2026 +0100
+@@ -117,22 +117,6 @@
  /* count of APs in WAIT-FOR-SIPI */
  atomic_t ap_wfs_count;
  
-+static void disable_tpr_support(const acm_hdr_t *hdr)
-+{
-+    // Disable TPR support in the SINIT ACM capabilities
-+    acm_info_table_t *info_table = get_acmod_info_table(hdr);
-+    if ( info_table == NULL || info_table->version < 3 ) {
-+        printk(TBOOT_ERR"TPR support disabling process has failed\n");
-+    }
-+
-+    info_table->capabilities.tpr_support = 0;
-+    printk(TBOOT_INFO"TPR support has been disabled properly in SINIT ACM\n");
-+
-+    // Disable TPR support bit in the MLE capabilities
-+    g_mle_hdr.capabilities.tpr_support = 0;
-+
-+    printk(TBOOT_INFO"MLE capabilities: 0x%X\n", g_mle_hdr.capabilities._raw);
-+}
-+
+-static void disable_tpr_support(const acm_hdr_t *hdr)
+-{
+-    // Disable TPR support in the SINIT ACM capabilities
+-    acm_info_table_t *info_table = get_acmod_info_table(hdr);
+-    if ( info_table == NULL || info_table->version < 3 ) {
+-        printk(TBOOT_ERR"TPR support disabling process has failed\n");
+-    }
+-
+-    info_table->capabilities.tpr_support = 0;
+-    printk(TBOOT_INFO"TPR support has been disabled properly in SINIT ACM\n");
+-
+-    // Disable TPR support bit in the MLE capabilities
+-    g_mle_hdr.capabilities.tpr_support = 0;
+-
+-    printk(TBOOT_INFO"MLE capabilities: 0x%X\n", g_mle_hdr.capabilities._raw);
+-}
+ 
  static void print_file_info(void)
  {
-     printk(TBOOT_DETA"file addresses:\n");
-@@ -824,7 +841,7 @@
-     return sts.senter_done_sts;
+@@ -843,23 +827,14 @@
+ 
+ bool is_tpr_supported(bool force_pmrs)
+ {
+-    //Reads SINIT ACM capabilities field and returns tpr_support bit
+-    //Needs g_sinit to be set.
+-    txt_caps_t sinit_caps;
+-
+-    sinit_caps._raw = 0;
+-
+     // Disable TPR support, if "force_pmrs" cmdline option was set
+-    if (force_pmrs && g_sinit != NULL)
++    if (force_pmrs)
+     {
+-        disable_tpr_support(g_sinit);
++        g_mle_hdr.capabilities.tpr_support = 0;
++        printk(TBOOT_INFO"TPR Support disabled in the MLE capabilities.\n");
+     }
+ 
+-    if (g_sinit != NULL) {
+-        sinit_caps = get_sinit_capabilities(g_sinit);
+-    }
+-
+-    return sinit_caps.tpr_support;
++    return g_mle_hdr.capabilities.tpr_support;
  }
  
--bool is_tpr_supported(void)
-+bool is_tpr_supported(bool force_pmrs)
- {
-     //Reads SINIT ACM capabilities field and returns tpr_support bit
-     //Needs g_sinit to be set.
-@@ -832,6 +849,12 @@
- 
-     sinit_caps._raw = 0;
- 
-+    // Disable TPR support, if "force_pmrs" cmdline option was set
-+    if (force_pmrs && g_sinit != NULL)
-+    {
-+        disable_tpr_support(g_sinit);
-+    }
-+
-     if (g_sinit != NULL) {
-         sinit_caps = get_sinit_capabilities(g_sinit);
-     }
+ tb_error_t txt_launch_environment(loader_ctx *lctx)
 
 
 
